@@ -1,0 +1,63 @@
+# Entity: get_product
+
+main: kit: entity: get_product: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "product"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "get_product"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "product_id"
+                orig: "product_id"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "slug"
+                orig: "slug"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/ai/get-product"
+          parts: [
+            "api"
+            "ai"
+            "get-product"
+          ]
+          select: {
+            exist: [
+              "product_id"
+              "slug"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,28 @@
+# BasicGetBuildFlow
+
+main: kit: flow: BasicGetBuildFlow:
+{
+  entity: "get_build",
+  kind: "basic",
+  name: "BasicGetBuildFlow",
+  step: [
+    {
+      input: {
+        ref: "get_build_ref01",
+        srcdatavar: "get_build_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-get_build_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetBuildFlow"
+}

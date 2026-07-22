@@ -1,0 +1,28 @@
+# BasicGetProductFlow
+
+main: kit: flow: BasicGetProductFlow:
+{
+  entity: "get_product",
+  kind: "basic",
+  name: "BasicGetProductFlow",
+  step: [
+    {
+      input: {
+        ref: "get_product_ref01",
+        srcdatavar: "get_product_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-get_product_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetProductFlow"
+}

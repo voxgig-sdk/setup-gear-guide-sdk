@@ -1,0 +1,21 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      description: "Public, keyless (v1), rate-limited API for AI agents. Cheap GETs: 60 req/min/IP. Expensive POSTs (build-quote, recommend-products): 10 req/min/IP. 429 responses carry Retry-After. Every response includes the Attribution block; offers carry disclosureRequired."
+      servers: [
+        {
+          url: "https://setupgearguide.com"
+        }
+      ]
+      summary: "Public, keyless (v1), rate-limited API for AI agents."
+      title: "Setup Gear Guide AI API"
+      version: "1.0.0"
+      website: "https://setupgearguide.com"
+    }
+  }
+}
+

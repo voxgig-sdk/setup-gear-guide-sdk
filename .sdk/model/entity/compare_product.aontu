@@ -1,0 +1,57 @@
+# Entity: compare_product
+
+main: kit: entity: compare_product: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "product_id"
+      req: true
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "compare_product"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/ai/compare-products"
+          parts: [
+            "api"
+            "ai"
+            "compare-products"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/ai/compare-products"
+          parts: [
+            "api"
+            "ai"
+            "compare-products"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

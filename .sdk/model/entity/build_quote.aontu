@@ -1,0 +1,72 @@
+# Entity: build_quote
+
+main: kit: entity: build_quote: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "budget_cent"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "experience_level"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "use_case"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "vertical"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "build_quote"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/ai/build-quote"
+          parts: [
+            "api"
+            "ai"
+            "build-quote"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/ai/build-quote"
+          parts: [
+            "api"
+            "ai"
+            "build-quote"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

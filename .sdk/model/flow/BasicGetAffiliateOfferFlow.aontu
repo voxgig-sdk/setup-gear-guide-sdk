@@ -1,0 +1,28 @@
+# BasicGetAffiliateOfferFlow
+
+main: kit: flow: BasicGetAffiliateOfferFlow:
+{
+  entity: "get_affiliate_offer",
+  kind: "basic",
+  name: "BasicGetAffiliateOfferFlow",
+  step: [
+    {
+      input: {
+        ref: "get_affiliate_offer_ref01",
+        srcdatavar: "get_affiliate_offer_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-get_affiliate_offer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetAffiliateOfferFlow"
+}

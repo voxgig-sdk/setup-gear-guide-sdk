@@ -1,0 +1,60 @@
+# Entity: get_build
+
+main: kit: entity: get_build: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "attribution"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "build"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "get_build"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "build_id"
+                orig: "build_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/ai/get-build"
+          parts: [
+            "api"
+            "ai"
+            "get-build"
+          ]
+          select: {
+            exist: [
+              "build_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

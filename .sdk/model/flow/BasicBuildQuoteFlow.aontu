@@ -1,0 +1,36 @@
+# BasicBuildQuoteFlow
+
+main: kit: flow: BasicBuildQuoteFlow:
+{
+  entity: "build_quote",
+  kind: "basic",
+  name: "BasicBuildQuoteFlow",
+  step: [
+    {
+      input: {
+        ref: "build_quote_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "build_quote_ref01",
+        srcdatavar: "build_quote_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-build_quote_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBuildQuoteFlow"
+}

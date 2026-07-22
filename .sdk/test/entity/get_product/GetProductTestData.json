@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "get_product": {
+      "GET_PRODUCT00": {
+        "product": {},
+        "id": "GET_PRODUCT00"
+      },
+      "GET_PRODUCT01": {
+        "product": {},
+        "id": "GET_PRODUCT01"
+      },
+      "GET_PRODUCT02": {
+        "product": {},
+        "id": "GET_PRODUCT02"
+      }
+    }
+  },
+  "new": {
+    "get_product": {
+      "get_product_ref01": {
+        "product": {}
+      }
+    }
+  }
+}

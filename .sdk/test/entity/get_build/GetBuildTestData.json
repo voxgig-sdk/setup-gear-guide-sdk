@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "get_build": {
+      "GET_BUILD00": {
+        "attribution": {},
+        "build": {},
+        "id": "GET_BUILD00"
+      },
+      "GET_BUILD01": {
+        "attribution": {},
+        "build": {},
+        "id": "GET_BUILD01"
+      },
+      "GET_BUILD02": {
+        "attribution": {},
+        "build": {},
+        "id": "GET_BUILD02"
+      }
+    }
+  },
+  "new": {
+    "get_build": {
+      "get_build_ref01": {
+        "attribution": {},
+        "build": {}
+      }
+    }
+  }
+}

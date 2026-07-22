@@ -1,0 +1,54 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 7
+  metrics: count: path: 7
+  metrics: count: method: 11
+
+  entity: build_quote: {
+    path: "/api/ai/build-quote": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+  entity: check_compatibility: {
+    path: "/api/ai/check-compatibility": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+  entity: compare_product: {
+    path: "/api/ai/compare-products": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+  entity: get_affiliate_offer: {
+    path: "/api/ai/get-affiliate-offers": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: get_build: {
+    path: "/api/ai/get-build": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: get_product: {
+    path: "/api/ai/get-product": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: recommend_product: {
+    path: "/api/ai/recommend-products": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+}

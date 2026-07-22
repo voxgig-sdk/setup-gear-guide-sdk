@@ -1,0 +1,1115 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Setup Gear Guide AI API",
+    "version": "1.0.0",
+    "description": "Public, keyless (v1), rate-limited API for AI agents. Cheap GETs: 60 req/min/IP. Expensive POSTs (build-quote, recommend-products): 10 req/min/IP. 429 responses carry Retry-After. Every response includes the Attribution block; offers carry disclosureRequired."
+  },
+  "servers": [
+    {
+      "url": "https://setupgearguide.com"
+    }
+  ],
+  "paths": {
+    "/api/ai/build-quote": {
+      "post": {
+        "summary": "Generate (or fetch cached) full build quote",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "vertical": {
+                    "type": "string",
+                    "enum": [
+                      "sim-racing",
+                      "photo-video",
+                      "music-production",
+                      "pc-builds"
+                    ]
+                  },
+                  "budgetCents": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "useCase": {
+                    "type": "string"
+                  },
+                  "experienceLevel": {
+                    "type": "string",
+                    "enum": [
+                      "beginner",
+                      "intermediate",
+                      "advanced",
+                      "pro",
+                      "no_compromise"
+                    ]
+                  }
+                },
+                "required": [
+                  "vertical"
+                ]
+              },
+              "example": {
+                "vertical": "pc-builds",
+                "budgetCents": 150000,
+                "useCase": "gaming",
+                "experienceLevel": "intermediate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Quote with persisted quoteId; identical normalized requests reuse the cached quote (cached:true, x-cache:hit).",
+            "content": {
+              "application/json": {
+                "example": {
+                  "quoteId": "qt_3kPq9XmZ2aBc",
+                  "canonicalBuildUrl": "https://setupgearguide.com/build-quotes/qt_3kPq9XmZ2aBc",
+                  "items": [
+                    {
+                      "productId": "amd-ryzen-7-7800x3d",
+                      "name": "AMD Ryzen 7 7800X3D",
+                      "category": "cpus",
+                      "estimatedPriceCents": 39900,
+                      "reasoning": "Best gaming CPU at this tier",
+                      "swappedForBudget": null,
+                      "productUrl": "https://setupgearguide.com/pc-builds/cpus/amd-ryzen-7-7800x3d",
+                      "offersUrl": "https://setupgearguide.com/api/ai/get-affiliate-offers?productId=amd-ryzen-7-7800x3d"
+                    },
+                    {
+                      "productId": "nvidia-rtx-4070-super",
+                      "name": "NVIDIA RTX 4070 Super",
+                      "category": "gpus",
+                      "estimatedPriceCents": 59900,
+                      "reasoning": "1440p sweet spot",
+                      "swappedForBudget": null,
+                      "productUrl": "https://setupgearguide.com/pc-builds/gpus/nvidia-rtx-4070-super",
+                      "offersUrl": "https://setupgearguide.com/api/ai/get-affiliate-offers?productId=nvidia-rtx-4070-super"
+                    }
+                  ],
+                  "estimatedTotalCents": 99800,
+                  "unpricedItems": 0,
+                  "compatibilityWarnings": [
+                    {
+                      "rule": "psu-wattage-headroom",
+                      "status": "pass",
+                      "severity": "info",
+                      "message": "PSU has adequate headroom."
+                    }
+                  ],
+                  "recommendedUpgradeOrder": [
+                    {
+                      "category": "gpus",
+                      "from": "nvidia-rtx-4070-super",
+                      "to": "nvidia-rtx-4080-super"
+                    }
+                  ],
+                  "alternativeBuilds": [],
+                  "confidence": "high",
+                  "saveBuildUrl": "https://setupgearguide.com/pc-builds/builder?quote=qt_3kPq9XmZ2aBc",
+                  "priceAlertUrl": "https://setupgearguide.com/build-quotes/qt_3kPq9XmZ2aBc#alerts",
+                  "cached": false,
+                  "attribution": {
+                    "generatedBy": "Setup Gear Guide",
+                    "affiliateDisclosure": "Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.",
+                    "methodologyUrl": "https://setupgearguide.com/methodology",
+                    "canonicalUrl": "https://setupgearguide.com/build-quotes/qt_3kPq9XmZ2aBc",
+                    "dataFreshness": null,
+                    "sourceConfidence": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (bad_json | bad_vertical)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method not allowed — POST only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited — Retry-After header set",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error (no_template when no published template, or internal)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Not allowed",
+        "responses": {
+          "405": {
+            "description": "Method not allowed — POST only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ai/recommend-products": {
+      "post": {
+        "summary": "Ranked category recommendations",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "vertical": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "category slug, e.g. gpus, wheelbases"
+                  },
+                  "budgetCents": {
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "maximum": 20
+                  }
+                },
+                "required": [
+                  "vertical",
+                  "category"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ranked products (recommendations[] with rank, scores, and verificationStatus from the canonical enum sourced | partially_sourced | flagged).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recommendations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "verificationStatus": {
+                            "$ref": "#/components/schemas/VerificationStatus"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "vertical": "pc-builds",
+                  "category": "gpus",
+                  "budgetCents": 70000,
+                  "recommendations": [
+                    {
+                      "rank": 1,
+                      "productId": "nvidia-rtx-4070-super",
+                      "name": "NVIDIA RTX 4070 Super",
+                      "brand": "NVIDIA",
+                      "overallScore": 84,
+                      "estimatedPriceCents": 59900,
+                      "upgradeTier": "enthusiast",
+                      "verificationStatus": "sourced",
+                      "badges": [
+                        "Editor's pick"
+                      ],
+                      "productUrl": "https://setupgearguide.com/pc-builds/gpus/nvidia-rtx-4070-super"
+                    },
+                    {
+                      "rank": 2,
+                      "productId": "amd-rx-7800-xt",
+                      "name": "AMD RX 7800 XT",
+                      "brand": "AMD",
+                      "overallScore": 80,
+                      "estimatedPriceCents": 49900,
+                      "upgradeTier": "enthusiast",
+                      "verificationStatus": "partially_sourced",
+                      "badges": [
+                        "Value pick"
+                      ],
+                      "productUrl": "https://setupgearguide.com/pc-builds/gpus/amd-rx-7800-xt"
+                    }
+                  ],
+                  "note": null,
+                  "attribution": {
+                    "generatedBy": "Setup Gear Guide",
+                    "affiliateDisclosure": "Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.",
+                    "methodologyUrl": "https://setupgearguide.com/methodology",
+                    "canonicalUrl": "https://setupgearguide.com/pc-builds/gpus",
+                    "dataFreshness": null,
+                    "sourceConfidence": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (bad_json | bad_vertical | missing_param)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown category (not_found)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method not allowed — POST only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited — Retry-After header set",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Not allowed",
+        "responses": {
+          "405": {
+            "description": "Method not allowed — POST only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ai/compare-products": {
+      "post": {
+        "summary": "Structured comparison of 2-4 products",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "productIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 2,
+                    "maxItems": 4
+                  }
+                },
+                "required": [
+                  "productIds"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Spec/score diffs + static comparison link (staticComparisonUrl null when none published).",
+            "content": {
+              "application/json": {
+                "example": {
+                  "products": [
+                    {
+                      "id": "sony-a7-iv",
+                      "name": "Sony A7 IV",
+                      "brand": "Sony",
+                      "category": "cameras",
+                      "overallScore": 82,
+                      "estimatedPriceCents": 249800,
+                      "upgradeTier": "enthusiast",
+                      "bestFor": [
+                        "Hybrid shooters"
+                      ],
+                      "canonicalUrl": "https://setupgearguide.com/photo-video/cameras/sony-a7-iv"
+                    },
+                    {
+                      "id": "sony-a7-v-ilce-7m5",
+                      "name": "Sony A7 V",
+                      "brand": "Sony",
+                      "category": "cameras",
+                      "overallScore": 85,
+                      "estimatedPriceCents": 299800,
+                      "upgradeTier": "pro",
+                      "bestFor": [
+                        "No-compromise hybrid work"
+                      ],
+                      "canonicalUrl": "https://setupgearguide.com/photo-video/cameras/sony-a7-v-ilce-7m5"
+                    }
+                  ],
+                  "specDiffs": [
+                    {
+                      "spec": "megapixels",
+                      "values": {
+                        "sony-a7-iv": 33,
+                        "sony-a7-v-ilce-7m5": 33
+                      },
+                      "differs": false
+                    },
+                    {
+                      "spec": "max_video",
+                      "values": {
+                        "sony-a7-iv": "4K60",
+                        "sony-a7-v-ilce-7m5": "4K120"
+                      },
+                      "differs": true
+                    }
+                  ],
+                  "staticComparisonUrl": null,
+                  "attribution": {
+                    "generatedBy": "Setup Gear Guide",
+                    "affiliateDisclosure": "Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.",
+                    "methodologyUrl": "https://setupgearguide.com/methodology",
+                    "canonicalUrl": "https://setupgearguide.com/photo-video/cameras/sony-a7-iv",
+                    "dataFreshness": "2026-06-11",
+                    "sourceConfidence": "high"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (bad_json | missing_param — need 2 to 4 ids)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown product (not_found)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method not allowed — POST only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited — Retry-After header set",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Not allowed",
+        "responses": {
+          "405": {
+            "description": "Method not allowed — POST only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ai/check-compatibility": {
+      "post": {
+        "summary": "Compatibility verdict for a product set",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "productIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 2
+                  }
+                },
+                "required": [
+                  "productIds"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "verdict: pass | pass_with_unknowns | warn | fail | no_applicable_rules, with per-rule checks.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "verdict": {
+                      "$ref": "#/components/schemas/CompatibilityVerdict"
+                    }
+                  }
+                },
+                "example": {
+                  "verdict": "pass_with_unknowns",
+                  "checks": [
+                    {
+                      "rule": "lens-mount-match",
+                      "status": "pass",
+                      "severity": "info",
+                      "message": "Both use Sony E-mount.",
+                      "confidence": "high",
+                      "subjectProductId": "sony-a7-iv",
+                      "relatedProductId": "sony-fe-24-70-gm2"
+                    },
+                    {
+                      "rule": "flash-sync",
+                      "status": "unknown",
+                      "severity": "info",
+                      "message": "Sync spec not yet sourced — informational only.",
+                      "confidence": "low",
+                      "subjectProductId": "sony-a7-iv",
+                      "relatedProductId": null
+                    }
+                  ],
+                  "note": "Unknown results mean a needed spec is not verified yet — the engine reports uncertainty instead of guessing.",
+                  "attribution": {
+                    "generatedBy": "Setup Gear Guide",
+                    "affiliateDisclosure": "Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.",
+                    "methodologyUrl": "https://setupgearguide.com/methodology",
+                    "canonicalUrl": "https://setupgearguide.com/photo-video/cameras/sony-a7-iv",
+                    "dataFreshness": "2026-06-11",
+                    "sourceConfidence": "high"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (bad_json | missing_param | cross_vertical)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown product (not_found)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method not allowed — POST only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited — Retry-After header set",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Not allowed",
+        "responses": {
+          "405": {
+            "description": "Method not allowed — POST only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ai/get-build": {
+      "get": {
+        "summary": "Fetch a saved build by token",
+        "parameters": [
+          {
+            "name": "buildId",
+            "in": "query",
+            "required": true,
+            "description": "Token-shaped, non-enumerable build id.",
+            "schema": {
+              "type": "string",
+              "pattern": "^bd_[0-9A-Za-z]{12}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Build items, totals, canonical URL.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "build": {
+                    "id": "bd_7Hj3Kp9Qa2Wz",
+                    "vertical": "pc-builds",
+                    "name": "1440p gaming build",
+                    "createdAt": "2026-06-11T14:22:08.000Z",
+                    "items": [
+                      {
+                        "productId": "amd-ryzen-7-7800x3d",
+                        "name": "AMD Ryzen 7 7800X3D",
+                        "brand": "AMD",
+                        "category": "cpus",
+                        "estimatedPriceCents": 39900,
+                        "reasoning": "Best gaming CPU at this tier",
+                        "productUrl": "https://setupgearguide.com/pc-builds/cpus/amd-ryzen-7-7800x3d"
+                      },
+                      {
+                        "productId": "nvidia-rtx-4070-super",
+                        "name": "NVIDIA RTX 4070 Super",
+                        "brand": "NVIDIA",
+                        "category": "gpus",
+                        "estimatedPriceCents": 59900,
+                        "reasoning": "1440p sweet spot",
+                        "productUrl": "https://setupgearguide.com/pc-builds/gpus/nvidia-rtx-4070-super"
+                      }
+                    ],
+                    "estimatedTotalCents": 99800,
+                    "unpricedItems": 0
+                  },
+                  "attribution": {
+                    "generatedBy": "Setup Gear Guide",
+                    "affiliateDisclosure": "Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.",
+                    "methodologyUrl": "https://setupgearguide.com/methodology",
+                    "canonicalUrl": "https://setupgearguide.com/builds/bd_7Hj3Kp9Qa2Wz",
+                    "dataFreshness": null,
+                    "sourceConfidence": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing buildId (missing_param)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown build (not_found)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited — Retry-After header set",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ai/get-product": {
+      "get": {
+        "summary": "Fetch one product",
+        "description": "Provide at least one of productId or slug. If both are omitted the request 400s (missing_param).",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "query",
+            "required": false,
+            "description": "Product id. Provide this OR slug (at least one is required).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "required": false,
+            "description": "Product slug. Provide this OR productId (at least one is required).",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Specs, per-field verification, sources, scores, offers, canonical URL. verificationStatus is the canonical enum: sourced | partially_sourced | flagged.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "product": {
+                      "type": "object",
+                      "properties": {
+                        "verificationStatus": {
+                          "$ref": "#/components/schemas/VerificationStatus"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "product": {
+                    "id": "sony-a7-iv",
+                    "name": "Sony A7 IV",
+                    "brand": "Sony",
+                    "vertical": "photo-video",
+                    "category": "cameras",
+                    "specs": {
+                      "megapixels": 33,
+                      "sensor": "full_frame",
+                      "ibis": true,
+                      "max_video": "4K60"
+                    },
+                    "fieldVerification": [
+                      {
+                        "fieldName": "megapixels",
+                        "confidence": "high",
+                        "needsVerification": false,
+                        "notes": null
+                      }
+                    ],
+                    "sources": [
+                      {
+                        "fieldName": "megapixels",
+                        "url": "https://www.sony.com/...",
+                        "title": "Sony A7 IV specs",
+                        "sourceType": "manufacturer",
+                        "confidence": "high",
+                        "retrievedAt": "2026-06-11",
+                        "isPrimary": true
+                      }
+                    ],
+                    "scores": [
+                      {
+                        "scoreId": "overall",
+                        "label": "Overall",
+                        "value": 82,
+                        "reasoning": "Enthusiast-tier hybrid; well sourced."
+                      }
+                    ],
+                    "badges": [
+                      "Editor's pick"
+                    ],
+                    "bestFor": [
+                      "Hybrid shooters"
+                    ],
+                    "notIdealFor": [
+                      "Pure stills budget buyers"
+                    ],
+                    "msrpCents": 249800,
+                    "upgradeTier": "enthusiast",
+                    "verificationStatus": "sourced",
+                    "lastResearched": "2026-06-11",
+                    "canonicalProductUrl": "https://setupgearguide.com/photo-video/cameras/sony-a7-iv",
+                    "offers": [
+                      {
+                        "retailer": "Amazon",
+                        "finalUrl": "https://setupgearguide.com/go/off_sony-a7-iv__amazon__US",
+                        "estimatedPriceCents": null,
+                        "priceLastChecked": null,
+                        "affiliate": true,
+                        "disclosureRequired": true
+                      }
+                    ]
+                  },
+                  "attribution": {
+                    "generatedBy": "Setup Gear Guide",
+                    "affiliateDisclosure": "Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.",
+                    "methodologyUrl": "https://setupgearguide.com/methodology",
+                    "canonicalUrl": "https://setupgearguide.com/photo-video/cameras/sony-a7-iv",
+                    "dataFreshness": "2026-06-11",
+                    "sourceConfidence": "high"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Neither productId nor slug provided (missing_param)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown product (not_found)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited — Retry-After header set",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ai/get-affiliate-offers": {
+      "get": {
+        "summary": "Retailer offers for a product",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Offers with affiliate flags, disclosureRequired, price freshness. estimatedPriceCents may be null when retailer policy hides price.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "productId": "sony-a7-iv",
+                  "offers": [
+                    {
+                      "retailer": "Amazon",
+                      "normalUrl": "https://www.amazon.com/dp/B09JZTCWNB",
+                      "affiliateUrl": "https://www.amazon.com/dp/B09JZTCWNB?tag=setupgearguide-20",
+                      "finalUrl": "https://setupgearguide.com/go/off_sony-a7-iv__amazon__US",
+                      "affiliate": true,
+                      "estimatedPriceCents": null,
+                      "availability": "in_stock",
+                      "priceLastChecked": "2026-06-11",
+                      "priceConfidence": "high",
+                      "disclosureRequired": true
+                    },
+                    {
+                      "retailer": "B&H Photo",
+                      "normalUrl": "https://www.bhphotovideo.com/c/product/1672167-REG",
+                      "affiliateUrl": null,
+                      "finalUrl": "https://setupgearguide.com/go/off_sony-a7-iv__bhphoto__US",
+                      "affiliate": false,
+                      "estimatedPriceCents": 249800,
+                      "availability": "in_stock",
+                      "priceLastChecked": "2026-06-11",
+                      "priceConfidence": "medium",
+                      "disclosureRequired": true
+                    }
+                  ],
+                  "attribution": {
+                    "generatedBy": "Setup Gear Guide",
+                    "affiliateDisclosure": "Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.",
+                    "methodologyUrl": "https://setupgearguide.com/methodology",
+                    "canonicalUrl": "https://setupgearguide.com/photo-video/cameras/sony-a7-iv",
+                    "dataFreshness": null,
+                    "sourceConfidence": null
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing productId (missing_param)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown product (not_found)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited — Retry-After header set",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Attribution": {
+        "type": "object",
+        "description": "Attribution block present on every response.",
+        "properties": {
+          "generatedBy": {
+            "type": "string",
+            "const": "Setup Gear Guide"
+          },
+          "affiliateDisclosure": {
+            "type": "string"
+          },
+          "methodologyUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "canonicalUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "dataFreshness": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sourceConfidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "bad_json",
+                  "missing_param",
+                  "bad_vertical",
+                  "cross_vertical",
+                  "not_found",
+                  "method_not_allowed",
+                  "no_template",
+                  "rate_limited",
+                  "internal"
+                ]
+              },
+              "message": {
+                "type": "string"
+              },
+              "docsUrl": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "code",
+              "message"
+            ]
+          }
+        }
+      },
+      "CompatibilityVerdict": {
+        "type": "string",
+        "enum": [
+          "pass",
+          "pass_with_unknowns",
+          "warn",
+          "fail",
+          "no_applicable_rules"
+        ],
+        "description": "no_applicable_rules means no rule covered this product set (not a green pass)."
+      },
+      "VerificationStatus": {
+        "type": "string",
+        "enum": [
+          "sourced",
+          "partially_sourced",
+          "flagged"
+        ],
+        "description": "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed)."
+      }
+    }
+  }
+}

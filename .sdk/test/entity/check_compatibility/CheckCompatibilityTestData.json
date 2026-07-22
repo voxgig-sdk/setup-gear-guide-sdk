@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "check_compatibility": {
+      "CHECK_COMPATIBILITY00": {
+        "product_id": "PRODUCT01",
+        "verdict": "s15",
+        "id": "CHECK_COMPATIBILITY00"
+      },
+      "CHECK_COMPATIBILITY01": {
+        "product_id": "PRODUCT01",
+        "verdict": "s29",
+        "id": "CHECK_COMPATIBILITY01"
+      },
+      "CHECK_COMPATIBILITY02": {
+        "product_id": "PRODUCT01",
+        "verdict": "s3d",
+        "id": "CHECK_COMPATIBILITY02"
+      }
+    }
+  },
+  "new": {
+    "check_compatibility": {
+      "check_compatibility_ref01": {
+        "product_id": "PRODUCT01",
+        "verdict": "s51"
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+# Entity: check_compatibility
+
+main: kit: entity: check_compatibility: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "product_id"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "verdict"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "check_compatibility"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/ai/check-compatibility"
+          parts: [
+            "api"
+            "ai"
+            "check-compatibility"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/ai/check-compatibility"
+          parts: [
+            "api"
+            "ai"
+            "check-compatibility"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

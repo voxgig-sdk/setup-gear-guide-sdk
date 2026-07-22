@@ -1,0 +1,77 @@
+# Entity: recommend_product
+
+main: kit: entity: recommend_product: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "budget_cent"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "category"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "limit"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "recommendation"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "vertical"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "recommend_product"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/ai/recommend-products"
+          parts: [
+            "api"
+            "ai"
+            "recommend-products"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/ai/recommend-products"
+          parts: [
+            "api"
+            "ai"
+            "recommend-products"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
