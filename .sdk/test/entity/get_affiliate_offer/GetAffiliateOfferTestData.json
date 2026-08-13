@@ -3,20 +3,20 @@
     "get_affiliate_offer": {
       "GET_AFFILIATE_OFFER00": {
         "attribution": {},
-        "offer": [],
-        "product_id": "PRODUCT01",
+        "offers": [],
+        "productId": "s20",
         "id": "GET_AFFILIATE_OFFER00"
       },
       "GET_AFFILIATE_OFFER01": {
         "attribution": {},
-        "offer": [],
-        "product_id": "PRODUCT01",
+        "offers": [],
+        "productId": "s3e",
         "id": "GET_AFFILIATE_OFFER01"
       },
       "GET_AFFILIATE_OFFER02": {
         "attribution": {},
-        "offer": [],
-        "product_id": "PRODUCT01",
+        "offers": [],
+        "productId": "s5c",
         "id": "GET_AFFILIATE_OFFER02"
       }
     }
@@ -25,8 +25,8 @@
     "get_affiliate_offer": {
       "get_affiliate_offer_ref01": {
         "attribution": {},
-        "offer": [],
-        "product_id": "PRODUCT01"
+        "offers": [],
+        "productId": "s7a"
       }
     }
   }

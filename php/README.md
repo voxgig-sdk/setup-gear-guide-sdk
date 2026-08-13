@@ -35,7 +35,7 @@ $client = new SetupGearGuideSDK();
 
 ```php
 try {
-    // load() returns the bare BuildQuote record (throws on error).
+    // load() returns the ENTITY — call data_get() for the BuildQuote record (throws on error).
     $buildquote = $client->BuildQuote()->load();
     print_r($buildquote);
 } catch (\Throwable $err) {
@@ -46,7 +46,7 @@ try {
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created BuildQuote record.
+// create() returns the ENTITY — call data_get() for the created BuildQuote record.
 $created = $client->BuildQuote()->create(["vertical" => "example_vertical"]);
 
 ```
@@ -59,7 +59,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $buildquote = $client->BuildQuote()->load();
+    $checkcompatibility = $client->CheckCompatibility()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -131,9 +131,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = SetupGearGuideSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$buildquote = $client->BuildQuote()->load();
-print_r($buildquote);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$checkcompatibility = $client->CheckCompatibility()->load();
+print_r($checkcompatibility);
 ```
 
 ### Use a custom fetch function
@@ -237,7 +238,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -259,9 +260,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
-| `experience_level` |  |
-| `use_case` |  |
+| `budgetCents` |  |
+| `experienceLevel` |  |
+| `useCase` |  |
 | `vertical` |  |
 
 Operations: Create, Load.
@@ -272,7 +273,7 @@ API path: `/api/ai/build-quote`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 | `verdict` |  |
 
 Operations: Create, Load.
@@ -283,7 +284,7 @@ API path: `/api/ai/check-compatibility`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 
 Operations: Create, Load.
 
@@ -294,8 +295,8 @@ API path: `/api/ai/compare-products`
 | Field | Description |
 | --- | --- |
 | `attribution` |  |
-| `offer` |  |
-| `product_id` |  |
+| `offers` |  |
+| `productId` |  |
 
 Operations: Load.
 
@@ -316,7 +317,7 @@ API path: `/api/ai/get-build`
 
 | Field | Description |
 | --- | --- |
-| `product` |  |
+| `verificationStatus` |  |
 
 Operations: Load.
 
@@ -326,10 +327,10 @@ API path: `/api/ai/get-product`
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
+| `budgetCents` |  |
 | `category` |  |
 | `limit` |  |
-| `recommendation` |  |
+| `recommendations` |  |
 | `vertical` |  |
 
 Operations: Create, Load.
@@ -356,15 +357,15 @@ Create an instance: `$build_quote = $client->BuildQuote();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `int` |  |
-| `experience_level` | `string` |  |
-| `use_case` | `string` |  |
+| `budgetCents` | `int` |  |
+| `experienceLevel` | `string` |  |
+| `useCase` | `string` |  |
 | `vertical` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare BuildQuote record (throws on error).
+// load() returns the ENTITY — call data_get() for the BuildQuote record (throws on error).
 $build_quote = $client->BuildQuote()->load();
 ```
 
@@ -392,13 +393,13 @@ Create an instance: `$check_compatibility = $client->CheckCompatibility();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `array` |  |
+| `productIds` | `array` |  |
 | `verdict` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare CheckCompatibility record (throws on error).
+// load() returns the ENTITY — call data_get() for the CheckCompatibility record (throws on error).
 $check_compatibility = $client->CheckCompatibility()->load();
 ```
 
@@ -406,7 +407,7 @@ $check_compatibility = $client->CheckCompatibility()->load();
 
 ```php
 $check_compatibility = $client->CheckCompatibility()->create([
-    "product_id" => null, // array
+    "productIds" => null, // array
 ]);
 ```
 
@@ -426,12 +427,12 @@ Create an instance: `$compare_product = $client->CompareProduct();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `array` |  |
+| `productIds` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare CompareProduct record (throws on error).
+// load() returns the ENTITY — call data_get() for the CompareProduct record (throws on error).
 $compare_product = $client->CompareProduct()->load();
 ```
 
@@ -439,7 +440,7 @@ $compare_product = $client->CompareProduct()->load();
 
 ```php
 $compare_product = $client->CompareProduct()->create([
-    "product_id" => null, // array
+    "productIds" => null, // array
 ]);
 ```
 
@@ -459,13 +460,13 @@ Create an instance: `$get_affiliate_offer = $client->GetAffiliateOffer();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `attribution` | `array` |  |
-| `offer` | `array` |  |
-| `product_id` | `string` |  |
+| `offers` | `array` |  |
+| `productId` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare GetAffiliateOffer record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetAffiliateOffer record (throws on error).
 $get_affiliate_offer = $client->GetAffiliateOffer()->load();
 ```
 
@@ -490,7 +491,7 @@ Create an instance: `$get_build = $client->GetBuild();`
 #### Example: Load
 
 ```php
-// load() returns the bare GetBuild record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetBuild record (throws on error).
 $get_build = $client->GetBuild()->load();
 ```
 
@@ -509,12 +510,12 @@ Create an instance: `$get_product = $client->GetProduct();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product` | `array` |  |
+| `verificationStatus` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare GetProduct record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetProduct record (throws on error).
 $get_product = $client->GetProduct()->load();
 ```
 
@@ -534,16 +535,16 @@ Create an instance: `$recommend_product = $client->RecommendProduct();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `int` |  |
+| `budgetCents` | `int` |  |
 | `category` | `string` |  |
 | `limit` | `int` |  |
-| `recommendation` | `array` |  |
+| `recommendations` | `array` |  |
 | `vertical` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare RecommendProduct record (throws on error).
+// load() returns the ENTITY — call data_get() for the RecommendProduct record (throws on error).
 $recommend_product = $client->RecommendProduct()->load();
 ```
 
@@ -633,11 +634,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$buildquote = $client->BuildQuote();
-$buildquote->load();
+$checkcompatibility = $client->CheckCompatibility();
+$checkcompatibility->load();
 
-// $buildquote->data_get() now returns the buildquote data from the last load
-// $buildquote->match_get() returns the last match criteria
+// $checkcompatibility->data_get() now returns the checkcompatibility data from the last load
+// $checkcompatibility->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

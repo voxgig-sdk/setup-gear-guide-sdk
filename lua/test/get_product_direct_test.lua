@@ -60,11 +60,11 @@ function get_product_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["SETUPGEARGUIDE_TEST_GET_PRODUCT_ENTID"] = {},
-    ["SETUPGEARGUIDE_TEST_LIVE"] = "FALSE",
+    ["SETUP_GEAR_GUIDE_TEST_GET_PRODUCT_ENTID"] = {},
+    ["SETUP_GEAR_GUIDE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["SETUPGEARGUIDE_TEST_LIVE"] == "TRUE"
+  local live = env["SETUP_GEAR_GUIDE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

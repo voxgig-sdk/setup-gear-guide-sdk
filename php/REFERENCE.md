@@ -116,9 +116,9 @@ $build_quote = $client->BuildQuote();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `int` | No |  |
-| `experience_level` | `string` | No |  |
-| `use_case` | `string` | No |  |
+| `budgetCents` | `int` | No |  |
+| `experienceLevel` | `string` | No |  |
+| `useCase` | `string` | No |  |
 | `vertical` | `string` | Yes |  |
 
 ### Operations
@@ -181,7 +181,7 @@ $check_compatibility = $client->CheckCompatibility();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `array` | Yes |  |
+| `productIds` | `array` | Yes |  |
 | `verdict` | `string` | No |  |
 
 ### Operations
@@ -192,7 +192,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->CheckCompatibility()->create([
-  "product_id" => null, // array
+  "productIds" => null, // array
 ]);
 ```
 
@@ -244,7 +244,7 @@ $compare_product = $client->CompareProduct();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `array` | Yes |  |
+| `productIds` | `array` | Yes |  |
 
 ### Operations
 
@@ -254,7 +254,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->CompareProduct()->create([
-  "product_id" => null, // array
+  "productIds" => null, // array
 ]);
 ```
 
@@ -307,8 +307,8 @@ $get_affiliate_offer = $client->GetAffiliateOffer();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `attribution` | `array` | No |  |
-| `offer` | `array` | No |  |
-| `product_id` | `string` | No |  |
+| `offers` | `array` | No |  |
+| `productId` | `string` | No |  |
 
 ### Operations
 
@@ -413,7 +413,7 @@ $get_product = $client->GetProduct();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product` | `array` | No |  |
+| `verificationStatus` | `string` | No |  |
 
 ### Operations
 
@@ -465,10 +465,10 @@ $recommend_product = $client->RecommendProduct();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `int` | No |  |
+| `budgetCents` | `int` | No |  |
 | `category` | `string` | Yes |  |
 | `limit` | `int` | No |  |
-| `recommendation` | `array` | No |  |
+| `recommendations` | `array` | No |  |
 | `vertical` | `string` | Yes |  |
 
 ### Operations

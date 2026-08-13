@@ -26,8 +26,8 @@ import {
 describe('CheckCompatibilityEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SETUPGEARGUIDE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SETUPGEARGUIDE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SETUP_GEAR_GUIDE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SETUP_GEAR_GUIDE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SetupGearGuideSDK.test()
@@ -62,13 +62,13 @@ describe('CheckCompatibilityEntity', async () => {
     const check_compatibility_ref01_ent = client.CheckCompatibility()
     let check_compatibility_ref01_data = setup.data.new.check_compatibility['check_compatibility_ref01']
 
-    check_compatibility_ref01_data = await check_compatibility_ref01_ent.create(check_compatibility_ref01_data)
+    check_compatibility_ref01_data = (await check_compatibility_ref01_ent.create(check_compatibility_ref01_data)).data()
     assert(null != check_compatibility_ref01_data)
 
 
     // LOAD
     const check_compatibility_ref01_match_dt0: any = {}
-    const check_compatibility_ref01_data_dt0 = await check_compatibility_ref01_ent.load(check_compatibility_ref01_match_dt0)
+    const check_compatibility_ref01_data_dt0 = (await check_compatibility_ref01_ent.load(check_compatibility_ref01_match_dt0)).data()
     assert(null != check_compatibility_ref01_data_dt0)
 
 

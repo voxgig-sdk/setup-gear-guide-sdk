@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = SetupGearGuideSDK.test()
-const buildquote = await client.BuildQuote().load()
-// buildquote is a bare BuildQuote populated with mock data
-console.log(buildquote)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = SetupGearGuideSDK.test({
+  entity: {
+    check_compatibility: {
+      test01: { id: 'test01', productIds: [] },
+    },
+  },
+})
+const checkcompatibility = await client.CheckCompatibility().load()
+// checkcompatibility is the CheckCompatibility entity, populated with mock data
+// — call checkcompatibility.data() for the record itself
+console.log(checkcompatibility)
 ```
 
 ### Python
 
 ```python
 client = SetupGearGuideSDK.test()
-buildquote = client.BuildQuote().load()
-print(buildquote)
+checkcompatibility = client.CheckCompatibility().load()
+print(checkcompatibility)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(buildquote)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = SetupGearGuideSDK::test([
-    "entity" => ["buildquote" => ["test01" => []]],
+    "entity" => ["checkcompatibility" => ["test01" => []]],
 ]);
-$buildquote = $client->BuildQuote()->load();
+$checkcompatibility = $client->CheckCompatibility()->load();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.BuildQuote(nil).Load(
+result, err := client.CheckCompatibility(nil).Load(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.BuildQuote(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = SetupGearGuideSDK.test({
-  "entity" => { "buildquote" => { "test01" => {} } },
+  "entity" => { "checkcompatibility" => { "test01" => {} } },
 })
-buildquote = client.BuildQuote.load()
+checkcompatibility = client.CheckCompatibility.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:BuildQuote():load()
+local result, err = client:CheckCompatibility():load()
 ```
 
 ## Packages
@@ -188,7 +197,7 @@ require_once 'setupgearguide_sdk.php';
 $client = new SetupGearGuideSDK();
 
 
-// Load a specific buildquote (returns the bare record; throws on error)
+// Load a specific buildquote (returns the ENTITY; call data_get() for the record; throws on error)
 $buildquote = $client->BuildQuote()->load();
 print_r($buildquote);
 ```
@@ -216,7 +225,7 @@ require_relative "SetupGearGuide_sdk"
 client = SetupGearGuideSDK.new
 
 
-# Load a specific buildquote (returns the bare record; raises on error)
+# Load a specific buildquote (returns the ENTITY; call data_get for the record)
 buildquote = client.BuildQuote.load()
 puts buildquote
 ```
@@ -350,6 +359,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://setupgearguide.com](https://setupgearguide.com)
 

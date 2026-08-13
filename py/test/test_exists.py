@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# SetupGearGuide SDK exists test
 
 import pytest
 from setupgearguide_sdk import SetupGearGuideSDK

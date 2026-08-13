@@ -6,9 +6,9 @@ main: kit: entity: get_product: {
 
   fields: [
     {
-      name: "product"
+      name: "verificationStatus"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
     }
   ]
 
@@ -51,7 +51,7 @@ main: kit: entity: get_product: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.product`"
           }
         }
       ]

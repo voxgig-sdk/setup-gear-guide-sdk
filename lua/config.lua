@@ -32,21 +32,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "budget_cent",
+            ["name"] = "budgetCents",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "experience_level",
+            ["name"] = "experienceLevel",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "use_case",
+            ["name"] = "useCase",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -68,6 +68,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/ai/build-quote",
                 ["parts"] = {
@@ -92,6 +93,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ai/build-quote",
                 ["parts"] = {
@@ -118,7 +120,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "product_id",
+            ["name"] = "productIds",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -140,6 +142,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/ai/check-compatibility",
                 ["parts"] = {
@@ -164,6 +167,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ai/check-compatibility",
                 ["parts"] = {
@@ -190,7 +194,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "product_id",
+            ["name"] = "productIds",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -205,6 +209,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/ai/compare-products",
                 ["parts"] = {
@@ -229,6 +234,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ai/compare-products",
                 ["parts"] = {
@@ -262,14 +268,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "offer",
+            ["name"] = "offers",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "product_id",
+            ["name"] = "productId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -295,6 +301,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ai/get-affiliate-offers",
                 ["parts"] = {
@@ -358,6 +365,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ai/get-build",
                 ["parts"] = {
@@ -388,9 +396,9 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "product",
+            ["name"] = "verificationStatus",
             ["req"] = false,
-            ["type"] = "`$OBJECT`",
+            ["type"] = "`$STRING`",
             ["index$"] = 0,
           },
         },
@@ -422,6 +430,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ai/get-product",
                 ["parts"] = {
@@ -437,7 +446,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.product`",
                 },
                 ["index$"] = 0,
               },
@@ -453,7 +462,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "budget_cent",
+            ["name"] = "budgetCents",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -474,7 +483,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "recommendation",
+            ["name"] = "recommendations",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 3,
@@ -496,6 +505,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/ai/recommend-products",
                 ["parts"] = {
@@ -520,6 +530,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/ai/recommend-products",
                 ["parts"] = {

@@ -38,7 +38,7 @@ client = SetupGearGuideSDK()
 
 ### 3. Load a buildquote
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -51,7 +51,7 @@ except Exception as err:
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
+# Create — returns the ENTITY (call data_get() for the record)
 created = client.BuildQuote().create({"vertical": "example_vertical"})
 
 ```
@@ -63,8 +63,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    buildquote = client.BuildQuote().load()
-    print(buildquote)
+    checkcompatibility = client.CheckCompatibility().load()
+    print(checkcompatibility)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -130,9 +130,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = SetupGearGuideSDK.test()
 
-# Entity ops return the bare record and raise on error.
-buildquote = client.BuildQuote().load()
-# buildquote contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+checkcompatibility = client.CheckCompatibility().load()
+# checkcompatibility contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -233,7 +234,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -255,9 +256,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
-| `experience_level` |  |
-| `use_case` |  |
+| `budgetCents` |  |
+| `experienceLevel` |  |
+| `useCase` |  |
 | `vertical` |  |
 
 Operations: Create, Load.
@@ -268,7 +269,7 @@ API path: `/api/ai/build-quote`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 | `verdict` |  |
 
 Operations: Create, Load.
@@ -279,7 +280,7 @@ API path: `/api/ai/check-compatibility`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 
 Operations: Create, Load.
 
@@ -290,8 +291,8 @@ API path: `/api/ai/compare-products`
 | Field | Description |
 | --- | --- |
 | `attribution` |  |
-| `offer` |  |
-| `product_id` |  |
+| `offers` |  |
+| `productId` |  |
 
 Operations: Load.
 
@@ -312,7 +313,7 @@ API path: `/api/ai/get-build`
 
 | Field | Description |
 | --- | --- |
-| `product` |  |
+| `verificationStatus` |  |
 
 Operations: Load.
 
@@ -322,10 +323,10 @@ API path: `/api/ai/get-product`
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
+| `budgetCents` |  |
 | `category` |  |
 | `limit` |  |
-| `recommendation` |  |
+| `recommendations` |  |
 | `vertical` |  |
 
 Operations: Create, Load.
@@ -352,9 +353,9 @@ Create an instance: `build_quote = client.BuildQuote()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `int` |  |
-| `experience_level` | `str` |  |
-| `use_case` | `str` |  |
+| `budgetCents` | `int` |  |
+| `experienceLevel` | `str` |  |
+| `useCase` | `str` |  |
 | `vertical` | `str` |  |
 
 #### Example: Load
@@ -387,7 +388,7 @@ Create an instance: `check_compatibility = client.CheckCompatibility()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `list` |  |
+| `productIds` | `list` |  |
 | `verdict` | `str` |  |
 
 #### Example: Load
@@ -400,7 +401,7 @@ check_compatibility = client.CheckCompatibility().load()
 
 ```python
 check_compatibility = client.CheckCompatibility().create({
-    "product_id": [],  # list
+    "productIds": [],  # list
 })
 ```
 
@@ -420,7 +421,7 @@ Create an instance: `compare_product = client.CompareProduct()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `list` |  |
+| `productIds` | `list` |  |
 
 #### Example: Load
 
@@ -432,7 +433,7 @@ compare_product = client.CompareProduct().load()
 
 ```python
 compare_product = client.CompareProduct().create({
-    "product_id": [],  # list
+    "productIds": [],  # list
 })
 ```
 
@@ -452,8 +453,8 @@ Create an instance: `get_affiliate_offer = client.GetAffiliateOffer()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `attribution` | `dict` |  |
-| `offer` | `list` |  |
-| `product_id` | `str` |  |
+| `offers` | `list` |  |
+| `productId` | `str` |  |
 
 #### Example: Load
 
@@ -500,7 +501,7 @@ Create an instance: `get_product = client.GetProduct()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product` | `dict` |  |
+| `verificationStatus` | `str` |  |
 
 #### Example: Load
 
@@ -524,10 +525,10 @@ Create an instance: `recommend_product = client.RecommendProduct()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `int` |  |
+| `budgetCents` | `int` |  |
 | `category` | `str` |  |
 | `limit` | `int` |  |
-| `recommendation` | `list` |  |
+| `recommendations` | `list` |  |
 | `vertical` | `str` |  |
 
 #### Example: Load
@@ -621,11 +622,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-buildquote = client.BuildQuote()
-buildquote.load()
+checkcompatibility = client.CheckCompatibility()
+checkcompatibility.load()
 
-# buildquote.data_get() now returns the buildquote data from the last load
-# buildquote.match_get() returns the last match criteria
+# checkcompatibility.data_get() now returns the checkcompatibility data from the last load
+# checkcompatibility.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

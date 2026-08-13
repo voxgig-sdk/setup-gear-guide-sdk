@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'SetupGearGuide',
   }
 
 
@@ -74,21 +74,21 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "budget_cent",
+          "name": "budgetCents",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "experience_level",
+          "name": "experienceLevel",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "use_case",
+          "name": "useCase",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
@@ -110,6 +110,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/ai/build-quote",
               "parts": [
@@ -134,6 +135,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/ai/build-quote",
               "parts": [
@@ -160,7 +162,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "product_id",
+          "name": "productIds",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 0
@@ -182,6 +184,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/ai/check-compatibility",
               "parts": [
@@ -206,6 +209,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/ai/check-compatibility",
               "parts": [
@@ -232,7 +236,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "product_id",
+          "name": "productIds",
           "req": true,
           "type": "`$ARRAY`",
           "index$": 0
@@ -247,6 +251,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/ai/compare-products",
               "parts": [
@@ -271,6 +276,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/ai/compare-products",
               "parts": [
@@ -304,14 +310,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "offer",
+          "name": "offers",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "product_id",
+          "name": "productId",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
@@ -337,6 +343,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/ai/get-affiliate-offers",
               "parts": [
@@ -400,6 +407,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/ai/get-build",
               "parts": [
@@ -430,9 +438,9 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "product",
+          "name": "verificationStatus",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 0
         }
       ],
@@ -464,6 +472,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/ai/get-product",
               "parts": [
@@ -479,7 +488,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.product`"
               },
               "index$": 0
             }
@@ -495,7 +504,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "budget_cent",
+          "name": "budgetCents",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 0
@@ -516,7 +525,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "recommendation",
+          "name": "recommendations",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 3
@@ -538,6 +547,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/ai/recommend-products",
               "parts": [
@@ -562,6 +572,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/ai/recommend-products",
               "parts": [

@@ -49,7 +49,7 @@ try {
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created BuildQuote
+// Create — returns the created BuildQuote ENTITY (.data() for the record)
 const created = await client.BuildQuote().create({
   vertical: 'example_vertical',
 })
@@ -63,8 +63,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const buildquote = await client.BuildQuote().load()
-  console.log(buildquote)
+  const checkcompatibility = await client.CheckCompatibility().load()
+  console.log(checkcompatibility)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -130,9 +130,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = SetupGearGuideSDK.test()
 
-const buildquote = await client.BuildQuote().load()
-// buildquote is a bare entity populated with mock response data
-console.log(buildquote)
+const checkcompatibility = await client.CheckCompatibility().load()
+// checkcompatibility is the entity, populated with mock response data
+// — call checkcompatibility.data() for the record itself
+console.log(checkcompatibility)
 ```
 
 You can also use the instance method:
@@ -147,7 +148,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.BuildQuote()
+const entity = client.CheckCompatibility()
 
 // First call runs the operation and stores its result
 await entity.load()
@@ -301,9 +302,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
-| `experience_level` |  |
-| `use_case` |  |
+| `budgetCents` |  |
+| `experienceLevel` |  |
+| `useCase` |  |
 | `vertical` |  |
 
 Operations: create, load.
@@ -314,7 +315,7 @@ API path: `/api/ai/build-quote`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 | `verdict` |  |
 
 Operations: create, load.
@@ -325,7 +326,7 @@ API path: `/api/ai/check-compatibility`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 
 Operations: create, load.
 
@@ -336,8 +337,8 @@ API path: `/api/ai/compare-products`
 | Field | Description |
 | --- | --- |
 | `attribution` |  |
-| `offer` |  |
-| `product_id` |  |
+| `offers` |  |
+| `productId` |  |
 
 Operations: load.
 
@@ -358,7 +359,7 @@ API path: `/api/ai/get-build`
 
 | Field | Description |
 | --- | --- |
-| `product` |  |
+| `verificationStatus` |  |
 
 Operations: load.
 
@@ -368,10 +369,10 @@ API path: `/api/ai/get-product`
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
+| `budgetCents` |  |
 | `category` |  |
 | `limit` |  |
-| `recommendation` |  |
+| `recommendations` |  |
 | `vertical` |  |
 
 Operations: create, load.
@@ -398,9 +399,9 @@ Create an instance: `const build_quote = client.BuildQuote()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `number` |  |
-| `experience_level` | `string` |  |
-| `use_case` | `string` |  |
+| `budgetCents` | `number` |  |
+| `experienceLevel` | `string` |  |
+| `useCase` | `string` |  |
 | `vertical` | `string` |  |
 
 #### Example: Load
@@ -433,7 +434,7 @@ Create an instance: `const check_compatibility = client.CheckCompatibility()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `any[]` |  |
+| `productIds` | `any[]` |  |
 | `verdict` | `string` |  |
 
 #### Example: Load
@@ -446,7 +447,7 @@ const check_compatibility = await client.CheckCompatibility().load()
 
 ```ts
 const check_compatibility = await client.CheckCompatibility().create({
-  product_id: [],
+  productIds: [],
 })
 ```
 
@@ -466,7 +467,7 @@ Create an instance: `const compare_product = client.CompareProduct()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `any[]` |  |
+| `productIds` | `any[]` |  |
 
 #### Example: Load
 
@@ -478,7 +479,7 @@ const compare_product = await client.CompareProduct().load()
 
 ```ts
 const compare_product = await client.CompareProduct().create({
-  product_id: [],
+  productIds: [],
 })
 ```
 
@@ -498,8 +499,8 @@ Create an instance: `const get_affiliate_offer = client.GetAffiliateOffer()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `attribution` | `Record<string, any>` |  |
-| `offer` | `any[]` |  |
-| `product_id` | `string` |  |
+| `offers` | `any[]` |  |
+| `productId` | `string` |  |
 
 #### Example: Load
 
@@ -546,7 +547,7 @@ Create an instance: `const get_product = client.GetProduct()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product` | `Record<string, any>` |  |
+| `verificationStatus` | `string` |  |
 
 #### Example: Load
 
@@ -570,10 +571,10 @@ Create an instance: `const recommend_product = client.RecommendProduct()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `number` |  |
+| `budgetCents` | `number` |  |
 | `category` | `string` |  |
 | `limit` | `number` |  |
-| `recommendation` | `any[]` |  |
+| `recommendations` | `any[]` |  |
 | `vertical` | `string` |  |
 
 #### Example: Load
@@ -661,11 +662,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const buildquote = client.BuildQuote()
-await buildquote.load()
+const checkcompatibility = client.CheckCompatibility()
+await checkcompatibility.load()
 
-// buildquote.data() now returns the buildquote data from the last `load`
-// buildquote.match() returns the last match criteria
+// checkcompatibility.data() now returns the checkcompatibility data from the last `load`
+// checkcompatibility.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

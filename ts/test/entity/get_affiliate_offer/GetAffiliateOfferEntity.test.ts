@@ -26,8 +26,8 @@ import {
 describe('GetAffiliateOfferEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SETUPGEARGUIDE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SETUPGEARGUIDE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SETUP_GEAR_GUIDE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SETUP_GEAR_GUIDE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SetupGearGuideSDK.test()
@@ -62,7 +62,7 @@ describe('GetAffiliateOfferEntity', async () => {
     // LOAD
     const get_affiliate_offer_ref01_ent = client.GetAffiliateOffer()
     const get_affiliate_offer_ref01_match_dt0: any = {}
-    const get_affiliate_offer_ref01_data_dt0 = await get_affiliate_offer_ref01_ent.load(get_affiliate_offer_ref01_match_dt0)
+    const get_affiliate_offer_ref01_data_dt0 = (await get_affiliate_offer_ref01_ent.load(get_affiliate_offer_ref01_match_dt0)).data()
     assert(null != get_affiliate_offer_ref01_data_dt0)
 
 

@@ -26,8 +26,8 @@ import {
 describe('CompareProductEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SETUPGEARGUIDE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SETUPGEARGUIDE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SETUP_GEAR_GUIDE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SETUP_GEAR_GUIDE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SetupGearGuideSDK.test()
@@ -62,13 +62,13 @@ describe('CompareProductEntity', async () => {
     const compare_product_ref01_ent = client.CompareProduct()
     let compare_product_ref01_data = setup.data.new.compare_product['compare_product_ref01']
 
-    compare_product_ref01_data = await compare_product_ref01_ent.create(compare_product_ref01_data)
+    compare_product_ref01_data = (await compare_product_ref01_ent.create(compare_product_ref01_data)).data()
     assert(null != compare_product_ref01_data)
 
 
     // LOAD
     const compare_product_ref01_match_dt0: any = {}
-    const compare_product_ref01_data_dt0 = await compare_product_ref01_ent.load(compare_product_ref01_match_dt0)
+    const compare_product_ref01_data_dt0 = (await compare_product_ref01_ent.load(compare_product_ref01_match_dt0)).data()
     assert(null != compare_product_ref01_data_dt0)
 
 

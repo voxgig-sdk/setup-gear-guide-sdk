@@ -2,23 +2,23 @@
   "existing": {
     "build_quote": {
       "BUILD_QUOTE00": {
-        "budget_cent": "s28",
-        "experience_level": "s29",
-        "use_case": "s2a",
+        "budgetCents": "s28",
+        "experienceLevel": "s29",
+        "useCase": "s2a",
         "vertical": "s2b",
         "id": "BUILD_QUOTE00"
       },
       "BUILD_QUOTE01": {
-        "budget_cent": "s50",
-        "experience_level": "s51",
-        "use_case": "s52",
+        "budgetCents": "s50",
+        "experienceLevel": "s51",
+        "useCase": "s52",
         "vertical": "s53",
         "id": "BUILD_QUOTE01"
       },
       "BUILD_QUOTE02": {
-        "budget_cent": "s78",
-        "experience_level": "s79",
-        "use_case": "s7a",
+        "budgetCents": "s78",
+        "experienceLevel": "s79",
+        "useCase": "s7a",
         "vertical": "s7b",
         "id": "BUILD_QUOTE02"
       }
@@ -27,9 +27,9 @@
   "new": {
     "build_quote": {
       "build_quote_ref01": {
-        "budget_cent": "sa0",
-        "experience_level": "sa1",
-        "use_case": "sa2",
+        "budgetCents": "sa0",
+        "experienceLevel": "sa1",
+        "useCase": "sa2",
         "vertical": "sa3"
       }
     }

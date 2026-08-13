@@ -57,7 +57,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local buildquote, err = client:BuildQuote():load()
+local checkcompatibility, err = client:CheckCompatibility():load()
 if err then error(err) end
 ```
 
@@ -115,7 +115,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:BuildQuote():load()
+local result, err = client:CheckCompatibility():load()
 -- result is the returned data; err is set on failure
 ```
 
@@ -241,9 +241,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
-| `experience_level` |  |
-| `use_case` |  |
+| `budgetCents` |  |
+| `experienceLevel` |  |
+| `useCase` |  |
 | `vertical` |  |
 
 Operations: Create, Load.
@@ -254,7 +254,7 @@ API path: `/api/ai/build-quote`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 | `verdict` |  |
 
 Operations: Create, Load.
@@ -265,7 +265,7 @@ API path: `/api/ai/check-compatibility`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 
 Operations: Create, Load.
 
@@ -276,8 +276,8 @@ API path: `/api/ai/compare-products`
 | Field | Description |
 | --- | --- |
 | `attribution` |  |
-| `offer` |  |
-| `product_id` |  |
+| `offers` |  |
+| `productId` |  |
 
 Operations: Load.
 
@@ -298,7 +298,7 @@ API path: `/api/ai/get-build`
 
 | Field | Description |
 | --- | --- |
-| `product` |  |
+| `verificationStatus` |  |
 
 Operations: Load.
 
@@ -308,10 +308,10 @@ API path: `/api/ai/get-product`
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
+| `budgetCents` |  |
 | `category` |  |
 | `limit` |  |
-| `recommendation` |  |
+| `recommendations` |  |
 | `vertical` |  |
 
 Operations: Create, Load.
@@ -338,9 +338,9 @@ Create an instance: `local build_quote = client:BuildQuote(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `number` |  |
-| `experience_level` | `string` |  |
-| `use_case` | `string` |  |
+| `budgetCents` | `number` |  |
+| `experienceLevel` | `string` |  |
+| `useCase` | `string` |  |
 | `vertical` | `string` |  |
 
 #### Example: Load
@@ -373,7 +373,7 @@ Create an instance: `local check_compatibility = client:CheckCompatibility(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `table` |  |
+| `productIds` | `table` |  |
 | `verdict` | `string` |  |
 
 #### Example: Load
@@ -386,7 +386,7 @@ local check_compatibility, err = client:CheckCompatibility():load()
 
 ```lua
 local check_compatibility, err = client:CheckCompatibility():create({
-  product_id = {}, -- table
+  productIds = {}, -- table
 })
 ```
 
@@ -406,7 +406,7 @@ Create an instance: `local compare_product = client:CompareProduct(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `table` |  |
+| `productIds` | `table` |  |
 
 #### Example: Load
 
@@ -418,7 +418,7 @@ local compare_product, err = client:CompareProduct():load()
 
 ```lua
 local compare_product, err = client:CompareProduct():create({
-  product_id = {}, -- table
+  productIds = {}, -- table
 })
 ```
 
@@ -438,8 +438,8 @@ Create an instance: `local get_affiliate_offer = client:GetAffiliateOffer(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `attribution` | `table` |  |
-| `offer` | `table` |  |
-| `product_id` | `string` |  |
+| `offers` | `table` |  |
+| `productId` | `string` |  |
 
 #### Example: Load
 
@@ -486,7 +486,7 @@ Create an instance: `local get_product = client:GetProduct(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product` | `table` |  |
+| `verificationStatus` | `string` |  |
 
 #### Example: Load
 
@@ -510,10 +510,10 @@ Create an instance: `local recommend_product = client:RecommendProduct(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `number` |  |
+| `budgetCents` | `number` |  |
 | `category` | `string` |  |
 | `limit` | `number` |  |
-| `recommendation` | `table` |  |
+| `recommendations` | `table` |  |
 | `vertical` | `string` |  |
 
 #### Example: Load
@@ -608,11 +608,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local buildquote = client:BuildQuote()
-buildquote:load()
+local checkcompatibility = client:CheckCompatibility()
+checkcompatibility:load()
 
--- buildquote:data_get() now returns the buildquote data from the last load
--- buildquote:match_get() returns the last match criteria
+-- checkcompatibility:data_get() now returns the checkcompatibility data from the last load
+-- checkcompatibility:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

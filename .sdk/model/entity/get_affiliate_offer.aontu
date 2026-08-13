@@ -11,12 +11,12 @@ main: kit: entity: get_affiliate_offer: {
       type: "`$OBJECT`"
     }
     {
-      name: "offer"
+      name: "offers"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "product_id"
+      name: "productId"
       req: false
       type: "`$STRING`"
     }

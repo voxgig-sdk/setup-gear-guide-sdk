@@ -2,26 +2,26 @@
   "existing": {
     "recommend_product": {
       "RECOMMEND_PRODUCT00": {
-        "budget_cent": "s32",
+        "budgetCents": "s32",
         "category": "s33",
         "limit": "s34",
-        "recommendation": [],
+        "recommendations": [],
         "vertical": "s36",
         "id": "RECOMMEND_PRODUCT00"
       },
       "RECOMMEND_PRODUCT01": {
-        "budget_cent": "s64",
+        "budgetCents": "s64",
         "category": "s65",
         "limit": "s66",
-        "recommendation": [],
+        "recommendations": [],
         "vertical": "s68",
         "id": "RECOMMEND_PRODUCT01"
       },
       "RECOMMEND_PRODUCT02": {
-        "budget_cent": "s96",
+        "budgetCents": "s96",
         "category": "s97",
         "limit": "s98",
-        "recommendation": [],
+        "recommendations": [],
         "vertical": "s9a",
         "id": "RECOMMEND_PRODUCT02"
       }
@@ -30,10 +30,10 @@
   "new": {
     "recommend_product": {
       "recommend_product_ref01": {
-        "budget_cent": "sc8",
+        "budgetCents": "sc8",
         "category": "sc9",
         "limit": "sca",
-        "recommendation": [],
+        "recommendations": [],
         "vertical": "scc"
       }
     }

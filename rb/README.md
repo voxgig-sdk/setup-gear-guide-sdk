@@ -34,7 +34,7 @@ client = SetupGearGuideSDK.new
 
 ```ruby
 begin
-  # load returns the bare BuildQuote record (raises on error).
+  # load returns the ENTITY — call data_get for the BuildQuote record (raises on error).
   buildquote = client.BuildQuote.load()
   puts buildquote
 rescue => err
@@ -45,7 +45,7 @@ end
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created BuildQuote record.
+# create returns the ENTITY — call data_get for the created BuildQuote record.
 created = client.BuildQuote.create({ "vertical" => "example_vertical" })
 
 ```
@@ -57,7 +57,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  buildquote = client.BuildQuote.load()
+  checkcompatibility = client.CheckCompatibility.load()
 rescue => err
   warn "load failed: #{err}"
 end
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = SetupGearGuideSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-buildquote = client.BuildQuote.load()
-puts buildquote
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+checkcompatibility = client.CheckCompatibility.load()
+puts checkcompatibility
 ```
 
 ### Use a custom fetch function
@@ -249,9 +250,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
-| `experience_level` |  |
-| `use_case` |  |
+| `budgetCents` |  |
+| `experienceLevel` |  |
+| `useCase` |  |
 | `vertical` |  |
 
 Operations: Create, Load.
@@ -262,7 +263,7 @@ API path: `/api/ai/build-quote`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 | `verdict` |  |
 
 Operations: Create, Load.
@@ -273,7 +274,7 @@ API path: `/api/ai/check-compatibility`
 
 | Field | Description |
 | --- | --- |
-| `product_id` |  |
+| `productIds` |  |
 
 Operations: Create, Load.
 
@@ -284,8 +285,8 @@ API path: `/api/ai/compare-products`
 | Field | Description |
 | --- | --- |
 | `attribution` |  |
-| `offer` |  |
-| `product_id` |  |
+| `offers` |  |
+| `productId` |  |
 
 Operations: Load.
 
@@ -306,7 +307,7 @@ API path: `/api/ai/get-build`
 
 | Field | Description |
 | --- | --- |
-| `product` |  |
+| `verificationStatus` |  |
 
 Operations: Load.
 
@@ -316,10 +317,10 @@ API path: `/api/ai/get-product`
 
 | Field | Description |
 | --- | --- |
-| `budget_cent` |  |
+| `budgetCents` |  |
 | `category` |  |
 | `limit` |  |
-| `recommendation` |  |
+| `recommendations` |  |
 | `vertical` |  |
 
 Operations: Create, Load.
@@ -346,15 +347,15 @@ Create an instance: `build_quote = client.BuildQuote`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `Integer` |  |
-| `experience_level` | `String` |  |
-| `use_case` | `String` |  |
+| `budgetCents` | `Integer` |  |
+| `experienceLevel` | `String` |  |
+| `useCase` | `String` |  |
 | `vertical` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare BuildQuote record (raises on error).
+# load returns the ENTITY — call data_get for the BuildQuote record (raises on error).
 build_quote = client.BuildQuote.load()
 ```
 
@@ -382,13 +383,13 @@ Create an instance: `check_compatibility = client.CheckCompatibility`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `Array` |  |
+| `productIds` | `Array` |  |
 | `verdict` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare CheckCompatibility record (raises on error).
+# load returns the ENTITY — call data_get for the CheckCompatibility record (raises on error).
 check_compatibility = client.CheckCompatibility.load()
 ```
 
@@ -396,7 +397,7 @@ check_compatibility = client.CheckCompatibility.load()
 
 ```ruby
 check_compatibility = client.CheckCompatibility.create({
-  "product_id" => [], # Array
+  "productIds" => [], # Array
 })
 ```
 
@@ -416,12 +417,12 @@ Create an instance: `compare_product = client.CompareProduct`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `Array` |  |
+| `productIds` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare CompareProduct record (raises on error).
+# load returns the ENTITY — call data_get for the CompareProduct record (raises on error).
 compare_product = client.CompareProduct.load()
 ```
 
@@ -429,7 +430,7 @@ compare_product = client.CompareProduct.load()
 
 ```ruby
 compare_product = client.CompareProduct.create({
-  "product_id" => [], # Array
+  "productIds" => [], # Array
 })
 ```
 
@@ -449,13 +450,13 @@ Create an instance: `get_affiliate_offer = client.GetAffiliateOffer`
 | Field | Type | Description |
 | --- | --- | --- |
 | `attribution` | `Hash` |  |
-| `offer` | `Array` |  |
-| `product_id` | `String` |  |
+| `offers` | `Array` |  |
+| `productId` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare GetAffiliateOffer record (raises on error).
+# load returns the ENTITY — call data_get for the GetAffiliateOffer record (raises on error).
 get_affiliate_offer = client.GetAffiliateOffer.load()
 ```
 
@@ -480,7 +481,7 @@ Create an instance: `get_build = client.GetBuild`
 #### Example: Load
 
 ```ruby
-# load returns the bare GetBuild record (raises on error).
+# load returns the ENTITY — call data_get for the GetBuild record (raises on error).
 get_build = client.GetBuild.load()
 ```
 
@@ -499,12 +500,12 @@ Create an instance: `get_product = client.GetProduct`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product` | `Hash` |  |
+| `verificationStatus` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare GetProduct record (raises on error).
+# load returns the ENTITY — call data_get for the GetProduct record (raises on error).
 get_product = client.GetProduct.load()
 ```
 
@@ -524,16 +525,16 @@ Create an instance: `recommend_product = client.RecommendProduct`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `Integer` |  |
+| `budgetCents` | `Integer` |  |
 | `category` | `String` |  |
 | `limit` | `Integer` |  |
-| `recommendation` | `Array` |  |
+| `recommendations` | `Array` |  |
 | `vertical` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare RecommendProduct record (raises on error).
+# load returns the ENTITY — call data_get for the RecommendProduct record (raises on error).
 recommend_product = client.RecommendProduct.load()
 ```
 
@@ -623,11 +624,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-buildquote = client.BuildQuote
-buildquote.load()
+checkcompatibility = client.CheckCompatibility
+checkcompatibility.load()
 
-# buildquote.data_get now returns the buildquote data from the last load
-# buildquote.match_get returns the last match criteria
+# checkcompatibility.data_get now returns the checkcompatibility data from the last load
+# checkcompatibility.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

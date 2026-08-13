@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ SetupGearGuideUtility.registrar = ->(u) {
   u.prepare_params = SetupGearGuideUtilities::PrepareParams
   u.prepare_path = SetupGearGuideUtilities::PreparePath
   u.prepare_query = SetupGearGuideUtilities::PrepareQuery
+  u.graphql_body = SetupGearGuideUtilities::GraphqlBody
+  u.graphql_errors = SetupGearGuideUtilities::GraphqlErrors
   u.result_basic = SetupGearGuideUtilities::ResultBasic
   u.result_body = SetupGearGuideUtilities::ResultBody
   u.result_headers = SetupGearGuideUtilities::ResultHeaders

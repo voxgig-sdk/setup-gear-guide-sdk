@@ -6,7 +6,7 @@ main: kit: entity: recommend_product: {
 
   fields: [
     {
-      name: "budget_cent"
+      name: "budgetCents"
       req: false
       type: "`$INTEGER`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: recommend_product: {
       type: "`$INTEGER`"
     }
     {
-      name: "recommendation"
+      name: "recommendations"
       req: false
       type: "`$ARRAY`"
     }

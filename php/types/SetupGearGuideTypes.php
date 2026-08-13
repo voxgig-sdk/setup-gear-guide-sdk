@@ -15,83 +15,83 @@ declare(strict_types=1);
 /** BuildQuote entity data model. */
 class BuildQuote
 {
-    public ?int $budget_cent = null;
-    public ?string $experience_level = null;
-    public ?string $use_case = null;
+    public ?int $budgetCents = null;
+    public ?string $experienceLevel = null;
+    public ?string $useCase = null;
     public string $vertical;
 }
 
 /** Request payload for BuildQuote#load. */
 class BuildQuoteLoadMatch
 {
-    public ?int $budget_cent = null;
-    public ?string $experience_level = null;
-    public ?string $use_case = null;
+    public ?int $budgetCents = null;
+    public ?string $experienceLevel = null;
+    public ?string $useCase = null;
     public ?string $vertical = null;
 }
 
 /** Request payload for BuildQuote#create. */
 class BuildQuoteCreateData
 {
-    public ?int $budget_cent = null;
-    public ?string $experience_level = null;
-    public ?string $use_case = null;
+    public ?int $budgetCents = null;
+    public ?string $experienceLevel = null;
+    public ?string $useCase = null;
     public string $vertical;
 }
 
 /** CheckCompatibility entity data model. */
 class CheckCompatibility
 {
-    public array $product_id;
+    public array $productIds;
     public ?string $verdict = null;
 }
 
 /** Request payload for CheckCompatibility#load. */
 class CheckCompatibilityLoadMatch
 {
-    public ?array $product_id = null;
+    public ?array $productIds = null;
     public ?string $verdict = null;
 }
 
 /** Request payload for CheckCompatibility#create. */
 class CheckCompatibilityCreateData
 {
-    public array $product_id;
+    public array $productIds;
     public ?string $verdict = null;
 }
 
 /** CompareProduct entity data model. */
 class CompareProduct
 {
-    public array $product_id;
+    public array $productIds;
 }
 
 /** Request payload for CompareProduct#load. */
 class CompareProductLoadMatch
 {
-    public ?array $product_id = null;
+    public ?array $productIds = null;
 }
 
 /** Request payload for CompareProduct#create. */
 class CompareProductCreateData
 {
-    public array $product_id;
+    public array $productIds;
 }
 
 /** GetAffiliateOffer entity data model. */
 class GetAffiliateOffer
 {
     public ?array $attribution = null;
-    public ?array $offer = null;
-    public ?string $product_id = null;
+    public ?array $offers = null;
+    public ?string $productId = null;
 }
 
 /** Request payload for GetAffiliateOffer#load. */
 class GetAffiliateOfferLoadMatch
 {
     public ?array $attribution = null;
-    public ?array $offer = null;
-    public ?string $product_id = null;
+    public ?array $offers = null;
+    public ?string $productId = null;
 }
 
 /** GetBuild entity data model. */
@@ -111,42 +111,42 @@ class GetBuildLoadMatch
 /** GetProduct entity data model. */
 class GetProduct
 {
-    public ?array $product = null;
+    public ?string $verificationStatus = null;
 }
 
 /** Request payload for GetProduct#load. */
 class GetProductLoadMatch
 {
-    public ?array $product = null;
+    public ?string $verificationStatus = null;
 }
 
 /** RecommendProduct entity data model. */
 class RecommendProduct
 {
-    public ?int $budget_cent = null;
+    public ?int $budgetCents = null;
     public string $category;
     public ?int $limit = null;
-    public ?array $recommendation = null;
+    public ?array $recommendations = null;
     public string $vertical;
 }
 
 /** Request payload for RecommendProduct#load. */
 class RecommendProductLoadMatch
 {
-    public ?int $budget_cent = null;
+    public ?int $budgetCents = null;
     public ?string $category = null;
     public ?int $limit = null;
-    public ?array $recommendation = null;
+    public ?array $recommendations = null;
     public ?string $vertical = null;
 }
 
 /** Request payload for RecommendProduct#create. */
 class RecommendProductCreateData
 {
-    public ?int $budget_cent = null;
+    public ?int $budgetCents = null;
     public string $category;
     public ?int $limit = null;
-    public ?array $recommendation = null;
+    public ?array $recommendations = null;
     public string $vertical;
 }
 

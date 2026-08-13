@@ -32,21 +32,21 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "budget_cent",
+						"name": "budgetCents",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "experience_level",
+						"name": "experienceLevel",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "use_case",
+						"name": "useCase",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -68,6 +68,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/ai/build-quote",
 								"parts": []any{
@@ -83,7 +84,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -92,6 +92,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/build-quote",
 								"parts": []any{
@@ -107,7 +108,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -118,7 +118,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "product_id",
+						"name": "productIds",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -140,6 +140,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/ai/check-compatibility",
 								"parts": []any{
@@ -155,7 +156,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -164,6 +164,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/check-compatibility",
 								"parts": []any{
@@ -179,7 +180,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -190,7 +190,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "product_id",
+						"name": "productIds",
 						"req": true,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -205,6 +205,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/ai/compare-products",
 								"parts": []any{
@@ -220,7 +221,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -229,6 +229,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/compare-products",
 								"parts": []any{
@@ -244,7 +245,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -262,14 +262,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "offer",
+						"name": "offers",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "product_id",
+						"name": "productId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -295,6 +295,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/get-affiliate-offers",
 								"parts": []any{
@@ -314,7 +315,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -358,6 +358,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/get-build",
 								"parts": []any{
@@ -377,7 +378,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -388,9 +388,9 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "product",
+						"name": "verificationStatus",
 						"req": false,
-						"type": "`$OBJECT`",
+						"type": "`$STRING`",
 						"index$": 0,
 					},
 				},
@@ -422,6 +422,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/get-product",
 								"parts": []any{
@@ -437,12 +438,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.product`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -453,7 +453,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "budget_cent",
+						"name": "budgetCents",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 0,
@@ -474,7 +474,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "recommendation",
+						"name": "recommendations",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 3,
@@ -496,6 +496,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/api/ai/recommend-products",
 								"parts": []any{
@@ -511,7 +512,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -520,6 +520,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/recommend-products",
 								"parts": []any{
@@ -535,7 +536,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

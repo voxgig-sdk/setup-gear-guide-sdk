@@ -10,130 +10,130 @@
 
 # BuildQuote entity data model.
 #
-# @!attribute [rw] budget_cent
+# @!attribute [rw] budgetCents
 #   @return [Integer, nil]
 #
-# @!attribute [rw] experience_level
+# @!attribute [rw] experienceLevel
 #   @return [String, nil]
 #
-# @!attribute [rw] use_case
+# @!attribute [rw] useCase
 #   @return [String, nil]
 #
 # @!attribute [rw] vertical
 #   @return [String]
 BuildQuote = Struct.new(
-  :budget_cent,
-  :experience_level,
-  :use_case,
+  :budgetCents,
+  :experienceLevel,
+  :useCase,
   :vertical,
   keyword_init: true
 )
 
 # Request payload for BuildQuote#load.
 #
-# @!attribute [rw] budget_cent
+# @!attribute [rw] budgetCents
 #   @return [Integer, nil]
 #
-# @!attribute [rw] experience_level
+# @!attribute [rw] experienceLevel
 #   @return [String, nil]
 #
-# @!attribute [rw] use_case
+# @!attribute [rw] useCase
 #   @return [String, nil]
 #
 # @!attribute [rw] vertical
 #   @return [String, nil]
 BuildQuoteLoadMatch = Struct.new(
-  :budget_cent,
-  :experience_level,
-  :use_case,
+  :budgetCents,
+  :experienceLevel,
+  :useCase,
   :vertical,
   keyword_init: true
 )
 
 # Request payload for BuildQuote#create.
 #
-# @!attribute [rw] budget_cent
+# @!attribute [rw] budgetCents
 #   @return [Integer, nil]
 #
-# @!attribute [rw] experience_level
+# @!attribute [rw] experienceLevel
 #   @return [String, nil]
 #
-# @!attribute [rw] use_case
+# @!attribute [rw] useCase
 #   @return [String, nil]
 #
 # @!attribute [rw] vertical
 #   @return [String]
 BuildQuoteCreateData = Struct.new(
-  :budget_cent,
-  :experience_level,
-  :use_case,
+  :budgetCents,
+  :experienceLevel,
+  :useCase,
   :vertical,
   keyword_init: true
 )
 
 # CheckCompatibility entity data model.
 #
-# @!attribute [rw] product_id
+# @!attribute [rw] productIds
 #   @return [Array]
 #
 # @!attribute [rw] verdict
 #   @return [String, nil]
 CheckCompatibility = Struct.new(
-  :product_id,
+  :productIds,
   :verdict,
   keyword_init: true
 )
 
 # Request payload for CheckCompatibility#load.
 #
-# @!attribute [rw] product_id
+# @!attribute [rw] productIds
 #   @return [Array, nil]
 #
 # @!attribute [rw] verdict
 #   @return [String, nil]
 CheckCompatibilityLoadMatch = Struct.new(
-  :product_id,
+  :productIds,
   :verdict,
   keyword_init: true
 )
 
 # Request payload for CheckCompatibility#create.
 #
-# @!attribute [rw] product_id
+# @!attribute [rw] productIds
 #   @return [Array]
 #
 # @!attribute [rw] verdict
 #   @return [String, nil]
 CheckCompatibilityCreateData = Struct.new(
-  :product_id,
+  :productIds,
   :verdict,
   keyword_init: true
 )
 
 # CompareProduct entity data model.
 #
-# @!attribute [rw] product_id
+# @!attribute [rw] productIds
 #   @return [Array]
 CompareProduct = Struct.new(
-  :product_id,
+  :productIds,
   keyword_init: true
 )
 
 # Request payload for CompareProduct#load.
 #
-# @!attribute [rw] product_id
+# @!attribute [rw] productIds
 #   @return [Array, nil]
 CompareProductLoadMatch = Struct.new(
-  :product_id,
+  :productIds,
   keyword_init: true
 )
 
 # Request payload for CompareProduct#create.
 #
-# @!attribute [rw] product_id
+# @!attribute [rw] productIds
 #   @return [Array]
 CompareProductCreateData = Struct.new(
-  :product_id,
+  :productIds,
   keyword_init: true
 )
 
@@ -142,15 +142,15 @@ CompareProductCreateData = Struct.new(
 # @!attribute [rw] attribution
 #   @return [Hash, nil]
 #
-# @!attribute [rw] offer
+# @!attribute [rw] offers
 #   @return [Array, nil]
 #
-# @!attribute [rw] product_id
+# @!attribute [rw] productId
 #   @return [String, nil]
 GetAffiliateOffer = Struct.new(
   :attribution,
-  :offer,
-  :product_id,
+  :offers,
+  :productId,
   keyword_init: true
 )
 
@@ -159,15 +159,15 @@ GetAffiliateOffer = Struct.new(
 # @!attribute [rw] attribution
 #   @return [Hash, nil]
 #
-# @!attribute [rw] offer
+# @!attribute [rw] offers
 #   @return [Array, nil]
 #
-# @!attribute [rw] product_id
+# @!attribute [rw] productId
 #   @return [String, nil]
 GetAffiliateOfferLoadMatch = Struct.new(
   :attribution,
-  :offer,
-  :product_id,
+  :offers,
+  :productId,
   keyword_init: true
 )
 
@@ -199,25 +199,25 @@ GetBuildLoadMatch = Struct.new(
 
 # GetProduct entity data model.
 #
-# @!attribute [rw] product
-#   @return [Hash, nil]
+# @!attribute [rw] verificationStatus
+#   @return [String, nil]
 GetProduct = Struct.new(
-  :product,
+  :verificationStatus,
   keyword_init: true
 )
 
 # Request payload for GetProduct#load.
 #
-# @!attribute [rw] product
-#   @return [Hash, nil]
+# @!attribute [rw] verificationStatus
+#   @return [String, nil]
 GetProductLoadMatch = Struct.new(
-  :product,
+  :verificationStatus,
   keyword_init: true
 )
 
 # RecommendProduct entity data model.
 #
-# @!attribute [rw] budget_cent
+# @!attribute [rw] budgetCents
 #   @return [Integer, nil]
 #
 # @!attribute [rw] category
@@ -226,23 +226,23 @@ GetProductLoadMatch = Struct.new(
 # @!attribute [rw] limit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] recommendation
+# @!attribute [rw] recommendations
 #   @return [Array, nil]
 #
 # @!attribute [rw] vertical
 #   @return [String]
 RecommendProduct = Struct.new(
-  :budget_cent,
+  :budgetCents,
   :category,
   :limit,
-  :recommendation,
+  :recommendations,
   :vertical,
   keyword_init: true
 )
 
 # Request payload for RecommendProduct#load.
 #
-# @!attribute [rw] budget_cent
+# @!attribute [rw] budgetCents
 #   @return [Integer, nil]
 #
 # @!attribute [rw] category
@@ -251,23 +251,23 @@ RecommendProduct = Struct.new(
 # @!attribute [rw] limit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] recommendation
+# @!attribute [rw] recommendations
 #   @return [Array, nil]
 #
 # @!attribute [rw] vertical
 #   @return [String, nil]
 RecommendProductLoadMatch = Struct.new(
-  :budget_cent,
+  :budgetCents,
   :category,
   :limit,
-  :recommendation,
+  :recommendations,
   :vertical,
   keyword_init: true
 )
 
 # Request payload for RecommendProduct#create.
 #
-# @!attribute [rw] budget_cent
+# @!attribute [rw] budgetCents
 #   @return [Integer, nil]
 #
 # @!attribute [rw] category
@@ -276,16 +276,16 @@ RecommendProductLoadMatch = Struct.new(
 # @!attribute [rw] limit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] recommendation
+# @!attribute [rw] recommendations
 #   @return [Array, nil]
 #
 # @!attribute [rw] vertical
 #   @return [String]
 RecommendProductCreateData = Struct.new(
-  :budget_cent,
+  :budgetCents,
   :category,
   :limit,
-  :recommendation,
+  :recommendations,
   :vertical,
   keyword_init: true
 )

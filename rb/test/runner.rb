@@ -23,8 +23,8 @@ module SetupGearGuideTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("SETUPGEARGUIDE_TEST_LIVE")
-    override = getenv("SETUPGEARGUIDE_TEST_OVERRIDE")
+    live = getenv("SETUP_GEAR_GUIDE_TEST_LIVE")
+    override = getenv("SETUP_GEAR_GUIDE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module SetupGearGuideTestRunner
       end
     end
 
-    explain = getenv("SETUPGEARGUIDE_TEST_EXPLAIN")
-    m["SETUPGEARGUIDE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("SETUP_GEAR_GUIDE_TEST_EXPLAIN")
+    m["SETUP_GEAR_GUIDE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

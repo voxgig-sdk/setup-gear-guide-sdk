@@ -6,17 +6,17 @@ main: kit: entity: build_quote: {
 
   fields: [
     {
-      name: "budget_cent"
+      name: "budgetCents"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "experience_level"
+      name: "experienceLevel"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "use_case"
+      name: "useCase"
       req: false
       type: "`$STRING`"
     }

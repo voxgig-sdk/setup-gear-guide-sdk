@@ -16,11 +16,11 @@
 import pytest
 
 from setupgearguide_sdk import SetupGearGuideSDK
-from core.error import SetupGearGuideError
-from core.result import SetupGearGuideResult
-from core.response import SetupGearGuideResponse
-from core.spec import SetupGearGuideSpec
-from feature.base_feature import SetupGearGuideBaseFeature
+from setupgearguide_sdk.core.error import SetupGearGuideError
+from setupgearguide_sdk.core.result import SetupGearGuideResult
+from setupgearguide_sdk.core.response import SetupGearGuideResponse
+from setupgearguide_sdk.core.spec import SetupGearGuideSpec
+from setupgearguide_sdk.feature.base_feature import SetupGearGuideBaseFeature
 
 
 def _client():

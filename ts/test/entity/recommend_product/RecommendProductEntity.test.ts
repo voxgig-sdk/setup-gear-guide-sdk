@@ -26,8 +26,8 @@ import {
 describe('RecommendProductEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SETUPGEARGUIDE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SETUPGEARGUIDE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SETUP_GEAR_GUIDE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SETUP_GEAR_GUIDE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SetupGearGuideSDK.test()
@@ -62,13 +62,13 @@ describe('RecommendProductEntity', async () => {
     const recommend_product_ref01_ent = client.RecommendProduct()
     let recommend_product_ref01_data = setup.data.new.recommend_product['recommend_product_ref01']
 
-    recommend_product_ref01_data = await recommend_product_ref01_ent.create(recommend_product_ref01_data)
+    recommend_product_ref01_data = (await recommend_product_ref01_ent.create(recommend_product_ref01_data)).data()
     assert(null != recommend_product_ref01_data)
 
 
     // LOAD
     const recommend_product_ref01_match_dt0: any = {}
-    const recommend_product_ref01_data_dt0 = await recommend_product_ref01_ent.load(recommend_product_ref01_match_dt0)
+    const recommend_product_ref01_data_dt0 = (await recommend_product_ref01_ent.load(recommend_product_ref01_match_dt0)).data()
     assert(null != recommend_product_ref01_data_dt0)
 
 

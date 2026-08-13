@@ -2,15 +2,15 @@
   "existing": {
     "get_product": {
       "GET_PRODUCT00": {
-        "product": {},
+        "verificationStatus": "sa",
         "id": "GET_PRODUCT00"
       },
       "GET_PRODUCT01": {
-        "product": {},
+        "verificationStatus": "s14",
         "id": "GET_PRODUCT01"
       },
       "GET_PRODUCT02": {
-        "product": {},
+        "verificationStatus": "s1e",
         "id": "GET_PRODUCT02"
       }
     }
@@ -18,7 +18,7 @@
   "new": {
     "get_product": {
       "get_product_ref01": {
-        "product": {}
+        "verificationStatus": "s28"
       }
     }
   }

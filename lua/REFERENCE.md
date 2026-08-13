@@ -114,9 +114,9 @@ local build_quote = client:BuildQuote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `number` | No |  |
-| `experience_level` | `string` | No |  |
-| `use_case` | `string` | No |  |
+| `budgetCents` | `number` | No |  |
+| `experienceLevel` | `string` | No |  |
+| `useCase` | `string` | No |  |
 | `vertical` | `string` | Yes |  |
 
 ### Operations
@@ -179,7 +179,7 @@ local check_compatibility = client:CheckCompatibility(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `table` | Yes |  |
+| `productIds` | `table` | Yes |  |
 | `verdict` | `string` | No |  |
 
 ### Operations
@@ -190,7 +190,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:CheckCompatibility():create({
-  product_id = --[[ table ]],
+  productIds = --[[ table ]],
 })
 ```
 
@@ -242,7 +242,7 @@ local compare_product = client:CompareProduct(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `table` | Yes |  |
+| `productIds` | `table` | Yes |  |
 
 ### Operations
 
@@ -252,7 +252,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:CompareProduct():create({
-  product_id = --[[ table ]],
+  productIds = --[[ table ]],
 })
 ```
 
@@ -305,8 +305,8 @@ local get_affiliate_offer = client:GetAffiliateOffer(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `attribution` | `table` | No |  |
-| `offer` | `table` | No |  |
-| `product_id` | `string` | No |  |
+| `offers` | `table` | No |  |
+| `productId` | `string` | No |  |
 
 ### Operations
 
@@ -411,7 +411,7 @@ local get_product = client:GetProduct(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product` | `table` | No |  |
+| `verificationStatus` | `string` | No |  |
 
 ### Operations
 
@@ -463,10 +463,10 @@ local recommend_product = client:RecommendProduct(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `number` | No |  |
+| `budgetCents` | `number` | No |  |
 | `category` | `string` | Yes |  |
 | `limit` | `number` | No |  |
-| `recommendation` | `table` | No |  |
+| `recommendations` | `table` | No |  |
 | `vertical` | `string` | Yes |  |
 
 ### Operations

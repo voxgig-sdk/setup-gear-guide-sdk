@@ -6,7 +6,7 @@ main: kit: entity: check_compatibility: {
 
   fields: [
     {
-      name: "product_id"
+      name: "productIds"
       req: true
       type: "`$ARRAY`"
     }

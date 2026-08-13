@@ -111,9 +111,9 @@ build_quote = client.BuildQuote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `int` | No |  |
-| `experience_level` | `str` | No |  |
-| `use_case` | `str` | No |  |
+| `budgetCents` | `int` | No |  |
+| `experienceLevel` | `str` | No |  |
+| `useCase` | `str` | No |  |
 | `vertical` | `str` | Yes |  |
 
 ### Operations
@@ -175,7 +175,7 @@ check_compatibility = client.CheckCompatibility()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `list` | Yes |  |
+| `productIds` | `list` | Yes |  |
 | `verdict` | `str` | No |  |
 
 ### Operations
@@ -186,7 +186,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.CheckCompatibility().create({
-    "product_id": [],  # list
+    "productIds": [],  # list
 })
 ```
 
@@ -237,7 +237,7 @@ compare_product = client.CompareProduct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `list` | Yes |  |
+| `productIds` | `list` | Yes |  |
 
 ### Operations
 
@@ -247,7 +247,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.CompareProduct().create({
-    "product_id": [],  # list
+    "productIds": [],  # list
 })
 ```
 
@@ -299,8 +299,8 @@ get_affiliate_offer = client.GetAffiliateOffer()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `attribution` | `dict` | No |  |
-| `offer` | `list` | No |  |
-| `product_id` | `str` | No |  |
+| `offers` | `list` | No |  |
+| `productId` | `str` | No |  |
 
 ### Operations
 
@@ -403,7 +403,7 @@ get_product = client.GetProduct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product` | `dict` | No |  |
+| `verificationStatus` | `str` | No |  |
 
 ### Operations
 
@@ -454,10 +454,10 @@ recommend_product = client.RecommendProduct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `int` | No |  |
+| `budgetCents` | `int` | No |  |
 | `category` | `str` | Yes |  |
 | `limit` | `int` | No |  |
-| `recommendation` | `list` | No |  |
+| `recommendations` | `list` | No |  |
 | `vertical` | `str` | Yes |  |
 
 ### Operations

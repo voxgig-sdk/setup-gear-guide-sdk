@@ -122,9 +122,9 @@ fmt.Println(buildQuote.GetName()) // "build_quote"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `int` | No |  |
-| `experience_level` | `string` | No |  |
-| `use_case` | `string` | No |  |
+| `budgetCents` | `int` | No |  |
+| `experienceLevel` | `string` | No |  |
+| `useCase` | `string` | No |  |
 | `vertical` | `string` | Yes |  |
 
 ### Operations
@@ -190,7 +190,7 @@ fmt.Println(checkCompatibility.GetName()) // "check_compatibility"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `[]any` | Yes |  |
+| `productIds` | `[]any` | Yes |  |
 | `verdict` | `string` | No |  |
 
 ### Operations
@@ -213,7 +213,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.CheckCompatibility(nil).Create(map[string]any{
-    "product_id": []any{},
+    "productIds": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -256,7 +256,7 @@ fmt.Println(compareProduct.GetName()) // "compare_product"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `[]any` | Yes |  |
+| `productIds` | `[]any` | Yes |  |
 
 ### Operations
 
@@ -278,7 +278,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.CompareProduct(nil).Create(map[string]any{
-    "product_id": []any{},
+    "productIds": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -322,8 +322,8 @@ fmt.Println(getAffiliateOffer.GetName()) // "get_affiliate_offer"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `attribution` | `map[string]any` | No |  |
-| `offer` | `[]any` | No |  |
-| `product_id` | `string` | No |  |
+| `offers` | `[]any` | No |  |
+| `productId` | `string` | No |  |
 
 ### Operations
 
@@ -426,7 +426,7 @@ fmt.Println(getProduct.GetName()) // "get_product"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product` | `map[string]any` | No |  |
+| `verificationStatus` | `string` | No |  |
 
 ### Operations
 
@@ -477,10 +477,10 @@ fmt.Println(recommendProduct.GetName()) // "recommend_product"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `int` | No |  |
+| `budgetCents` | `int` | No |  |
 | `category` | `string` | Yes |  |
 | `limit` | `int` | No |  |
-| `recommendation` | `[]any` | No |  |
+| `recommendations` | `[]any` | No |  |
 | `vertical` | `string` | Yes |  |
 
 ### Operations

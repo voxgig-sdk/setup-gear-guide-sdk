@@ -26,7 +26,7 @@ class BuildQuoteEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set SETUPGEARGUIDE_TEST_BUILD_QUOTE_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set SETUP_GEAR_GUIDE_TEST_BUILD_QUOTE_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -37,7 +37,7 @@ class BuildQuoteEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.build_quote"), "build_quote_ref01"))
 
     build_quote_ref01_data_result = build_quote_ref01_ent.create(build_quote_ref01_data, nil)
-    build_quote_ref01_data = Helpers.to_map(build_quote_ref01_data_result)
+    build_quote_ref01_data = Helpers.to_map(build_quote_ref01_data_result.respond_to?(:data_get) ? build_quote_ref01_data_result.data_get : build_quote_ref01_data_result)
     assert !build_quote_ref01_data.nil?
 
     # LOAD
@@ -74,22 +74,22 @@ def build_quote_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["SETUPGEARGUIDE_TEST_BUILD_QUOTE_ENTID"]
+  entid_env_raw = ENV["SETUP_GEAR_GUIDE_TEST_BUILD_QUOTE_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "SETUPGEARGUIDE_TEST_BUILD_QUOTE_ENTID" => idmap,
-    "SETUPGEARGUIDE_TEST_LIVE" => "FALSE",
-    "SETUPGEARGUIDE_TEST_EXPLAIN" => "FALSE",
+    "SETUP_GEAR_GUIDE_TEST_BUILD_QUOTE_ENTID" => idmap,
+    "SETUP_GEAR_GUIDE_TEST_LIVE" => "FALSE",
+    "SETUP_GEAR_GUIDE_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["SETUPGEARGUIDE_TEST_BUILD_QUOTE_ENTID"])
+    env["SETUP_GEAR_GUIDE_TEST_BUILD_QUOTE_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["SETUPGEARGUIDE_TEST_LIVE"] == "TRUE"
+  if env["SETUP_GEAR_GUIDE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -98,13 +98,13 @@ def build_quote_basic_setup(extra)
     client = SetupGearGuideSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["SETUPGEARGUIDE_TEST_LIVE"] == "TRUE"
+  live = env["SETUP_GEAR_GUIDE_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["SETUPGEARGUIDE_TEST_EXPLAIN"] == "TRUE",
+    explain: env["SETUP_GEAR_GUIDE_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

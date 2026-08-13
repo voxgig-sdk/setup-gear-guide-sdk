@@ -117,9 +117,9 @@ build_quote = client.BuildQuote
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `Integer` | No |  |
-| `experience_level` | `String` | No |  |
-| `use_case` | `String` | No |  |
+| `budgetCents` | `Integer` | No |  |
+| `experienceLevel` | `String` | No |  |
+| `useCase` | `String` | No |  |
 | `vertical` | `String` | Yes |  |
 
 ### Operations
@@ -182,7 +182,7 @@ check_compatibility = client.CheckCompatibility
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `Array` | Yes |  |
+| `productIds` | `Array` | Yes |  |
 | `verdict` | `String` | No |  |
 
 ### Operations
@@ -193,7 +193,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.CheckCompatibility.create({
-  "product_id" => [], # Array
+  "productIds" => [], # Array
 })
 ```
 
@@ -245,7 +245,7 @@ compare_product = client.CompareProduct
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `Array` | Yes |  |
+| `productIds` | `Array` | Yes |  |
 
 ### Operations
 
@@ -255,7 +255,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.CompareProduct.create({
-  "product_id" => [], # Array
+  "productIds" => [], # Array
 })
 ```
 
@@ -308,8 +308,8 @@ get_affiliate_offer = client.GetAffiliateOffer
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `attribution` | `Hash` | No |  |
-| `offer` | `Array` | No |  |
-| `product_id` | `String` | No |  |
+| `offers` | `Array` | No |  |
+| `productId` | `String` | No |  |
 
 ### Operations
 
@@ -414,7 +414,7 @@ get_product = client.GetProduct
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product` | `Hash` | No |  |
+| `verificationStatus` | `String` | No |  |
 
 ### Operations
 
@@ -466,10 +466,10 @@ recommend_product = client.RecommendProduct
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `Integer` | No |  |
+| `budgetCents` | `Integer` | No |  |
 | `category` | `String` | Yes |  |
 | `limit` | `Integer` | No |  |
-| `recommendation` | `Array` | No |  |
+| `recommendations` | `Array` | No |  |
 | `vertical` | `String` | Yes |  |
 
 ### Operations

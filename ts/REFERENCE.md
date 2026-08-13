@@ -188,9 +188,9 @@ const build_quote = client.BuildQuote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `number` | No |  |
-| `experience_level` | `string` | No |  |
-| `use_case` | `string` | No |  |
+| `budgetCents` | `number` | No |  |
+| `experienceLevel` | `string` | No |  |
+| `useCase` | `string` | No |  |
 | `vertical` | `string` | Yes |  |
 
 ### Operations
@@ -251,7 +251,7 @@ const check_compatibility = client.CheckCompatibility()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `any[]` | Yes |  |
+| `productIds` | `any[]` | Yes |  |
 | `verdict` | `string` | No |  |
 
 ### Operations
@@ -262,7 +262,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.CheckCompatibility().create({
-  product_id: [],
+  productIds: [],
 })
 ```
 
@@ -312,7 +312,7 @@ const compare_product = client.CompareProduct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product_id` | `any[]` | Yes |  |
+| `productIds` | `any[]` | Yes |  |
 
 ### Operations
 
@@ -322,7 +322,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.CompareProduct().create({
-  product_id: [],
+  productIds: [],
 })
 ```
 
@@ -373,8 +373,8 @@ const get_affiliate_offer = client.GetAffiliateOffer()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `attribution` | `Record<string, any>` | No |  |
-| `offer` | `any[]` | No |  |
-| `product_id` | `string` | No |  |
+| `offers` | `any[]` | No |  |
+| `productId` | `string` | No |  |
 
 ### Operations
 
@@ -475,7 +475,7 @@ const get_product = client.GetProduct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `product` | `Record<string, any>` | No |  |
+| `verificationStatus` | `string` | No |  |
 
 ### Operations
 
@@ -525,10 +525,10 @@ const recommend_product = client.RecommendProduct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `budget_cent` | `number` | No |  |
+| `budgetCents` | `number` | No |  |
 | `category` | `string` | Yes |  |
 | `limit` | `number` | No |  |
-| `recommendation` | `any[]` | No |  |
+| `recommendations` | `any[]` | No |  |
 | `vertical` | `string` | Yes |  |
 
 ### Operations

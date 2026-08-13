@@ -59,11 +59,11 @@ def check_compatibility_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "SETUPGEARGUIDE_TEST_CHECK_COMPATIBILITY_ENTID" => {},
-    "SETUPGEARGUIDE_TEST_LIVE" => "FALSE",
+    "SETUP_GEAR_GUIDE_TEST_CHECK_COMPATIBILITY_ENTID" => {},
+    "SETUP_GEAR_GUIDE_TEST_LIVE" => "FALSE",
   })
 
-  live = env["SETUPGEARGUIDE_TEST_LIVE"] == "TRUE"
+  live = env["SETUP_GEAR_GUIDE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from setupgearguide_sdk.utility.voxgig_struct import voxgig_struct as vs
 from setupgearguide_sdk import SetupGearGuideSDK
-from core import helpers
+from setupgearguide_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _get_product_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "SETUPGEARGUIDE_TEST_GET_PRODUCT_ENTID": {},
-        "SETUPGEARGUIDE_TEST_LIVE": "FALSE",
+        "SETUP_GEAR_GUIDE_TEST_GET_PRODUCT_ENTID": {},
+        "SETUP_GEAR_GUIDE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("SETUPGEARGUIDE_TEST_LIVE") == "TRUE"
+    live = env.get("SETUP_GEAR_GUIDE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

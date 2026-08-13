@@ -43,8 +43,8 @@ class SetupGearGuideTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('SETUPGEARGUIDE_TEST_LIVE');
-        $override = self::getenv('SETUPGEARGUIDE_TEST_OVERRIDE');
+        $live = self::getenv('SETUP_GEAR_GUIDE_TEST_LIVE');
+        $override = self::getenv('SETUP_GEAR_GUIDE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class SetupGearGuideTestRunner
             }
         }
 
-        $explain = self::getenv('SETUPGEARGUIDE_TEST_EXPLAIN');
+        $explain = self::getenv('SETUP_GEAR_GUIDE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['SETUPGEARGUIDE_TEST_EXPLAIN'] = $explain;
+            $m['SETUP_GEAR_GUIDE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

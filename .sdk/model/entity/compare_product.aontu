@@ -6,7 +6,7 @@ main: kit: entity: compare_product: {
 
   fields: [
     {
-      name: "product_id"
+      name: "productIds"
       req: true
       type: "`$ARRAY`"
     }

@@ -2,15 +2,15 @@
   "existing": {
     "compare_product": {
       "COMPARE_PRODUCT00": {
-        "product_id": "PRODUCT01",
+        "productIds": [],
         "id": "COMPARE_PRODUCT00"
       },
       "COMPARE_PRODUCT01": {
-        "product_id": "PRODUCT01",
+        "productIds": [],
         "id": "COMPARE_PRODUCT01"
       },
       "COMPARE_PRODUCT02": {
-        "product_id": "PRODUCT01",
+        "productIds": [],
         "id": "COMPARE_PRODUCT02"
       }
     }
@@ -18,7 +18,7 @@
   "new": {
     "compare_product": {
       "compare_product_ref01": {
-        "product_id": "PRODUCT01"
+        "productIds": []
       }
     }
   }

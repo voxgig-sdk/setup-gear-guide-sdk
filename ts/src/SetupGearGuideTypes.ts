@@ -6,63 +6,63 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface BuildQuote {
-  budget_cent?: number
-  experience_level?: string
-  use_case?: string
+  budgetCents?: number
+  experienceLevel?: string
+  useCase?: string
   vertical: string
 }
 
 export interface BuildQuoteLoadMatch {
-  budget_cent?: number
-  experience_level?: string
-  use_case?: string
+  budgetCents?: number
+  experienceLevel?: string
+  useCase?: string
   vertical?: string
 }
 
 export interface BuildQuoteCreateData {
-  budget_cent?: number
-  experience_level?: string
-  use_case?: string
+  budgetCents?: number
+  experienceLevel?: string
+  useCase?: string
   vertical: string
 }
 
 export interface CheckCompatibility {
-  product_id: any[]
+  productIds: any[]
   verdict?: string
 }
 
 export interface CheckCompatibilityLoadMatch {
-  product_id?: any[]
+  productIds?: any[]
   verdict?: string
 }
 
 export interface CheckCompatibilityCreateData {
-  product_id: any[]
+  productIds: any[]
   verdict?: string
 }
 
 export interface CompareProduct {
-  product_id: any[]
+  productIds: any[]
 }
 
 export interface CompareProductLoadMatch {
-  product_id?: any[]
+  productIds?: any[]
 }
 
 export interface CompareProductCreateData {
-  product_id: any[]
+  productIds: any[]
 }
 
 export interface GetAffiliateOffer {
   attribution?: Record<string, any>
-  offer?: any[]
-  product_id?: string
+  offers?: any[]
+  productId?: string
 }
 
 export interface GetAffiliateOfferLoadMatch {
   attribution?: Record<string, any>
-  offer?: any[]
-  product_id?: string
+  offers?: any[]
+  productId?: string
 }
 
 export interface GetBuild {
@@ -76,34 +76,34 @@ export interface GetBuildLoadMatch {
 }
 
 export interface GetProduct {
-  product?: Record<string, any>
+  verificationStatus?: string
 }
 
 export interface GetProductLoadMatch {
-  product?: Record<string, any>
+  verificationStatus?: string
 }
 
 export interface RecommendProduct {
-  budget_cent?: number
+  budgetCents?: number
   category: string
   limit?: number
-  recommendation?: any[]
+  recommendations?: any[]
   vertical: string
 }
 
 export interface RecommendProductLoadMatch {
-  budget_cent?: number
+  budgetCents?: number
   category?: string
   limit?: number
-  recommendation?: any[]
+  recommendations?: any[]
   vertical?: string
 }
 
 export interface RecommendProductCreateData {
-  budget_cent?: number
+  budgetCents?: number
   category: string
   limit?: number
-  recommendation?: any[]
+  recommendations?: any[]
   vertical: string
 }
 

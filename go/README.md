@@ -73,12 +73,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-buildquote, err := client.BuildQuote(nil).Load(nil, nil)
+checkcompatibility, err := client.CheckCompatibility(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = buildquote
+_ = checkcompatibility
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -142,13 +142,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-buildQuote, err := client.BuildQuote(nil).Load(
+checkCompatibility, err := client.CheckCompatibility(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(buildQuote) // the returned mock data
+fmt.Println(checkCompatibility) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -272,9 +272,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"budget_cent"` |  |
-| `"experience_level"` |  |
-| `"use_case"` |  |
+| `"budgetCents"` |  |
+| `"experienceLevel"` |  |
+| `"useCase"` |  |
 | `"vertical"` |  |
 
 Operations: Create, Load.
@@ -285,7 +285,7 @@ API path: `/api/ai/build-quote`
 
 | Field | Description |
 | --- | --- |
-| `"product_id"` |  |
+| `"productIds"` |  |
 | `"verdict"` |  |
 
 Operations: Create, Load.
@@ -296,7 +296,7 @@ API path: `/api/ai/check-compatibility`
 
 | Field | Description |
 | --- | --- |
-| `"product_id"` |  |
+| `"productIds"` |  |
 
 Operations: Create, Load.
 
@@ -307,8 +307,8 @@ API path: `/api/ai/compare-products`
 | Field | Description |
 | --- | --- |
 | `"attribution"` |  |
-| `"offer"` |  |
-| `"product_id"` |  |
+| `"offers"` |  |
+| `"productId"` |  |
 
 Operations: Load.
 
@@ -329,7 +329,7 @@ API path: `/api/ai/get-build`
 
 | Field | Description |
 | --- | --- |
-| `"product"` |  |
+| `"verificationStatus"` |  |
 
 Operations: Load.
 
@@ -339,10 +339,10 @@ API path: `/api/ai/get-product`
 
 | Field | Description |
 | --- | --- |
-| `"budget_cent"` |  |
+| `"budgetCents"` |  |
 | `"category"` |  |
 | `"limit"` |  |
-| `"recommendation"` |  |
+| `"recommendations"` |  |
 | `"vertical"` |  |
 
 Operations: Create, Load.
@@ -369,9 +369,9 @@ Create an instance: `buildQuote := client.BuildQuote(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `int` |  |
-| `experience_level` | `string` |  |
-| `use_case` | `string` |  |
+| `budgetCents` | `int` |  |
+| `experienceLevel` | `string` |  |
+| `useCase` | `string` |  |
 | `vertical` | `string` |  |
 
 #### Example: Load
@@ -412,7 +412,7 @@ Create an instance: `checkCompatibility := client.CheckCompatibility(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `[]any` |  |
+| `productIds` | `[]any` |  |
 | `verdict` | `string` |  |
 
 #### Example: Load
@@ -429,7 +429,7 @@ fmt.Println(checkCompatibility) // the loaded record
 
 ```go
 result, err := client.CheckCompatibility(nil).Create(map[string]any{
-    "product_id": []any{},
+    "productIds": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -453,7 +453,7 @@ Create an instance: `compareProduct := client.CompareProduct(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product_id` | `[]any` |  |
+| `productIds` | `[]any` |  |
 
 #### Example: Load
 
@@ -469,7 +469,7 @@ fmt.Println(compareProduct) // the loaded record
 
 ```go
 result, err := client.CompareProduct(nil).Create(map[string]any{
-    "product_id": []any{},
+    "productIds": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -493,8 +493,8 @@ Create an instance: `getAffiliateOffer := client.GetAffiliateOffer(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `attribution` | `map[string]any` |  |
-| `offer` | `[]any` |  |
-| `product_id` | `string` |  |
+| `offers` | `[]any` |  |
+| `productId` | `string` |  |
 
 #### Example: Load
 
@@ -549,7 +549,7 @@ Create an instance: `getProduct := client.GetProduct(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `product` | `map[string]any` |  |
+| `verificationStatus` | `string` |  |
 
 #### Example: Load
 
@@ -577,10 +577,10 @@ Create an instance: `recommendProduct := client.RecommendProduct(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `budget_cent` | `int` |  |
+| `budgetCents` | `int` |  |
 | `category` | `string` |  |
 | `limit` | `int` |  |
-| `recommendation` | `[]any` |  |
+| `recommendations` | `[]any` |  |
 | `vertical` | `string` |  |
 
 #### Example: Load
@@ -680,11 +680,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-buildquote := client.BuildQuote(nil)
-buildquote.Load(nil, nil)
+checkcompatibility := client.CheckCompatibility(nil)
+checkcompatibility.Load(nil, nil)
 
-// buildquote.Data() now returns the buildquote data from the last load
-// buildquote.Match() returns the last match criteria
+// checkcompatibility.Data() now returns the checkcompatibility data from the last load
+// checkcompatibility.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration
