@@ -23,6 +23,7 @@ build = {
   modules = {
     ["setup-gear-guide_sdk"] = "setup-gear-guide_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

@@ -1,6 +1,20 @@
 # SetupGearGuide SDK configuration
 
 module SetupGearGuideConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -32,32 +46,21 @@ module SetupGearGuideConfig
         "build_quote" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "budgetCents",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "experienceLevel",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "useCase",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "vertical",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
           ],
           "name" => "build_quote",
@@ -67,7 +70,6 @@ module SetupGearGuideConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -82,17 +84,14 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -107,10 +106,8 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -120,18 +117,13 @@ module SetupGearGuideConfig
         "check_compatibility" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "productIds",
               "req" => true,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "verdict",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
           ],
           "name" => "check_compatibility",
@@ -141,7 +133,6 @@ module SetupGearGuideConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -156,17 +147,14 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -181,10 +169,8 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -194,11 +180,9 @@ module SetupGearGuideConfig
         "compare_product" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "productIds",
               "req" => true,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
           ],
           "name" => "compare_product",
@@ -208,7 +192,6 @@ module SetupGearGuideConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -223,17 +206,14 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -248,10 +228,8 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -261,25 +239,16 @@ module SetupGearGuideConfig
         "get_affiliate_offer" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "attribution",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "offers",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "productId",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
           ],
           "name" => "get_affiliate_offer",
@@ -289,11 +258,9 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "product_id",
                         "orig" => "product_id",
@@ -319,10 +286,8 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -332,18 +297,12 @@ module SetupGearGuideConfig
         "get_build" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "attribution",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "build",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 1,
             },
           ],
           "name" => "get_build",
@@ -353,11 +312,9 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "build_id",
                         "orig" => "build_id",
@@ -383,10 +340,8 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -396,11 +351,8 @@ module SetupGearGuideConfig
         "get_product" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "verificationStatus",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
           ],
           "name" => "get_product",
@@ -410,23 +362,18 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "product_id",
                         "orig" => "product_id",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "slug",
                         "orig" => "slug",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -449,10 +396,8 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body.product`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -462,39 +407,26 @@ module SetupGearGuideConfig
         "recommend_product" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "budgetCents",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "category",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "limit",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "recommendations",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "vertical",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
           ],
           "name" => "recommend_product",
@@ -504,7 +436,6 @@ module SetupGearGuideConfig
               "name" => "create",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "POST",
@@ -519,17 +450,14 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "create",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -544,10 +472,8 @@ module SetupGearGuideConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

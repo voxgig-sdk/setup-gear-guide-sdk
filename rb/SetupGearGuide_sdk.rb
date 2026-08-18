@@ -28,7 +28,7 @@ class SetupGearGuideSDK
     utility = SetupGearGuideUtility.new
     @_utility = utility
 
-    config = SetupGearGuideConfig.make_config
+    config = SetupGearGuideConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -40,7 +40,7 @@ class SetupGearGuideSDK
         $utility = new SetupGearGuideUtility();
         $this->_utility = $utility;
 
-        $config = SetupGearGuideConfig::make_config();
+        $config = SetupGearGuideConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
