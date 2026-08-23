@@ -182,7 +182,7 @@ $check_compatibility = $client->CheckCompatibility();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `productIds` | `array` | Yes |  |
-| `verdict` | `string` | No |  |
+| `verdict` | `string` | No | no_applicable_rules means no rule covered this product set (not a green pass). |
 
 ### Operations
 
@@ -413,7 +413,7 @@ $get_product = $client->GetProduct();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `verificationStatus` | `string` | No |  |
+| `verificationStatus` | `string` | No | Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed). |
 
 ### Operations
 
@@ -466,7 +466,7 @@ $recommend_product = $client->RecommendProduct();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `budgetCents` | `int` | No |  |
-| `category` | `string` | Yes |  |
+| `category` | `string` | Yes | category slug, e.g. |
 | `limit` | `int` | No |  |
 | `recommendations` | `array` | No |  |
 | `vertical` | `string` | Yes |  |

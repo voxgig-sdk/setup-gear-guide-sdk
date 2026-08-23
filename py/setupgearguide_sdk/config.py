@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "SetupGearGuide",
+            "slug": "setup-gear-guide",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -132,6 +135,7 @@ def make_config():
           },
           {
             "name": "verdict",
+            "short": "no_applicable_rules means no rule covered this product set (not a green pass).",
             "type": "`$STRING`",
           },
         ],
@@ -361,6 +365,7 @@ def make_config():
         "fields": [
           {
             "name": "verificationStatus",
+            "short": "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
             "type": "`$STRING`",
           },
         ],
@@ -422,6 +427,7 @@ def make_config():
           {
             "name": "category",
             "req": True,
+            "short": "category slug, e.g.",
             "type": "`$STRING`",
           },
           {

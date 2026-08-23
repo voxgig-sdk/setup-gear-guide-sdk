@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "SetupGearGuide",
+			"slug": "setup-gear-guide",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -115,6 +118,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "verdict",
+						"short": "no_applicable_rules means no rule covered this product set (not a green pass).",
 						"type": "`$STRING`",
 					},
 				},
@@ -344,6 +348,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "verificationStatus",
+						"short": "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
 						"type": "`$STRING`",
 					},
 				},
@@ -405,6 +410,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "category",
 						"req": true,
+						"short": "category slug, e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{

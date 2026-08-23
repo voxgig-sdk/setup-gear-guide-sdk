@@ -13,6 +13,7 @@ main: kit: entity: recommend_product: {
     {
       name: "category"
       req: true
+      short: "category slug, e.g."
       type: "`$STRING`"
     }
     {

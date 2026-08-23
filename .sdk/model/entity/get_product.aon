@@ -8,6 +8,7 @@ main: kit: entity: get_product: {
     {
       name: "verificationStatus"
       req: false
+      short: "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed)."
       type: "`$STRING`"
     }
   ]

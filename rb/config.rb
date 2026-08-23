@@ -19,6 +19,9 @@ module SetupGearGuideConfig
     {
       "main" => {
         "name" => "SetupGearGuide",
+        "slug" => "setup-gear-guide",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -123,6 +126,7 @@ module SetupGearGuideConfig
             },
             {
               "name" => "verdict",
+              "short" => "no_applicable_rules means no rule covered this product set (not a green pass).",
               "type" => "`$STRING`",
             },
           ],
@@ -352,6 +356,7 @@ module SetupGearGuideConfig
           "fields" => [
             {
               "name" => "verificationStatus",
+              "short" => "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
               "type" => "`$STRING`",
             },
           ],
@@ -413,6 +418,7 @@ module SetupGearGuideConfig
             {
               "name" => "category",
               "req" => true,
+              "short" => "category slug, e.g.",
               "type" => "`$STRING`",
             },
             {

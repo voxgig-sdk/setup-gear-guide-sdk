@@ -191,7 +191,7 @@ fmt.Println(checkCompatibility.GetName()) // "check_compatibility"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `productIds` | `[]any` | Yes |  |
-| `verdict` | `string` | No |  |
+| `verdict` | `string` | No | no_applicable_rules means no rule covered this product set (not a green pass). |
 
 ### Operations
 
@@ -426,7 +426,7 @@ fmt.Println(getProduct.GetName()) // "get_product"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `verificationStatus` | `string` | No |  |
+| `verificationStatus` | `string` | No | Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed). |
 
 ### Operations
 
@@ -478,7 +478,7 @@ fmt.Println(recommendProduct.GetName()) // "recommend_product"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `budgetCents` | `int` | No |  |
-| `category` | `string` | Yes |  |
+| `category` | `string` | Yes | category slug, e.g. |
 | `limit` | `int` | No |  |
 | `recommendations` | `[]any` | No |  |
 | `vertical` | `string` | Yes |  |

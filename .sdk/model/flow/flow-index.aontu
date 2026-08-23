@@ -1,9 +1,0 @@
-# Flows
-
-@"BasicBuildQuoteFlow.aontu"
-@"BasicCheckCompatibilityFlow.aontu"
-@"BasicCompareProductFlow.aontu"
-@"BasicGetAffiliateOfferFlow.aontu"
-@"BasicGetBuildFlow.aontu"
-@"BasicGetProductFlow.aontu"
-@"BasicRecommendProductFlow.aontu"

@@ -183,7 +183,7 @@ check_compatibility = client.CheckCompatibility
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `productIds` | `Array` | Yes |  |
-| `verdict` | `String` | No |  |
+| `verdict` | `String` | No | no_applicable_rules means no rule covered this product set (not a green pass). |
 
 ### Operations
 
@@ -414,7 +414,7 @@ get_product = client.GetProduct
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `verificationStatus` | `String` | No |  |
+| `verificationStatus` | `String` | No | Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed). |
 
 ### Operations
 
@@ -467,7 +467,7 @@ recommend_product = client.RecommendProduct
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `budgetCents` | `Integer` | No |  |
-| `category` | `String` | Yes |  |
+| `category` | `String` | Yes | category slug, e.g. |
 | `limit` | `Integer` | No |  |
 | `recommendations` | `Array` | No |  |
 | `vertical` | `String` | Yes |  |

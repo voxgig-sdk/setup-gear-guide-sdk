@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -316,7 +316,7 @@ API path: `/api/ai/build-quote`
 | Field | Description |
 | --- | --- |
 | `productIds` |  |
-| `verdict` |  |
+| `verdict` | no_applicable_rules means no rule covered this product set (not a green pass). |
 
 Operations: create, load.
 
@@ -359,7 +359,7 @@ API path: `/api/ai/get-build`
 
 | Field | Description |
 | --- | --- |
-| `verificationStatus` |  |
+| `verificationStatus` | Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed). |
 
 Operations: load.
 
@@ -370,7 +370,7 @@ API path: `/api/ai/get-product`
 | Field | Description |
 | --- | --- |
 | `budgetCents` |  |
-| `category` |  |
+| `category` | category slug, e.g. |
 | `limit` |  |
 | `recommendations` |  |
 | `vertical` |  |
@@ -435,7 +435,7 @@ Create an instance: `const check_compatibility = client.CheckCompatibility()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `productIds` | `any[]` |  |
-| `verdict` | `string` |  |
+| `verdict` | `string` | no_applicable_rules means no rule covered this product set (not a green pass). |
 
 #### Example: Load
 
@@ -547,7 +547,7 @@ Create an instance: `const get_product = client.GetProduct()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `verificationStatus` | `string` |  |
+| `verificationStatus` | `string` | Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed). |
 
 #### Example: Load
 
@@ -572,7 +572,7 @@ Create an instance: `const recommend_product = client.RecommendProduct()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `budgetCents` | `number` |  |
-| `category` | `string` |  |
+| `category` | `string` | category slug, e.g. |
 | `limit` | `number` |  |
 | `recommendations` | `any[]` |  |
 | `vertical` | `string` |  |

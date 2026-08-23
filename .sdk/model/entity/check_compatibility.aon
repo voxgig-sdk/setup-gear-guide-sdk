@@ -13,6 +13,7 @@ main: kit: entity: check_compatibility: {
     {
       name: "verdict"
       req: false
+      short: "no_applicable_rules means no rule covered this product set (not a green pass)."
       type: "`$STRING`"
     }
   ]

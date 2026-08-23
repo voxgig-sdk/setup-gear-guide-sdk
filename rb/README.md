@@ -264,7 +264,7 @@ API path: `/api/ai/build-quote`
 | Field | Description |
 | --- | --- |
 | `productIds` |  |
-| `verdict` |  |
+| `verdict` | no_applicable_rules means no rule covered this product set (not a green pass). |
 
 Operations: Create, Load.
 
@@ -307,7 +307,7 @@ API path: `/api/ai/get-build`
 
 | Field | Description |
 | --- | --- |
-| `verificationStatus` |  |
+| `verificationStatus` | Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed). |
 
 Operations: Load.
 
@@ -318,7 +318,7 @@ API path: `/api/ai/get-product`
 | Field | Description |
 | --- | --- |
 | `budgetCents` |  |
-| `category` |  |
+| `category` | category slug, e.g. |
 | `limit` |  |
 | `recommendations` |  |
 | `vertical` |  |
@@ -384,7 +384,7 @@ Create an instance: `check_compatibility = client.CheckCompatibility`
 | Field | Type | Description |
 | --- | --- | --- |
 | `productIds` | `Array` |  |
-| `verdict` | `String` |  |
+| `verdict` | `String` | no_applicable_rules means no rule covered this product set (not a green pass). |
 
 #### Example: Load
 
@@ -500,7 +500,7 @@ Create an instance: `get_product = client.GetProduct`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `verificationStatus` | `String` |  |
+| `verificationStatus` | `String` | Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed). |
 
 #### Example: Load
 
@@ -526,7 +526,7 @@ Create an instance: `recommend_product = client.RecommendProduct`
 | Field | Type | Description |
 | --- | --- | --- |
 | `budgetCents` | `Integer` |  |
-| `category` | `String` |  |
+| `category` | `String` | category slug, e.g. |
 | `limit` | `Integer` |  |
 | `recommendations` | `Array` |  |
 | `vertical` | `String` |  |

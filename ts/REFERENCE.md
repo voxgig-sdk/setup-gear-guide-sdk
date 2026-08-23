@@ -252,7 +252,7 @@ const check_compatibility = client.CheckCompatibility()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `productIds` | `any[]` | Yes |  |
-| `verdict` | `string` | No |  |
+| `verdict` | `string` | No | no_applicable_rules means no rule covered this product set (not a green pass). |
 
 ### Operations
 
@@ -475,7 +475,7 @@ const get_product = client.GetProduct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `verificationStatus` | `string` | No |  |
+| `verificationStatus` | `string` | No | Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed). |
 
 ### Operations
 
@@ -526,7 +526,7 @@ const recommend_product = client.RecommendProduct()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `budgetCents` | `number` | No |  |
-| `category` | `string` | Yes |  |
+| `category` | `string` | Yes | category slug, e.g. |
 | `limit` | `number` | No |  |
 | `recommendations` | `any[]` | No |  |
 | `vertical` | `string` | Yes |  |
