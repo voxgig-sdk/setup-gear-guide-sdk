@@ -156,18 +156,10 @@ GetAffiliateOffer = Struct.new(
 
 # Request payload for GetAffiliateOffer#load.
 #
-# @!attribute [rw] attribution
-#   @return [Hash, nil]
-#
-# @!attribute [rw] offers
-#   @return [Array, nil]
-#
-# @!attribute [rw] productId
-#   @return [String, nil]
+# @!attribute [rw] product_id
+#   @return [String]
 GetAffiliateOfferLoadMatch = Struct.new(
-  :attribution,
-  :offers,
-  :productId,
+  :product_id,
   keyword_init: true
 )
 
@@ -186,14 +178,10 @@ GetBuild = Struct.new(
 
 # Request payload for GetBuild#load.
 #
-# @!attribute [rw] attribution
-#   @return [Hash, nil]
-#
-# @!attribute [rw] build
-#   @return [Hash, nil]
+# @!attribute [rw] build_id
+#   @return [String]
 GetBuildLoadMatch = Struct.new(
-  :attribution,
-  :build,
+  :build_id,
   keyword_init: true
 )
 
@@ -208,10 +196,14 @@ GetProduct = Struct.new(
 
 # Request payload for GetProduct#load.
 #
-# @!attribute [rw] verificationStatus
+# @!attribute [rw] product_id
+#   @return [String, nil]
+#
+# @!attribute [rw] slug
 #   @return [String, nil]
 GetProductLoadMatch = Struct.new(
-  :verificationStatus,
+  :product_id,
+  :slug,
   keyword_init: true
 )
 

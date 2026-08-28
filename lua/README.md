@@ -444,7 +444,7 @@ Create an instance: `local get_affiliate_offer = client:GetAffiliateOffer(nil)`
 #### Example: Load
 
 ```lua
-local get_affiliate_offer, err = client:GetAffiliateOffer():load()
+local get_affiliate_offer, err = client:GetAffiliateOffer():load({ product_id = "product_id" })
 ```
 
 
@@ -468,7 +468,7 @@ Create an instance: `local get_build = client:GetBuild(nil)`
 #### Example: Load
 
 ```lua
-local get_build, err = client:GetBuild():load()
+local get_build, err = client:GetBuild():load({ build_id = "build_id" })
 ```
 
 
@@ -530,6 +530,29 @@ local recommend_product, err = client:RecommendProduct():create({
   vertical = "example_vertical", -- string
 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

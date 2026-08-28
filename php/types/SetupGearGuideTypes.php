@@ -89,9 +89,7 @@ class GetAffiliateOffer
 /** Request payload for GetAffiliateOffer#load. */
 class GetAffiliateOfferLoadMatch
 {
-    public ?array $attribution = null;
-    public ?array $offers = null;
-    public ?string $productId = null;
+    public string $product_id;
 }
 
 /** GetBuild entity data model. */
@@ -104,8 +102,7 @@ class GetBuild
 /** Request payload for GetBuild#load. */
 class GetBuildLoadMatch
 {
-    public ?array $attribution = null;
-    public ?array $build = null;
+    public string $build_id;
 }
 
 /** GetProduct entity data model. */
@@ -117,7 +114,8 @@ class GetProduct
 /** Request payload for GetProduct#load. */
 class GetProductLoadMatch
 {
-    public ?string $verificationStatus = null;
+    public ?string $product_id = null;
+    public ?string $slug = null;
 }
 
 /** RecommendProduct entity data model. */

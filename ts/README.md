@@ -505,7 +505,7 @@ Create an instance: `const get_affiliate_offer = client.GetAffiliateOffer()`
 #### Example: Load
 
 ```ts
-const get_affiliate_offer = await client.GetAffiliateOffer().load()
+const get_affiliate_offer = await client.GetAffiliateOffer().load({ product_id: 'product_id' })
 ```
 
 
@@ -529,7 +529,7 @@ Create an instance: `const get_build = client.GetBuild()`
 #### Example: Load
 
 ```ts
-const get_build = await client.GetBuild().load()
+const get_build = await client.GetBuild().load({ build_id: 'build_id' })
 ```
 
 
@@ -591,6 +591,29 @@ const recommend_product = await client.RecommendProduct().create({
   vertical: 'example_vertical',
 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

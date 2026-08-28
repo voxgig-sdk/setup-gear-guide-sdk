@@ -78,9 +78,7 @@ type GetAffiliateOffer struct {
 
 // GetAffiliateOfferLoadMatch is the typed request payload for GetAffiliateOffer.LoadTyped.
 type GetAffiliateOfferLoadMatch struct {
-	Attribution *map[string]any `json:"attribution,omitempty"`
-	Offers *[]any `json:"offers,omitempty"`
-	ProductId *string `json:"productId,omitempty"`
+	ProductId string `json:"product_id"`
 }
 
 // GetBuild is the typed data model for the get_build entity.
@@ -91,8 +89,7 @@ type GetBuild struct {
 
 // GetBuildLoadMatch is the typed request payload for GetBuild.LoadTyped.
 type GetBuildLoadMatch struct {
-	Attribution *map[string]any `json:"attribution,omitempty"`
-	Build *map[string]any `json:"build,omitempty"`
+	BuildId string `json:"build_id"`
 }
 
 // GetProduct is the typed data model for the get_product entity.
@@ -102,7 +99,8 @@ type GetProduct struct {
 
 // GetProductLoadMatch is the typed request payload for GetProduct.LoadTyped.
 type GetProductLoadMatch struct {
-	VerificationStatus *string `json:"verificationStatus,omitempty"`
+	ProductId *string `json:"product_id,omitempty"`
+	Slug *string `json:"slug,omitempty"`
 }
 
 // RecommendProduct is the typed data model for the recommend_product entity.

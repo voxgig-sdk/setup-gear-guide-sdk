@@ -82,10 +82,8 @@ class GetAffiliateOffer(TypedDict, total=False):
     productId: str
 
 
-class GetAffiliateOfferLoadMatch(TypedDict, total=False):
-    attribution: dict
-    offers: list
-    productId: str
+class GetAffiliateOfferLoadMatch(TypedDict):
+    product_id: str
 
 
 class GetBuild(TypedDict, total=False):
@@ -93,9 +91,8 @@ class GetBuild(TypedDict, total=False):
     build: dict
 
 
-class GetBuildLoadMatch(TypedDict, total=False):
-    attribution: dict
-    build: dict
+class GetBuildLoadMatch(TypedDict):
+    build_id: str
 
 
 class GetProduct(TypedDict, total=False):
@@ -103,7 +100,8 @@ class GetProduct(TypedDict, total=False):
 
 
 class GetProductLoadMatch(TypedDict, total=False):
-    verificationStatus: str
+    product_id: str
+    slug: str
 
 
 class RecommendProductRequired(TypedDict):

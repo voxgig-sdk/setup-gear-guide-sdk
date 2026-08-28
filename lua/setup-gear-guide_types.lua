@@ -51,23 +51,21 @@
 ---@field productId? string
 
 ---@class GetAffiliateOfferLoadMatch
----@field attribution? table
----@field offers? table
----@field productId? string
+---@field product_id string
 
 ---@class GetBuild
 ---@field attribution? table
 ---@field build? table
 
 ---@class GetBuildLoadMatch
----@field attribution? table
----@field build? table
+---@field build_id string
 
 ---@class GetProduct
 ---@field verificationStatus? string
 
 ---@class GetProductLoadMatch
----@field verificationStatus? string
+---@field product_id? string
+---@field slug? string
 
 ---@class RecommendProduct
 ---@field budgetCents? number

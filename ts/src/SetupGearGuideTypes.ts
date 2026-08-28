@@ -60,9 +60,7 @@ export interface GetAffiliateOffer {
 }
 
 export interface GetAffiliateOfferLoadMatch {
-  attribution?: Record<string, any>
-  offers?: any[]
-  productId?: string
+  product_id: string
 }
 
 export interface GetBuild {
@@ -71,8 +69,7 @@ export interface GetBuild {
 }
 
 export interface GetBuildLoadMatch {
-  attribution?: Record<string, any>
-  build?: Record<string, any>
+  build_id: string
 }
 
 export interface GetProduct {
@@ -80,7 +77,8 @@ export interface GetProduct {
 }
 
 export interface GetProductLoadMatch {
-  verificationStatus?: string
+  product_id?: string
+  slug?: string
 }
 
 export interface RecommendProduct {
