@@ -41,10 +41,16 @@ main: kit: entity: get_affiliate_offer: {
           }
           method: "GET"
           orig: "/api/ai/get-affiliate-offers"
-          parts: [
-            "api"
-            "ai"
-            "get-affiliate-offers"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "get-affiliate-offers"
+            }
           ]
           select: {
             exist: [

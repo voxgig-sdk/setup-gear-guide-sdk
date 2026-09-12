@@ -1,6 +1,14 @@
 # SetupGearGuide SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -87,16 +95,27 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/ai/build-quote",
-                "parts": [
-                  "api",
-                  "ai",
-                  "build-quote",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "build-quote",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "build-quote",
+                ],
               },
             ],
           },
@@ -109,16 +128,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ai/build-quote",
-                "parts": [
-                  "api",
-                  "ai",
-                  "build-quote",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "build-quote",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "build-quote",
+                ],
               },
             ],
           },
@@ -151,16 +181,27 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/ai/check-compatibility",
-                "parts": [
-                  "api",
-                  "ai",
-                  "check-compatibility",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "check-compatibility",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "check-compatibility",
+                ],
               },
             ],
           },
@@ -173,16 +214,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ai/check-compatibility",
-                "parts": [
-                  "api",
-                  "ai",
-                  "check-compatibility",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "check-compatibility",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "check-compatibility",
+                ],
               },
             ],
           },
@@ -210,16 +262,27 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/ai/compare-products",
-                "parts": [
-                  "api",
-                  "ai",
-                  "compare-products",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "compare-products",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "compare-products",
+                ],
               },
             ],
           },
@@ -232,16 +295,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ai/compare-products",
-                "parts": [
-                  "api",
-                  "ai",
-                  "compare-products",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "compare-products",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "compare-products",
+                ],
               },
             ],
           },
@@ -286,10 +360,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ai/get-affiliate-offers",
-                "parts": [
-                  "api",
-                  "ai",
-                  "get-affiliate-offers",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "get-affiliate-offers",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -300,6 +380,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "get-affiliate-offers",
+                ],
               },
             ],
           },
@@ -340,10 +425,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ai/get-build",
-                "parts": [
-                  "api",
-                  "ai",
-                  "get-build",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "get-build",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -354,6 +445,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "get-build",
+                ],
               },
             ],
           },
@@ -396,10 +492,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ai/get-product",
-                "parts": [
-                  "api",
-                  "ai",
-                  "get-product",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "get-product",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -411,6 +513,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.product`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "get-product",
+                ],
               },
             ],
           },
@@ -456,16 +563,27 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/ai/recommend-products",
-                "parts": [
-                  "api",
-                  "ai",
-                  "recommend-products",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "recommend-products",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "recommend-products",
+                ],
               },
             ],
           },
@@ -478,16 +596,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/ai/recommend-products",
-                "parts": [
-                  "api",
-                  "ai",
-                  "recommend-products",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "ai",
+                  },
+                  {
+                    "lit": "recommend-products",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "ai",
+                  "recommend-products",
+                ],
               },
             ],
           },

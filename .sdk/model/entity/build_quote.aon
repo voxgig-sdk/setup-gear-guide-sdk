@@ -35,10 +35,16 @@ main: kit: entity: build_quote: {
         {
           method: "POST"
           orig: "/api/ai/build-quote"
-          parts: [
-            "api"
-            "ai"
-            "build-quote"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "build-quote"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -53,10 +59,16 @@ main: kit: entity: build_quote: {
         {
           method: "GET"
           orig: "/api/ai/build-quote"
-          parts: [
-            "api"
-            "ai"
-            "build-quote"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "build-quote"
+            }
           ]
           transform: {
             req: "`reqdata`"

@@ -36,10 +36,16 @@ main: kit: entity: get_build: {
           }
           method: "GET"
           orig: "/api/ai/get-build"
-          parts: [
-            "api"
-            "ai"
-            "get-build"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "get-build"
+            }
           ]
           select: {
             exist: [

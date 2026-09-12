@@ -39,10 +39,16 @@ main: kit: entity: get_product: {
           }
           method: "GET"
           orig: "/api/ai/get-product"
-          parts: [
-            "api"
-            "ai"
-            "get-product"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "get-product"
+            }
           ]
           select: {
             exist: [

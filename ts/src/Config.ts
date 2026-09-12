@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -113,16 +124,27 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/ai/build-quote",
-              "parts": [
-                "api",
-                "ai",
-                "build-quote"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "build-quote"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "build-quote"
+              ]
             }
           ]
         },
@@ -135,16 +157,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/build-quote",
-              "parts": [
-                "api",
-                "ai",
-                "build-quote"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "build-quote"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "build-quote"
+              ]
             }
           ]
         }
@@ -177,16 +210,27 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/ai/check-compatibility",
-              "parts": [
-                "api",
-                "ai",
-                "check-compatibility"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "check-compatibility"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "check-compatibility"
+              ]
             }
           ]
         },
@@ -199,16 +243,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/check-compatibility",
-              "parts": [
-                "api",
-                "ai",
-                "check-compatibility"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "check-compatibility"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "check-compatibility"
+              ]
             }
           ]
         }
@@ -236,16 +291,27 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/ai/compare-products",
-              "parts": [
-                "api",
-                "ai",
-                "compare-products"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "compare-products"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "compare-products"
+              ]
             }
           ]
         },
@@ -258,16 +324,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/compare-products",
-              "parts": [
-                "api",
-                "ai",
-                "compare-products"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "compare-products"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "compare-products"
+              ]
             }
           ]
         }
@@ -312,10 +389,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/get-affiliate-offers",
-              "parts": [
-                "api",
-                "ai",
-                "get-affiliate-offers"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "get-affiliate-offers"
+                }
               ],
               "select": {
                 "exist": [
@@ -325,7 +408,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "get-affiliate-offers"
+              ]
             }
           ]
         }
@@ -366,10 +454,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/get-build",
-              "parts": [
-                "api",
-                "ai",
-                "get-build"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "get-build"
+                }
               ],
               "select": {
                 "exist": [
@@ -379,7 +473,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "get-build"
+              ]
             }
           ]
         }
@@ -422,10 +521,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/get-product",
-              "parts": [
-                "api",
-                "ai",
-                "get-product"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "get-product"
+                }
               ],
               "select": {
                 "exist": [
@@ -436,7 +541,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.product`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "get-product"
+              ]
             }
           ]
         }
@@ -482,16 +592,27 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/api/ai/recommend-products",
-              "parts": [
-                "api",
-                "ai",
-                "recommend-products"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "recommend-products"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "recommend-products"
+              ]
             }
           ]
         },
@@ -504,16 +625,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/recommend-products",
-              "parts": [
-                "api",
-                "ai",
-                "recommend-products"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "ai"
+                },
+                {
+                  "lit": "recommend-products"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "ai",
+                "recommend-products"
+              ]
             }
           ]
         }
@@ -529,6 +661,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

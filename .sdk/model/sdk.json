@@ -69,10 +69,16 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/api/ai/build-quote",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "build-quote"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "build-quote"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -92,10 +98,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ai/build-quote",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "build-quote"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "build-quote"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -142,10 +154,16 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/api/ai/check-compatibility",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "check-compatibility"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "check-compatibility"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -165,10 +183,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ai/check-compatibility",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "check-compatibility"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "check-compatibility"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -208,10 +232,16 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/api/ai/compare-products",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "compare-products"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "compare-products"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -231,10 +261,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ai/compare-products",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "compare-products"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "compare-products"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -297,10 +333,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ai/get-affiliate-offers",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "get-affiliate-offers"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "get-affiliate-offers"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -361,10 +403,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ai/get-build",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "get-build"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "get-build"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -428,10 +476,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ai/get-product",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "get-product"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "get-product"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -501,10 +555,16 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/api/ai/recommend-products",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "recommend-products"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "recommend-products"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -524,10 +584,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/ai/recommend-products",
-                  "parts": [
-                    "api",
-                    "ai",
-                    "recommend-products"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "ai"
+                    },
+                    {
+                      "lit": "recommend-products"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -607,8 +673,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -950,6 +1019,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -975,6 +1047,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1026,6 +1102,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1050,6 +1127,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1101,6 +1179,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1125,6 +1204,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1165,6 +1245,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1190,6 +1273,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -1224,6 +1310,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1249,6 +1338,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1289,6 +1381,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1314,6 +1409,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -1359,6 +1457,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1384,6 +1485,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -1401,11 +1505,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -1434,6 +1533,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1458,6 +1560,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

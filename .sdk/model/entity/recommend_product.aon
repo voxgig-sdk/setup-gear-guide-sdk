@@ -41,10 +41,16 @@ main: kit: entity: recommend_product: {
         {
           method: "POST"
           orig: "/api/ai/recommend-products"
-          parts: [
-            "api"
-            "ai"
-            "recommend-products"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "recommend-products"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -59,10 +65,16 @@ main: kit: entity: recommend_product: {
         {
           method: "GET"
           orig: "/api/ai/recommend-products"
-          parts: [
-            "api"
-            "ai"
-            "recommend-products"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "recommend-products"
+            }
           ]
           transform: {
             req: "`reqdata`"

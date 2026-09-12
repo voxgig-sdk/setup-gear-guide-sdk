@@ -92,15 +92,26 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/ai/build-quote',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'build-quote',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'build-quote',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'build-quote',
                   ],
                 ],
               ],
@@ -114,15 +125,26 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/build-quote',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'build-quote',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'build-quote',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'build-quote',
                   ],
                 ],
               ],
@@ -156,15 +178,26 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/ai/check-compatibility',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'check-compatibility',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'check-compatibility',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'check-compatibility',
                   ],
                 ],
               ],
@@ -178,15 +211,26 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/check-compatibility',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'check-compatibility',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'check-compatibility',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'check-compatibility',
                   ],
                 ],
               ],
@@ -215,15 +259,26 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/ai/compare-products',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'compare-products',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'compare-products',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'compare-products',
                   ],
                 ],
               ],
@@ -237,15 +292,26 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/compare-products',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'compare-products',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'compare-products',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'compare-products',
                   ],
                 ],
               ],
@@ -291,10 +357,16 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/get-affiliate-offers',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'get-affiliate-offers',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'get-affiliate-offers',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -304,6 +376,11 @@ class SetupGearGuideConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'get-affiliate-offers',
                   ],
                 ],
               ],
@@ -345,10 +422,16 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/get-build',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'get-build',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'get-build',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -358,6 +441,11 @@ class SetupGearGuideConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'get-build',
                   ],
                 ],
               ],
@@ -401,10 +489,16 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/get-product',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'get-product',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'get-product',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -415,6 +509,11 @@ class SetupGearGuideConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.product`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'get-product',
                   ],
                 ],
               ],
@@ -461,15 +560,26 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/ai/recommend-products',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'recommend-products',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'recommend-products',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'recommend-products',
                   ],
                 ],
               ],
@@ -483,15 +593,26 @@ class SetupGearGuideConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/recommend-products',
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'recommend-products',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'ai',
+                    ],
+                    [
+                      'lit' => 'recommend-products',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'recommend-products',
                   ],
                 ],
               ],

@@ -26,10 +26,16 @@ main: kit: entity: check_compatibility: {
         {
           method: "POST"
           orig: "/api/ai/check-compatibility"
-          parts: [
-            "api"
-            "ai"
-            "check-compatibility"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "check-compatibility"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -44,10 +50,16 @@ main: kit: entity: check_compatibility: {
         {
           method: "GET"
           orig: "/api/ai/check-compatibility"
-          parts: [
-            "api"
-            "ai"
-            "check-compatibility"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "check-compatibility"
+            }
           ]
           transform: {
             req: "`reqdata`"

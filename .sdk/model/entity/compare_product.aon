@@ -20,10 +20,16 @@ main: kit: entity: compare_product: {
         {
           method: "POST"
           orig: "/api/ai/compare-products"
-          parts: [
-            "api"
-            "ai"
-            "compare-products"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "compare-products"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -38,10 +44,16 @@ main: kit: entity: compare_product: {
         {
           method: "GET"
           orig: "/api/ai/compare-products"
-          parts: [
-            "api"
-            "ai"
-            "compare-products"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "compare-products"
+            }
           ]
           transform: {
             req: "`reqdata`"
