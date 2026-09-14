@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { SetupGearGuideSDK } from '@voxgig-sdk/setup-gear-guide'
+import { SetupGearGuideSDK } from '@voxgig-sdk/setup-gear-guide-sdk'
 
 const client = new SetupGearGuideSDK()
 ```
@@ -675,7 +675,7 @@ setup-gear-guide/
 Import the SDK from the package root:
 
 ```ts
-import { SetupGearGuideSDK } from '@voxgig-sdk/setup-gear-guide'
+import { SetupGearGuideSDK } from '@voxgig-sdk/setup-gear-guide-sdk'
 ```
 
 ### Entity state

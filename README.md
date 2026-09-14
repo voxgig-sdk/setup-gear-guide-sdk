@@ -105,7 +105,7 @@ local result, err = client:CheckCompatibility():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/releases) |
+| TypeScript | `@voxgig-sdk/setup-gear-guide-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/releases) |
 | Python | `voxgig-sdk-setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/releases) |
 | PHP | `voxgig-sdk/setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/setup-gear-guide-sdk/go` | `go get github.com/voxgig-sdk/setup-gear-guide-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:CheckCompatibility():load()
 ### TypeScript
 
 ```ts
-import { SetupGearGuideSDK } from '@voxgig-sdk/setup-gear-guide'
+import { SetupGearGuideSDK } from '@voxgig-sdk/setup-gear-guide-sdk'
 
 const client = new SetupGearGuideSDK()
 
