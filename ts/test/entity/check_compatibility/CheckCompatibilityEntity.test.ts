@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { SetupGearGuideSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('CheckCompatibilityEntity', async () => {
 
     const live = 'TRUE' === process.env.SETUP_GEAR_GUIDE_TEST_LIVE
     for (const op of ['create', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'check_compatibility.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'check_compatibility.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set SETUP_GEAR_GUIDE_TEST_CHECK_COMPATIBILITY_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"productIds","req":true,"type":"`$ARRAY`","index$":0},{"active":true,"name":"verdict","req":false,"short":"no_applicable_rules means no rule covered this product set (not a green pass).","type":"`$STRING`","index$":1}],"name":"check_compatibility","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{},"contract":{"id":"POST /api/ai/check-compatibility","json":"{\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"productIds\":{\"items\":{\"type\":\"string\"},\"minItems\":2,\"type\":\"array\"}},\"required\":[\"productIds\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"attribution\":{\"affiliateDisclosure\":\"Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.\",\"canonicalUrl\":\"https://setupgearguide.com/photo-video/cameras/sony-a7-iv\",\"dataFreshness\":\"2026-06-11\",\"generatedBy\":\"Setup Gear Guide\",\"methodologyUrl\":\"https://setupgearguide.com/methodology\",\"sourceConfidence\":\"high\"},\"checks\":[{\"confidence\":\"high\",\"message\":\"Both use Sony E-mount.\",\"relatedProductId\":\"sony-fe-24-70-gm2\",\"rule\":\"lens-mount-match\",\"severity\":\"info\",\"status\":\"pass\",\"subjectProductId\":\"sony-a7-iv\"},{\"confidence\":\"low\",\"message\":\"Sync spec not yet sourced — informational only.\",\"relatedProductId\":null,\"rule\":\"flash-sync\",\"severity\":\"info\",\"status\":\"unknown\",\"subjectProductId\":\"sony-a7-iv\"}],\"note\":\"Unknown results mean a needed spec is not verified yet — the engine reports uncertainty instead of guessing.\",\"verdict\":\"pass_with_unknowns\"},\"schema\":{\"properties\":{\"verdict\":{\"description\":\"no_applicable_rules means no rule covered this product set (not a green pass).\",\"enum\":[\"pass\",\"pass_with_unknowns\",\"warn\",\"fail\",\"no_applicable_rules\"],\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"verdict: pass | pass_with_unknowns | warn | fail | no_applicable_rules, with per-rule checks.\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request (bad_json | missing_param | cross_vertical)\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unknown product (not_found)\"},\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limited — Retry-After header set\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"POST","orig":"/api/ai/check-compatibility","segments":[{"lit":"api"},{"lit":"ai"},{"lit":"check-compatibility"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{},"contract":{"id":"GET /api/ai/check-compatibility","json":"{\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/ai/check-compatibility","segments":[{"lit":"api"},{"lit":"ai"},{"lit":"check-compatibility"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"check_compatibility","name__orig":"check_compatibility","Name":"CheckCompatibility","name_":"check_compatibility","name-":"check-compatibility","NAME":"CHECK_COMPATIBILITY","index$":1}, {"active":true,"entity":"check_compatibility","key$":"BasicCheckCompatibilityFlow","kind":"basic","name":"BasicCheckCompatibilityFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"check_compatibility_ref01"},"match":{},"op":"create","spec":[],"valid":[],"index$":0},{"active":true,"data":{},"input":{"ref":"check_compatibility_ref01","srcdatavar":"check_compatibility_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-check_compatibility_ref01"}}],"index$":1}]}, 'CheckCompatibility')
     }
     const client = setup.client
     const struct = setup.struct
@@ -115,13 +114,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['SETUP_GEAR_GUIDE_TEST_CHECK_COMPATIBILITY_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'SETUP_GEAR_GUIDE_TEST_CHECK_COMPATIBILITY_ENTID': idmap,
     'SETUP_GEAR_GUIDE_TEST_LIVE': 'FALSE',
@@ -132,7 +124,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.SETUP_GEAR_GUIDE_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['SETUP_GEAR_GUIDE_TEST_CHECK_COMPATIBILITY_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new SetupGearGuideSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -144,7 +142,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -157,7 +156,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.SETUP_GEAR_GUIDE_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

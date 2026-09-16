@@ -29,5 +29,238 @@
         "productId": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /api/ai/get-affiliate-offers": {
+      "provenance": "operation-contract",
+      "contract": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "productId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "attribution": {
+                    "affiliateDisclosure": "Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.",
+                    "canonicalUrl": "https://setupgearguide.com/photo-video/cameras/sony-a7-iv",
+                    "dataFreshness": null,
+                    "generatedBy": "Setup Gear Guide",
+                    "methodologyUrl": "https://setupgearguide.com/methodology",
+                    "sourceConfidence": null
+                  },
+                  "offers": [
+                    {
+                      "affiliate": true,
+                      "affiliateUrl": "https://www.amazon.com/dp/B09JZTCWNB?tag=setupgearguide-20",
+                      "availability": "in_stock",
+                      "disclosureRequired": true,
+                      "estimatedPriceCents": null,
+                      "finalUrl": "https://setupgearguide.com/go/off_sony-a7-iv__amazon__US",
+                      "normalUrl": "https://www.amazon.com/dp/B09JZTCWNB",
+                      "priceConfidence": "high",
+                      "priceLastChecked": "2026-06-11",
+                      "retailer": "Amazon"
+                    },
+                    {
+                      "affiliate": false,
+                      "affiliateUrl": null,
+                      "availability": "in_stock",
+                      "disclosureRequired": true,
+                      "estimatedPriceCents": 249800,
+                      "finalUrl": "https://setupgearguide.com/go/off_sony-a7-iv__bhphoto__US",
+                      "normalUrl": "https://www.bhphotovideo.com/c/product/1672167-REG",
+                      "priceConfidence": "medium",
+                      "priceLastChecked": "2026-06-11",
+                      "retailer": "B&H Photo"
+                    }
+                  ],
+                  "productId": "sony-a7-iv"
+                }
+              }
+            },
+            "description": "Offers with affiliate flags, disclosureRequired, price freshness. estimatedPriceCents may be null when retailer policy hides price."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "enum": [
+                            "bad_json",
+                            "missing_param",
+                            "bad_vertical",
+                            "cross_vertical",
+                            "not_found",
+                            "method_not_allowed",
+                            "no_template",
+                            "rate_limited",
+                            "internal"
+                          ],
+                          "type": "string"
+                        },
+                        "docsUrl": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Missing productId (missing_param)"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "enum": [
+                            "bad_json",
+                            "missing_param",
+                            "bad_vertical",
+                            "cross_vertical",
+                            "not_found",
+                            "method_not_allowed",
+                            "no_template",
+                            "rate_limited",
+                            "internal"
+                          ],
+                          "type": "string"
+                        },
+                        "docsUrl": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unknown product (not_found)"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "enum": [
+                            "bad_json",
+                            "missing_param",
+                            "bad_vertical",
+                            "cross_vertical",
+                            "not_found",
+                            "method_not_allowed",
+                            "no_template",
+                            "rate_limited",
+                            "internal"
+                          ],
+                          "type": "string"
+                        },
+                        "docsUrl": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Rate limited — Retry-After header set"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "enum": [
+                            "bad_json",
+                            "missing_param",
+                            "bad_vertical",
+                            "cross_vertical",
+                            "not_found",
+                            "method_not_allowed",
+                            "no_template",
+                            "rate_limited",
+                            "internal"
+                          ],
+                          "type": "string"
+                        },
+                        "docsUrl": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

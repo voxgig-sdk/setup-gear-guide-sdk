@@ -1,12 +1,18 @@
 # SetupGearGuide SDK feature factory
 
 from setupgearguide_sdk.feature.base_feature import SetupGearGuideBaseFeature
+from setupgearguide_sdk.feature.ratelimit_feature import SetupGearGuideRatelimitFeature
+from setupgearguide_sdk.feature.retry_feature import SetupGearGuideRetryFeature
 from setupgearguide_sdk.feature.test_feature import SetupGearGuideTestFeature
+from setupgearguide_sdk.feature.timeout_feature import SetupGearGuideTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: SetupGearGuideBaseFeature(),
+    "ratelimit": lambda: SetupGearGuideRatelimitFeature(),
+    "retry": lambda: SetupGearGuideRetryFeature(),
     "test": lambda: SetupGearGuideTestFeature(),
+    "timeout": lambda: SetupGearGuideTimeoutFeature(),
 }
 
 

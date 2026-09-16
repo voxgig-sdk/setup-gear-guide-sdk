@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { SetupGearGuideSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('BuildQuoteEntity', async () => {
 
     const live = 'TRUE' === process.env.SETUP_GEAR_GUIDE_TEST_LIVE
     for (const op of ['create', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'build_quote.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'build_quote.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set SETUP_GEAR_GUIDE_TEST_BUILD_QUOTE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"budgetCents","req":false,"type":"`$INTEGER`","index$":0},{"active":true,"name":"experienceLevel","req":false,"type":"`$STRING`","index$":1},{"active":true,"name":"useCase","req":false,"type":"`$STRING`","index$":2},{"active":true,"name":"vertical","req":true,"type":"`$STRING`","index$":3}],"name":"build_quote","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{},"contract":{"id":"POST /api/ai/build-quote","json":"{\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":{\"budgetCents\":150000,\"experienceLevel\":\"intermediate\",\"useCase\":\"gaming\",\"vertical\":\"pc-builds\"},\"schema\":{\"properties\":{\"budgetCents\":{\"minimum\":1,\"type\":\"integer\"},\"experienceLevel\":{\"enum\":[\"beginner\",\"intermediate\",\"advanced\",\"pro\",\"no_compromise\"],\"type\":\"string\"},\"useCase\":{\"type\":\"string\"},\"vertical\":{\"enum\":[\"sim-racing\",\"photo-video\",\"music-production\",\"pc-builds\"],\"type\":\"string\"}},\"required\":[\"vertical\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"alternativeBuilds\":[],\"attribution\":{\"affiliateDisclosure\":\"Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.\",\"canonicalUrl\":\"https://setupgearguide.com/build-quotes/qt_3kPq9XmZ2aBc\",\"dataFreshness\":null,\"generatedBy\":\"Setup Gear Guide\",\"methodologyUrl\":\"https://setupgearguide.com/methodology\",\"sourceConfidence\":null},\"cached\":false,\"canonicalBuildUrl\":\"https://setupgearguide.com/build-quotes/qt_3kPq9XmZ2aBc\",\"compatibilityWarnings\":[{\"message\":\"PSU has adequate headroom.\",\"rule\":\"psu-wattage-headroom\",\"severity\":\"info\",\"status\":\"pass\"}],\"confidence\":\"high\",\"estimatedTotalCents\":99800,\"items\":[{\"category\":\"cpus\",\"estimatedPriceCents\":39900,\"name\":\"AMD Ryzen 7 7800X3D\",\"offersUrl\":\"https://setupgearguide.com/api/ai/get-affiliate-offers?productId=amd-ryzen-7-7800x3d\",\"productId\":\"amd-ryzen-7-7800x3d\",\"productUrl\":\"https://setupgearguide.com/pc-builds/cpus/amd-ryzen-7-7800x3d\",\"reasoning\":\"Best gaming CPU at this tier\",\"swappedForBudget\":null},{\"category\":\"gpus\",\"estimatedPriceCents\":59900,\"name\":\"NVIDIA RTX 4070 Super\",\"offersUrl\":\"https://setupgearguide.com/api/ai/get-affiliate-offers?productId=nvidia-rtx-4070-super\",\"productId\":\"nvidia-rtx-4070-super\",\"productUrl\":\"https://setupgearguide.com/pc-builds/gpus/nvidia-rtx-4070-super\",\"reasoning\":\"1440p sweet spot\",\"swappedForBudget\":null}],\"priceAlertUrl\":\"https://setupgearguide.com/build-quotes/qt_3kPq9XmZ2aBc#alerts\",\"quoteId\":\"qt_3kPq9XmZ2aBc\",\"recommendedUpgradeOrder\":[{\"category\":\"gpus\",\"from\":\"nvidia-rtx-4070-super\",\"to\":\"nvidia-rtx-4080-super\"}],\"saveBuildUrl\":\"https://setupgearguide.com/pc-builds/builder?quote=qt_3kPq9XmZ2aBc\",\"unpricedItems\":0}}},\"description\":\"Quote with persisted quoteId; identical normalized requests reuse the cached quote (cached:true, x-cache:hit).\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request (bad_json | bad_vertical)\"},\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limited — Retry-After header set\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal error (no_template when no published template, or internal)\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"POST","orig":"/api/ai/build-quote","segments":[{"lit":"api"},{"lit":"ai"},{"lit":"build-quote"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{},"contract":{"id":"GET /api/ai/build-quote","json":"{\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/ai/build-quote","segments":[{"lit":"api"},{"lit":"ai"},{"lit":"build-quote"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"build_quote","name__orig":"build_quote","Name":"BuildQuote","name_":"build_quote","name-":"build-quote","NAME":"BUILD_QUOTE","index$":0}, {"active":true,"entity":"build_quote","key$":"BasicBuildQuoteFlow","kind":"basic","name":"BasicBuildQuoteFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"build_quote_ref01"},"match":{},"op":"create","spec":[],"valid":[],"index$":0},{"active":true,"data":{},"input":{"ref":"build_quote_ref01","srcdatavar":"build_quote_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-build_quote_ref01"}}],"index$":1}]}, 'BuildQuote')
     }
     const client = setup.client
     const struct = setup.struct
@@ -115,13 +114,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['SETUP_GEAR_GUIDE_TEST_BUILD_QUOTE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'SETUP_GEAR_GUIDE_TEST_BUILD_QUOTE_ENTID': idmap,
     'SETUP_GEAR_GUIDE_TEST_LIVE': 'FALSE',
@@ -132,7 +124,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.SETUP_GEAR_GUIDE_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['SETUP_GEAR_GUIDE_TEST_BUILD_QUOTE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new SetupGearGuideSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -144,7 +142,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -157,7 +156,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.SETUP_GEAR_GUIDE_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 
