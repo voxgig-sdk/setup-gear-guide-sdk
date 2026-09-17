@@ -127,27 +127,27 @@ class Config {
 
     entity: {
       
-      build_quote: {
-      },
-
-      check_compatibility: {
-      },
-
-      compare_product: {
-      },
-
-      get_affiliate_offer: {
-      },
-
-      get_build: {
-      },
-
-      get_product: {
-      },
-
-      recommend_product: {
-      },
-
+        build_quote: {
+        },
+  
+        check_compatibility: {
+        },
+  
+        compare_product: {
+        },
+  
+        get_affiliate_offer: {
+        },
+  
+        get_build: {
+        },
+  
+        get_product: {
+        },
+  
+        recommend_product: {
+        },
+  
     }
   }
 

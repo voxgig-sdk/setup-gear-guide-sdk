@@ -105,12 +105,12 @@ local result, err = client:CheckCompatibility():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/setup-gear-guide-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/releases) |
-| Python | `voxgig-sdk-setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/releases) |
-| PHP | `voxgig-sdk/setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/releases) |
+| TypeScript | `@voxgig-sdk/setup-gear-guide-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/tags) |
+| Python | `voxgig-sdk-setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/tags) |
+| PHP | `voxgig-sdk/setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/setup-gear-guide-sdk/go` | `go get github.com/voxgig-sdk/setup-gear-guide-sdk/go@latest` |
-| Ruby | `voxgig-sdk-setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/releases) |
-| Lua | `voxgig-sdk-setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/releases) |
+| Ruby | `voxgig-sdk-setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/tags) |
+| Lua | `voxgig-sdk-setup-gear-guide` | publish pending — [install from git tag](https://github.com/voxgig-sdk/setup-gear-guide-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/setup-gear-guide-sdk/go-cli` | `go install github.com/voxgig-sdk/setup-gear-guide-sdk/go-cli/cmd/setup-gear-guide@latest` |
 | Go MCP server | `github.com/voxgig-sdk/setup-gear-guide-sdk/go-mcp` | `go get github.com/voxgig-sdk/setup-gear-guide-sdk/go-mcp@latest` |
 
