@@ -1,0 +1,36 @@
+# BasicRecommendProductFlow
+
+main: kit: flow: BasicRecommendProductFlow:
+{
+  entity: "recommend_product",
+  kind: "basic",
+  name: "BasicRecommendProductFlow",
+  step: [
+    {
+      i: {
+        ref: "recommend_product_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "recommend_product_ref01",
+        srcdatavar: "recommend_product_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-recommend_product_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRecommendProductFlow"
+}

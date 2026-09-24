@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -157,20 +150,24 @@ class Config {
       "fields": [
         {
           "name": "budgetCents",
+          "title": "Budget Cents",
           "type": "`$INTEGER`"
         },
         {
           "name": "experienceLevel",
+          "title": "Experience Level",
           "type": "`$STRING`"
         },
         {
           "name": "useCase",
+          "title": "Use Case",
           "type": "`$STRING`"
         },
         {
           "name": "vertical",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "Vertical",
+          "type": "`$STRING`",
+          "req": true
         }
       ],
       "name": "build_quote",
@@ -180,7 +177,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/api/ai/build-quote",
@@ -195,16 +191,18 @@ class Config {
                   "lit": "build-quote"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "build-quote"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -213,7 +211,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/build-quote",
@@ -228,16 +225,18 @@ class Config {
                   "lit": "build-quote"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "build-quote"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -250,13 +249,15 @@ class Config {
       "fields": [
         {
           "name": "productIds",
-          "req": true,
-          "type": "`$ARRAY`"
+          "title": "Product Ids",
+          "type": "`$ARRAY`",
+          "req": true
         },
         {
           "name": "verdict",
-          "short": "no_applicable_rules means no rule covered this product set (not a green pass).",
-          "type": "`$STRING`"
+          "title": "Verdict",
+          "type": "`$STRING`",
+          "short": "no_applicable_rules means no rule covered this product set (not a green pass)."
         }
       ],
       "name": "check_compatibility",
@@ -266,7 +267,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/api/ai/check-compatibility",
@@ -281,16 +281,18 @@ class Config {
                   "lit": "check-compatibility"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "check-compatibility"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -299,7 +301,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/check-compatibility",
@@ -314,16 +315,18 @@ class Config {
                   "lit": "check-compatibility"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "check-compatibility"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -336,8 +339,9 @@ class Config {
       "fields": [
         {
           "name": "productIds",
-          "req": true,
-          "type": "`$ARRAY`"
+          "title": "Product Ids",
+          "type": "`$ARRAY`",
+          "req": true
         }
       ],
       "name": "compare_product",
@@ -347,7 +351,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/api/ai/compare-products",
@@ -362,16 +365,18 @@ class Config {
                   "lit": "compare-products"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "compare-products"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -380,7 +385,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/compare-products",
@@ -395,16 +399,18 @@ class Config {
                   "lit": "compare-products"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "compare-products"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -417,14 +423,17 @@ class Config {
       "fields": [
         {
           "name": "attribution",
+          "title": "Attribution",
           "type": "`$OBJECT`"
         },
         {
           "name": "offers",
+          "title": "Offers",
           "type": "`$ARRAY`"
         },
         {
           "name": "productId",
+          "title": "Product Id",
           "type": "`$STRING`"
         }
       ],
@@ -435,17 +444,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "product_id",
-                    "orig": "product_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/get-affiliate-offers",
@@ -460,20 +458,32 @@ class Config {
                   "lit": "get-affiliate-offers"
                 }
               ],
-              "select": {
-                "exist": [
-                  "product_id"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "get-affiliate-offers"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "product_id",
+                    "orig": "product_id",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "product_id"
+                ]
+              }
             }
           ]
         }
@@ -486,10 +496,12 @@ class Config {
       "fields": [
         {
           "name": "attribution",
+          "title": "Attribution",
           "type": "`$OBJECT`"
         },
         {
           "name": "build",
+          "title": "Build",
           "type": "`$OBJECT`"
         }
       ],
@@ -500,17 +512,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "build_id",
-                    "orig": "build_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/get-build",
@@ -525,20 +526,32 @@ class Config {
                   "lit": "get-build"
                 }
               ],
-              "select": {
-                "exist": [
-                  "build_id"
-                ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "get-build"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "build_id",
+                    "orig": "build_id",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "build_id"
+                ]
+              }
             }
           ]
         }
@@ -551,8 +564,9 @@ class Config {
       "fields": [
         {
           "name": "verificationStatus",
-          "short": "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
-          "type": "`$STRING`"
+          "title": "Verification Status",
+          "type": "`$STRING`",
+          "short": "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed)."
         }
       ],
       "name": "get_product",
@@ -562,22 +576,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "product_id",
-                    "orig": "product_id",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "slug",
-                    "orig": "slug",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/get-product",
@@ -592,21 +590,38 @@ class Config {
                   "lit": "get-product"
                 }
               ],
+              "parts": [
+                "api",
+                "ai",
+                "get-product"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.product`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "product_id",
+                    "orig": "product_id",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "slug",
+                    "orig": "slug",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "product_id",
                   "slug"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.product`"
-              },
-              "parts": [
-                "api",
-                "ai",
-                "get-product"
-              ]
+              }
             }
           ]
         }
@@ -619,26 +634,31 @@ class Config {
       "fields": [
         {
           "name": "budgetCents",
+          "title": "Budget Cents",
           "type": "`$INTEGER`"
         },
         {
           "name": "category",
+          "title": "Category",
+          "type": "`$STRING`",
           "req": true,
-          "short": "category slug, e.g.",
-          "type": "`$STRING`"
+          "short": "category slug, e.g."
         },
         {
           "name": "limit",
+          "title": "Limit",
           "type": "`$INTEGER`"
         },
         {
           "name": "recommendations",
+          "title": "Recommendations",
           "type": "`$ARRAY`"
         },
         {
           "name": "vertical",
-          "req": true,
-          "type": "`$STRING`"
+          "title": "Vertical",
+          "type": "`$STRING`",
+          "req": true
         }
       ],
       "name": "recommend_product",
@@ -648,7 +668,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/api/ai/recommend-products",
@@ -663,16 +682,18 @@ class Config {
                   "lit": "recommend-products"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "recommend-products"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -681,7 +702,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/api/ai/recommend-products",
@@ -696,16 +716,18 @@ class Config {
                   "lit": "recommend-products"
                 }
               ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
               "parts": [
                 "api",
                 "ai",
                 "recommend-products"
-              ]
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {},
+              "select": {}
             }
           ]
         }

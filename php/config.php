@@ -119,20 +119,24 @@ class SetupGearGuideConfig
           'fields' => [
             [
               'name' => 'budgetCents',
+              'title' => 'Budget Cents',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'experienceLevel',
+              'title' => 'Experience Level',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'useCase',
+              'title' => 'Use Case',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'vertical',
-              'req' => true,
+              'title' => 'Vertical',
               'type' => '`$STRING`',
+              'req' => true,
             ],
           ],
           'name' => 'build_quote',
@@ -142,7 +146,6 @@ class SetupGearGuideConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/ai/build-quote',
@@ -157,16 +160,18 @@ class SetupGearGuideConfig
                       'lit' => 'build-quote',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'build-quote',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -175,7 +180,6 @@ class SetupGearGuideConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/build-quote',
@@ -190,16 +194,18 @@ class SetupGearGuideConfig
                       'lit' => 'build-quote',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'build-quote',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -212,13 +218,15 @@ class SetupGearGuideConfig
           'fields' => [
             [
               'name' => 'productIds',
-              'req' => true,
+              'title' => 'Product Ids',
               'type' => '`$ARRAY`',
+              'req' => true,
             ],
             [
               'name' => 'verdict',
-              'short' => 'no_applicable_rules means no rule covered this product set (not a green pass).',
+              'title' => 'Verdict',
               'type' => '`$STRING`',
+              'short' => 'no_applicable_rules means no rule covered this product set (not a green pass).',
             ],
           ],
           'name' => 'check_compatibility',
@@ -228,7 +236,6 @@ class SetupGearGuideConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/ai/check-compatibility',
@@ -243,16 +250,18 @@ class SetupGearGuideConfig
                       'lit' => 'check-compatibility',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'check-compatibility',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -261,7 +270,6 @@ class SetupGearGuideConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/check-compatibility',
@@ -276,16 +284,18 @@ class SetupGearGuideConfig
                       'lit' => 'check-compatibility',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'check-compatibility',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -298,8 +308,9 @@ class SetupGearGuideConfig
           'fields' => [
             [
               'name' => 'productIds',
-              'req' => true,
+              'title' => 'Product Ids',
               'type' => '`$ARRAY`',
+              'req' => true,
             ],
           ],
           'name' => 'compare_product',
@@ -309,7 +320,6 @@ class SetupGearGuideConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/ai/compare-products',
@@ -324,16 +334,18 @@ class SetupGearGuideConfig
                       'lit' => 'compare-products',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'compare-products',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -342,7 +354,6 @@ class SetupGearGuideConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/compare-products',
@@ -357,16 +368,18 @@ class SetupGearGuideConfig
                       'lit' => 'compare-products',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'compare-products',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -379,14 +392,17 @@ class SetupGearGuideConfig
           'fields' => [
             [
               'name' => 'attribution',
+              'title' => 'Attribution',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'offers',
+              'title' => 'Offers',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'productId',
+              'title' => 'Product Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -397,17 +413,6 @@ class SetupGearGuideConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'product_id',
-                        'orig' => 'product_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/get-affiliate-offers',
@@ -422,19 +427,31 @@ class SetupGearGuideConfig
                       'lit' => 'get-affiliate-offers',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'product_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'get-affiliate-offers',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'product_id',
+                        'orig' => 'product_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'product_id',
+                    ],
                   ],
                 ],
               ],
@@ -448,10 +465,12 @@ class SetupGearGuideConfig
           'fields' => [
             [
               'name' => 'attribution',
+              'title' => 'Attribution',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'build',
+              'title' => 'Build',
               'type' => '`$OBJECT`',
             ],
           ],
@@ -462,17 +481,6 @@ class SetupGearGuideConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'build_id',
-                        'orig' => 'build_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/get-build',
@@ -487,19 +495,31 @@ class SetupGearGuideConfig
                       'lit' => 'get-build',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'build_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'get-build',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'build_id',
+                        'orig' => 'build_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'build_id',
+                    ],
                   ],
                 ],
               ],
@@ -513,8 +533,9 @@ class SetupGearGuideConfig
           'fields' => [
             [
               'name' => 'verificationStatus',
-              'short' => 'Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).',
+              'title' => 'Verification Status',
               'type' => '`$STRING`',
+              'short' => 'Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).',
             ],
           ],
           'name' => 'get_product',
@@ -524,22 +545,6 @@ class SetupGearGuideConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'kind' => 'query',
-                        'name' => 'product_id',
-                        'orig' => 'product_id',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'slug',
-                        'orig' => 'slug',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/get-product',
@@ -554,20 +559,37 @@ class SetupGearGuideConfig
                       'lit' => 'get-product',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'ai',
+                    'get-product',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.product`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'product_id',
+                        'orig' => 'product_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'slug',
+                        'orig' => 'slug',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'product_id',
                       'slug',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.product`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'ai',
-                    'get-product',
                   ],
                 ],
               ],
@@ -581,26 +603,31 @@ class SetupGearGuideConfig
           'fields' => [
             [
               'name' => 'budgetCents',
+              'title' => 'Budget Cents',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'category',
+              'title' => 'Category',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'category slug, e.g.',
-              'type' => '`$STRING`',
             ],
             [
               'name' => 'limit',
+              'title' => 'Limit',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'recommendations',
+              'title' => 'Recommendations',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'vertical',
-              'req' => true,
+              'title' => 'Vertical',
               'type' => '`$STRING`',
+              'req' => true,
             ],
           ],
           'name' => 'recommend_product',
@@ -610,7 +637,6 @@ class SetupGearGuideConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/api/ai/recommend-products',
@@ -625,16 +651,18 @@ class SetupGearGuideConfig
                       'lit' => 'recommend-products',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'recommend-products',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -643,7 +671,6 @@ class SetupGearGuideConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/ai/recommend-products',
@@ -658,16 +685,18 @@ class SetupGearGuideConfig
                       'lit' => 'recommend-products',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'api',
                     'ai',
                     'recommend-products',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],

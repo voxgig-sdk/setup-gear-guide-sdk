@@ -105,20 +105,24 @@ module SetupGearGuideConfig
           "fields" => [
             {
               "name" => "budgetCents",
+              "title" => "Budget Cents",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "experienceLevel",
+              "title" => "Experience Level",
               "type" => "`$STRING`",
             },
             {
               "name" => "useCase",
+              "title" => "Use Case",
               "type" => "`$STRING`",
             },
             {
               "name" => "vertical",
-              "req" => true,
+              "title" => "Vertical",
               "type" => "`$STRING`",
+              "req" => true,
             },
           ],
           "name" => "build_quote",
@@ -128,7 +132,6 @@ module SetupGearGuideConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/ai/build-quote",
@@ -143,16 +146,18 @@ module SetupGearGuideConfig
                       "lit" => "build-quote",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "build-quote",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -161,7 +166,6 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/ai/build-quote",
@@ -176,16 +180,18 @@ module SetupGearGuideConfig
                       "lit" => "build-quote",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "build-quote",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -198,13 +204,15 @@ module SetupGearGuideConfig
           "fields" => [
             {
               "name" => "productIds",
-              "req" => true,
+              "title" => "Product Ids",
               "type" => "`$ARRAY`",
+              "req" => true,
             },
             {
               "name" => "verdict",
-              "short" => "no_applicable_rules means no rule covered this product set (not a green pass).",
+              "title" => "Verdict",
               "type" => "`$STRING`",
+              "short" => "no_applicable_rules means no rule covered this product set (not a green pass).",
             },
           ],
           "name" => "check_compatibility",
@@ -214,7 +222,6 @@ module SetupGearGuideConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/ai/check-compatibility",
@@ -229,16 +236,18 @@ module SetupGearGuideConfig
                       "lit" => "check-compatibility",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "check-compatibility",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -247,7 +256,6 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/ai/check-compatibility",
@@ -262,16 +270,18 @@ module SetupGearGuideConfig
                       "lit" => "check-compatibility",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "check-compatibility",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -284,8 +294,9 @@ module SetupGearGuideConfig
           "fields" => [
             {
               "name" => "productIds",
-              "req" => true,
+              "title" => "Product Ids",
               "type" => "`$ARRAY`",
+              "req" => true,
             },
           ],
           "name" => "compare_product",
@@ -295,7 +306,6 @@ module SetupGearGuideConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/ai/compare-products",
@@ -310,16 +320,18 @@ module SetupGearGuideConfig
                       "lit" => "compare-products",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "compare-products",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -328,7 +340,6 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/ai/compare-products",
@@ -343,16 +354,18 @@ module SetupGearGuideConfig
                       "lit" => "compare-products",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "compare-products",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -365,14 +378,17 @@ module SetupGearGuideConfig
           "fields" => [
             {
               "name" => "attribution",
+              "title" => "Attribution",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "offers",
+              "title" => "Offers",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "productId",
+              "title" => "Product Id",
               "type" => "`$STRING`",
             },
           ],
@@ -383,17 +399,6 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "product_id",
-                        "orig" => "product_id",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/ai/get-affiliate-offers",
@@ -408,20 +413,32 @@ module SetupGearGuideConfig
                       "lit" => "get-affiliate-offers",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "product_id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "get-affiliate-offers",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "product_id",
+                        "orig" => "product_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "product_id",
+                    ],
+                  },
                 },
               ],
             },
@@ -434,10 +451,12 @@ module SetupGearGuideConfig
           "fields" => [
             {
               "name" => "attribution",
+              "title" => "Attribution",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "build",
+              "title" => "Build",
               "type" => "`$OBJECT`",
             },
           ],
@@ -448,17 +467,6 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "build_id",
-                        "orig" => "build_id",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/ai/get-build",
@@ -473,20 +481,32 @@ module SetupGearGuideConfig
                       "lit" => "get-build",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "build_id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "get-build",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "build_id",
+                        "orig" => "build_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "build_id",
+                    ],
+                  },
                 },
               ],
             },
@@ -499,8 +519,9 @@ module SetupGearGuideConfig
           "fields" => [
             {
               "name" => "verificationStatus",
-              "short" => "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
+              "title" => "Verification Status",
               "type" => "`$STRING`",
+              "short" => "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
             },
           ],
           "name" => "get_product",
@@ -510,22 +531,6 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "product_id",
-                        "orig" => "product_id",
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "slug",
-                        "orig" => "slug",
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/ai/get-product",
@@ -540,21 +545,38 @@ module SetupGearGuideConfig
                       "lit" => "get-product",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "ai",
+                    "get-product",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.product`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "product_id",
+                        "orig" => "product_id",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "slug",
+                        "orig" => "slug",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "product_id",
                       "slug",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.product`",
-                  },
-                  "parts" => [
-                    "api",
-                    "ai",
-                    "get-product",
-                  ],
                 },
               ],
             },
@@ -567,26 +589,31 @@ module SetupGearGuideConfig
           "fields" => [
             {
               "name" => "budgetCents",
+              "title" => "Budget Cents",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "category",
+              "title" => "Category",
+              "type" => "`$STRING`",
               "req" => true,
               "short" => "category slug, e.g.",
-              "type" => "`$STRING`",
             },
             {
               "name" => "limit",
+              "title" => "Limit",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "recommendations",
+              "title" => "Recommendations",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "vertical",
-              "req" => true,
+              "title" => "Vertical",
               "type" => "`$STRING`",
+              "req" => true,
             },
           ],
           "name" => "recommend_product",
@@ -596,7 +623,6 @@ module SetupGearGuideConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/ai/recommend-products",
@@ -611,16 +637,18 @@ module SetupGearGuideConfig
                       "lit" => "recommend-products",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "recommend-products",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -629,7 +657,6 @@ module SetupGearGuideConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/ai/recommend-products",
@@ -644,16 +671,18 @@ module SetupGearGuideConfig
                       "lit" => "recommend-products",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "ai",
                     "recommend-products",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },

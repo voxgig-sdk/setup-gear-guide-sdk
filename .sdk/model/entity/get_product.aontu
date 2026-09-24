@@ -1,0 +1,76 @@
+# Entity: get_product
+
+main: kit: entity: get_product: {
+
+  alias: field: {}
+
+  fields: {
+    verificationStatus: {
+      h: "Verification Status"
+      n: "verificationStatus"
+      r: false
+      sh: "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed)."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "get_product"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/ai/get-product"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "product_id"
+                or: "product_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "slug"
+                or: "slug"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/ai/get-product"
+          q: {
+            exist: [
+              "product_id"
+              "slug"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "get-product"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.product`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

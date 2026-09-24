@@ -1,0 +1,87 @@
+# Entity: check_compatibility
+
+main: kit: entity: check_compatibility: {
+
+  alias: field: {}
+
+  fields: {
+    productIds: {
+      h: "Product Ids"
+      n: "productIds"
+      r: true
+      t: "`$ARRAY`"
+    }
+    verdict: {
+      h: "Verdict"
+      n: "verdict"
+      r: false
+      sh: "no_applicable_rules means no rule covered this product set (not a green pass)."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "check_compatibility"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/ai/check-compatibility"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/ai/check-compatibility"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "check-compatibility"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/ai/check-compatibility"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/ai/check-compatibility"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "check-compatibility"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

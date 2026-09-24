@@ -1,0 +1,36 @@
+# BasicCompareProductFlow
+
+main: kit: flow: BasicCompareProductFlow:
+{
+  entity: "compare_product",
+  kind: "basic",
+  name: "BasicCompareProductFlow",
+  step: [
+    {
+      i: {
+        ref: "compare_product_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "compare_product_ref01",
+        srcdatavar: "compare_product_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-compare_product_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCompareProductFlow"
+}

@@ -1,0 +1,105 @@
+# Entity: recommend_product
+
+main: kit: entity: recommend_product: {
+
+  alias: field: {}
+
+  fields: {
+    budgetCents: {
+      h: "Budget Cents"
+      n: "budgetCents"
+      r: false
+      t: "`$INTEGER`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: true
+      sh: "category slug, e.g."
+      t: "`$STRING`"
+    }
+    limit: {
+      h: "Limit"
+      n: "limit"
+      r: false
+      t: "`$INTEGER`"
+    }
+    recommendations: {
+      h: "Recommendations"
+      n: "recommendations"
+      r: false
+      t: "`$ARRAY`"
+    }
+    vertical: {
+      h: "Vertical"
+      n: "vertical"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "recommend_product"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/ai/recommend-products"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/ai/recommend-products"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "recommend-products"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/ai/recommend-products"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/ai/recommend-products"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "recommend-products"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

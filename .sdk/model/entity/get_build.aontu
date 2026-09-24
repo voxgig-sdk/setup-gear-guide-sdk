@@ -1,0 +1,73 @@
+# Entity: get_build
+
+main: kit: entity: get_build: {
+
+  alias: field: {}
+
+  fields: {
+    attribution: {
+      h: "Attribution"
+      n: "attribution"
+      r: false
+      t: "`$OBJECT`"
+    }
+    build: {
+      h: "Build"
+      n: "build"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "get_build"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/ai/get-build"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "build_id"
+                or: "build_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/ai/get-build"
+          q: {
+            exist: [
+              "build_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "get-build"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

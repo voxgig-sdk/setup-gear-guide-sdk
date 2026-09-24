@@ -1,9 +1,0 @@
-# Flows
-
-@"./BasicBuildQuoteFlow.aon"
-@"./BasicCheckCompatibilityFlow.aon"
-@"./BasicCompareProductFlow.aon"
-@"./BasicGetAffiliateOfferFlow.aon"
-@"./BasicGetBuildFlow.aon"
-@"./BasicGetProductFlow.aon"
-@"./BasicRecommendProductFlow.aon"

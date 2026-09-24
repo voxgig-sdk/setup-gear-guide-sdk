@@ -97,20 +97,24 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "budgetCents",
+						"title": "Budget Cents",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "experienceLevel",
+						"title": "Experience Level",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "useCase",
+						"title": "Use Case",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "vertical",
-						"req": true,
+						"title": "Vertical",
 						"type": "`$STRING`",
+						"req": true,
 					},
 				},
 				"name": "build_quote",
@@ -120,7 +124,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/ai/build-quote",
@@ -135,16 +138,18 @@ func MakeConfig() map[string]any {
 										"lit": "build-quote",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"build-quote",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -153,7 +158,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/build-quote",
@@ -168,16 +172,18 @@ func MakeConfig() map[string]any {
 										"lit": "build-quote",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"build-quote",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -190,13 +196,15 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "productIds",
-						"req": true,
+						"title": "Product Ids",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "verdict",
-						"short": "no_applicable_rules means no rule covered this product set (not a green pass).",
+						"title": "Verdict",
 						"type": "`$STRING`",
+						"short": "no_applicable_rules means no rule covered this product set (not a green pass).",
 					},
 				},
 				"name": "check_compatibility",
@@ -206,7 +214,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/ai/check-compatibility",
@@ -221,16 +228,18 @@ func MakeConfig() map[string]any {
 										"lit": "check-compatibility",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"check-compatibility",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -239,7 +248,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/check-compatibility",
@@ -254,16 +262,18 @@ func MakeConfig() map[string]any {
 										"lit": "check-compatibility",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"check-compatibility",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -276,8 +286,9 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "productIds",
-						"req": true,
+						"title": "Product Ids",
 						"type": "`$ARRAY`",
+						"req": true,
 					},
 				},
 				"name": "compare_product",
@@ -287,7 +298,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/ai/compare-products",
@@ -302,16 +312,18 @@ func MakeConfig() map[string]any {
 										"lit": "compare-products",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"compare-products",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -320,7 +332,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/compare-products",
@@ -335,16 +346,18 @@ func MakeConfig() map[string]any {
 										"lit": "compare-products",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"compare-products",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -357,14 +370,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "attribution",
+						"title": "Attribution",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "offers",
+						"title": "Offers",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "productId",
+						"title": "Product Id",
 						"type": "`$STRING`",
 					},
 				},
@@ -375,17 +391,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "product_id",
-											"orig": "product_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/get-affiliate-offers",
@@ -400,19 +405,31 @@ func MakeConfig() map[string]any {
 										"lit": "get-affiliate-offers",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"product_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"get-affiliate-offers",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "product_id",
+											"orig": "product_id",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"product_id",
+									},
 								},
 							},
 						},
@@ -426,10 +443,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "attribution",
+						"title": "Attribution",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "build",
+						"title": "Build",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -440,17 +459,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "build_id",
-											"orig": "build_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/get-build",
@@ -465,19 +473,31 @@ func MakeConfig() map[string]any {
 										"lit": "get-build",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"build_id",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"get-build",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "build_id",
+											"orig": "build_id",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"build_id",
+									},
 								},
 							},
 						},
@@ -491,8 +511,9 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "verificationStatus",
-						"short": "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
+						"title": "Verification Status",
 						"type": "`$STRING`",
+						"short": "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
 					},
 				},
 				"name": "get_product",
@@ -502,22 +523,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "product_id",
-											"orig": "product_id",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "slug",
-											"orig": "slug",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/get-product",
@@ -532,20 +537,37 @@ func MakeConfig() map[string]any {
 										"lit": "get-product",
 									},
 								},
+								"parts": []any{
+									"api",
+									"ai",
+									"get-product",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.product`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "product_id",
+											"orig": "product_id",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "slug",
+											"orig": "slug",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"product_id",
 										"slug",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.product`",
-								},
-								"parts": []any{
-									"api",
-									"ai",
-									"get-product",
 								},
 							},
 						},
@@ -559,26 +581,31 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "budgetCents",
+						"title": "Budget Cents",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "category",
+						"title": "Category",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "category slug, e.g.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "limit",
+						"title": "Limit",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "recommendations",
+						"title": "Recommendations",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "vertical",
-						"req": true,
+						"title": "Vertical",
 						"type": "`$STRING`",
+						"req": true,
 					},
 				},
 				"name": "recommend_product",
@@ -588,7 +615,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/ai/recommend-products",
@@ -603,16 +629,18 @@ func MakeConfig() map[string]any {
 										"lit": "recommend-products",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"recommend-products",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -621,7 +649,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/ai/recommend-products",
@@ -636,16 +663,18 @@ func MakeConfig() map[string]any {
 										"lit": "recommend-products",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"ai",
 									"recommend-products",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

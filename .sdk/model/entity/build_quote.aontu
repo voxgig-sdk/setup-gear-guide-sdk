@@ -1,0 +1,98 @@
+# Entity: build_quote
+
+main: kit: entity: build_quote: {
+
+  alias: field: {}
+
+  fields: {
+    budgetCents: {
+      h: "Budget Cents"
+      n: "budgetCents"
+      r: false
+      t: "`$INTEGER`"
+    }
+    experienceLevel: {
+      h: "Experience Level"
+      n: "experienceLevel"
+      r: false
+      t: "`$STRING`"
+    }
+    useCase: {
+      h: "Use Case"
+      n: "useCase"
+      r: false
+      t: "`$STRING`"
+    }
+    vertical: {
+      h: "Vertical"
+      n: "vertical"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "build_quote"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/ai/build-quote"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/ai/build-quote"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "build-quote"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/ai/build-quote"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/ai/build-quote"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "build-quote"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

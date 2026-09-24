@@ -1,0 +1,36 @@
+# BasicCheckCompatibilityFlow
+
+main: kit: flow: BasicCheckCompatibilityFlow:
+{
+  entity: "check_compatibility",
+  kind: "basic",
+  name: "BasicCheckCompatibilityFlow",
+  step: [
+    {
+      i: {
+        ref: "check_compatibility_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "check_compatibility_ref01",
+        srcdatavar: "check_compatibility_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-check_compatibility_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCheckCompatibilityFlow"
+}

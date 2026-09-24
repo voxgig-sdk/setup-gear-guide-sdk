@@ -24,38 +24,108 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "build_quote": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "budgetCents",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "budgetCents": {
+              "a": true,
+              "h": "Budget Cents",
+              "n": "budgetCents",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "experienceLevel",
-              "req": false,
-              "type": "`$STRING`"
+            "experienceLevel": {
+              "a": true,
+              "h": "Experience Level",
+              "n": "experienceLevel",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "useCase",
-              "req": false,
-              "type": "`$STRING`"
+            "useCase": {
+              "a": true,
+              "h": "Use Case",
+              "n": "useCase",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "vertical",
-              "req": true,
-              "type": "`$STRING`"
+            "vertical": {
+              "a": true,
+              "h": "Vertical",
+              "n": "vertical",
+              "r": true,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "build_quote",
           "op": {
             "create": {
@@ -63,18 +133,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/ai/build-quote",
-                    "json": "{\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":{\"budgetCents\":150000,\"experienceLevel\":\"intermediate\",\"useCase\":\"gaming\",\"vertical\":\"pc-builds\"},\"schema\":{\"properties\":{\"budgetCents\":{\"minimum\":1,\"type\":\"integer\"},\"experienceLevel\":{\"enum\":[\"beginner\",\"intermediate\",\"advanced\",\"pro\",\"no_compromise\"],\"type\":\"string\"},\"useCase\":{\"type\":\"string\"},\"vertical\":{\"enum\":[\"sim-racing\",\"photo-video\",\"music-production\",\"pc-builds\"],\"type\":\"string\"}},\"required\":[\"vertical\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"alternativeBuilds\":[],\"attribution\":{\"affiliateDisclosure\":\"Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.\",\"canonicalUrl\":\"https://setupgearguide.com/build-quotes/qt_3kPq9XmZ2aBc\",\"dataFreshness\":null,\"generatedBy\":\"Setup Gear Guide\",\"methodologyUrl\":\"https://setupgearguide.com/methodology\",\"sourceConfidence\":null},\"cached\":false,\"canonicalBuildUrl\":\"https://setupgearguide.com/build-quotes/qt_3kPq9XmZ2aBc\",\"compatibilityWarnings\":[{\"message\":\"PSU has adequate headroom.\",\"rule\":\"psu-wattage-headroom\",\"severity\":\"info\",\"status\":\"pass\"}],\"confidence\":\"high\",\"estimatedTotalCents\":99800,\"items\":[{\"category\":\"cpus\",\"estimatedPriceCents\":39900,\"name\":\"AMD Ryzen 7 7800X3D\",\"offersUrl\":\"https://setupgearguide.com/api/ai/get-affiliate-offers?productId=amd-ryzen-7-7800x3d\",\"productId\":\"amd-ryzen-7-7800x3d\",\"productUrl\":\"https://setupgearguide.com/pc-builds/cpus/amd-ryzen-7-7800x3d\",\"reasoning\":\"Best gaming CPU at this tier\",\"swappedForBudget\":null},{\"category\":\"gpus\",\"estimatedPriceCents\":59900,\"name\":\"NVIDIA RTX 4070 Super\",\"offersUrl\":\"https://setupgearguide.com/api/ai/get-affiliate-offers?productId=nvidia-rtx-4070-super\",\"productId\":\"nvidia-rtx-4070-super\",\"productUrl\":\"https://setupgearguide.com/pc-builds/gpus/nvidia-rtx-4070-super\",\"reasoning\":\"1440p sweet spot\",\"swappedForBudget\":null}],\"priceAlertUrl\":\"https://setupgearguide.com/build-quotes/qt_3kPq9XmZ2aBc#alerts\",\"quoteId\":\"qt_3kPq9XmZ2aBc\",\"recommendedUpgradeOrder\":[{\"category\":\"gpus\",\"from\":\"nvidia-rtx-4070-super\",\"to\":\"nvidia-rtx-4080-super\"}],\"saveBuildUrl\":\"https://setupgearguide.com/pc-builds/builder?quote=qt_3kPq9XmZ2aBc\",\"unpricedItems\":0}}},\"description\":\"Quote with persisted quoteId; identical normalized requests reuse the cached quote (cached:true, x-cache:hit).\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request (bad_json | bad_vertical)\"},\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limited — Retry-After header set\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal error (no_template when no published template, or internal)\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/ai/build-quote",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/ai/build-quote",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -85,8 +156,7 @@
                       "lit": "build-quote"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -98,18 +168,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/ai/build-quote",
-                    "json": "{\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/ai/build-quote",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/ai/build-quote",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -120,8 +191,7 @@
                       "lit": "build-quote"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -138,21 +208,23 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "productIds",
-              "req": true,
-              "type": "`$ARRAY`"
+          "fields": {
+            "productIds": {
+              "a": true,
+              "h": "Product Ids",
+              "n": "productIds",
+              "r": true,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "verdict",
-              "req": false,
-              "short": "no_applicable_rules means no rule covered this product set (not a green pass).",
-              "type": "`$STRING`"
+            "verdict": {
+              "a": true,
+              "h": "Verdict",
+              "n": "verdict",
+              "r": false,
+              "sh": "no_applicable_rules means no rule covered this product set (not a green pass).",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "check_compatibility",
           "op": {
             "create": {
@@ -160,18 +232,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/ai/check-compatibility",
-                    "json": "{\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"productIds\":{\"items\":{\"type\":\"string\"},\"minItems\":2,\"type\":\"array\"}},\"required\":[\"productIds\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"attribution\":{\"affiliateDisclosure\":\"Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.\",\"canonicalUrl\":\"https://setupgearguide.com/photo-video/cameras/sony-a7-iv\",\"dataFreshness\":\"2026-06-11\",\"generatedBy\":\"Setup Gear Guide\",\"methodologyUrl\":\"https://setupgearguide.com/methodology\",\"sourceConfidence\":\"high\"},\"checks\":[{\"confidence\":\"high\",\"message\":\"Both use Sony E-mount.\",\"relatedProductId\":\"sony-fe-24-70-gm2\",\"rule\":\"lens-mount-match\",\"severity\":\"info\",\"status\":\"pass\",\"subjectProductId\":\"sony-a7-iv\"},{\"confidence\":\"low\",\"message\":\"Sync spec not yet sourced — informational only.\",\"relatedProductId\":null,\"rule\":\"flash-sync\",\"severity\":\"info\",\"status\":\"unknown\",\"subjectProductId\":\"sony-a7-iv\"}],\"note\":\"Unknown results mean a needed spec is not verified yet — the engine reports uncertainty instead of guessing.\",\"verdict\":\"pass_with_unknowns\"},\"schema\":{\"properties\":{\"verdict\":{\"description\":\"no_applicable_rules means no rule covered this product set (not a green pass).\",\"enum\":[\"pass\",\"pass_with_unknowns\",\"warn\",\"fail\",\"no_applicable_rules\"],\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"verdict: pass | pass_with_unknowns | warn | fail | no_applicable_rules, with per-rule checks.\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request (bad_json | missing_param | cross_vertical)\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unknown product (not_found)\"},\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limited — Retry-After header set\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/ai/check-compatibility",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/ai/check-compatibility",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -182,8 +255,7 @@
                       "lit": "check-compatibility"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -195,18 +267,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/ai/check-compatibility",
-                    "json": "{\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/ai/check-compatibility",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/ai/check-compatibility",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -217,8 +290,7 @@
                       "lit": "check-compatibility"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -235,14 +307,15 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "productIds",
-              "req": true,
-              "type": "`$ARRAY`"
+          "fields": {
+            "productIds": {
+              "a": true,
+              "h": "Product Ids",
+              "n": "productIds",
+              "r": true,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "compare_product",
           "op": {
             "create": {
@@ -250,18 +323,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/ai/compare-products",
-                    "json": "{\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"productIds\":{\"items\":{\"type\":\"string\"},\"maxItems\":4,\"minItems\":2,\"type\":\"array\"}},\"required\":[\"productIds\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"attribution\":{\"affiliateDisclosure\":\"Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.\",\"canonicalUrl\":\"https://setupgearguide.com/photo-video/cameras/sony-a7-iv\",\"dataFreshness\":\"2026-06-11\",\"generatedBy\":\"Setup Gear Guide\",\"methodologyUrl\":\"https://setupgearguide.com/methodology\",\"sourceConfidence\":\"high\"},\"products\":[{\"bestFor\":[\"Hybrid shooters\"],\"brand\":\"Sony\",\"canonicalUrl\":\"https://setupgearguide.com/photo-video/cameras/sony-a7-iv\",\"category\":\"cameras\",\"estimatedPriceCents\":249800,\"id\":\"sony-a7-iv\",\"name\":\"Sony A7 IV\",\"overallScore\":82,\"upgradeTier\":\"enthusiast\"},{\"bestFor\":[\"No-compromise hybrid work\"],\"brand\":\"Sony\",\"canonicalUrl\":\"https://setupgearguide.com/photo-video/cameras/sony-a7-v-ilce-7m5\",\"category\":\"cameras\",\"estimatedPriceCents\":299800,\"id\":\"sony-a7-v-ilce-7m5\",\"name\":\"Sony A7 V\",\"overallScore\":85,\"upgradeTier\":\"pro\"}],\"specDiffs\":[{\"differs\":false,\"spec\":\"megapixels\",\"values\":{\"sony-a7-iv\":33,\"sony-a7-v-ilce-7m5\":33}},{\"differs\":true,\"spec\":\"max_video\",\"values\":{\"sony-a7-iv\":\"4K60\",\"sony-a7-v-ilce-7m5\":\"4K120\"}}],\"staticComparisonUrl\":null}}},\"description\":\"Spec/score diffs + static comparison link (staticComparisonUrl null when none published).\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request (bad_json | missing_param — need 2 to 4 ids)\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unknown product (not_found)\"},\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limited — Retry-After header set\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/ai/compare-products",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/ai/compare-products",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -272,8 +346,7 @@
                       "lit": "compare-products"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -285,18 +358,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/ai/compare-products",
-                    "json": "{\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/ai/compare-products",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/ai/compare-products",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -307,8 +381,7 @@
                       "lit": "compare-products"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -325,26 +398,29 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "attribution",
-              "req": false,
-              "type": "`$OBJECT`"
+          "fields": {
+            "attribution": {
+              "a": true,
+              "h": "Attribution",
+              "n": "attribution",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "offers",
-              "req": false,
-              "type": "`$ARRAY`"
+            "offers": {
+              "a": true,
+              "h": "Offers",
+              "n": "offers",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "productId",
-              "req": false,
-              "type": "`$STRING`"
+            "productId": {
+              "a": true,
+              "h": "Product Id",
+              "n": "productId",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "get_affiliate_offer",
           "op": {
             "load": {
@@ -352,29 +428,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/ai/get-affiliate-offers",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "product_id",
-                        "orig": "product_id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "product_id",
+                        "or": "product_id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/ai/get-affiliate-offers",
-                    "json": "{\"parameters\":[{\"in\":\"query\",\"name\":\"productId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"attribution\":{\"affiliateDisclosure\":\"Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.\",\"canonicalUrl\":\"https://setupgearguide.com/photo-video/cameras/sony-a7-iv\",\"dataFreshness\":null,\"generatedBy\":\"Setup Gear Guide\",\"methodologyUrl\":\"https://setupgearguide.com/methodology\",\"sourceConfidence\":null},\"offers\":[{\"affiliate\":true,\"affiliateUrl\":\"https://www.amazon.com/dp/B09JZTCWNB?tag=setupgearguide-20\",\"availability\":\"in_stock\",\"disclosureRequired\":true,\"estimatedPriceCents\":null,\"finalUrl\":\"https://setupgearguide.com/go/off_sony-a7-iv__amazon__US\",\"normalUrl\":\"https://www.amazon.com/dp/B09JZTCWNB\",\"priceConfidence\":\"high\",\"priceLastChecked\":\"2026-06-11\",\"retailer\":\"Amazon\"},{\"affiliate\":false,\"affiliateUrl\":null,\"availability\":\"in_stock\",\"disclosureRequired\":true,\"estimatedPriceCents\":249800,\"finalUrl\":\"https://setupgearguide.com/go/off_sony-a7-iv__bhphoto__US\",\"normalUrl\":\"https://www.bhphotovideo.com/c/product/1672167-REG\",\"priceConfidence\":\"medium\",\"priceLastChecked\":\"2026-06-11\",\"retailer\":\"B&H Photo\"}],\"productId\":\"sony-a7-iv\"}}},\"description\":\"Offers with affiliate flags, disclosureRequired, price freshness. estimatedPriceCents may be null when retailer policy hides price.\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Missing productId (missing_param)\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unknown product (not_found)\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limited — Retry-After header set\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/ai/get-affiliate-offers",
+                  "q": {
+                    "exist": [
+                      "product_id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/ai/get-affiliate-offers",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -385,12 +466,7 @@
                       "lit": "get-affiliate-offers"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "product_id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -407,20 +483,22 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "attribution",
-              "req": false,
-              "type": "`$OBJECT`"
+          "fields": {
+            "attribution": {
+              "a": true,
+              "h": "Attribution",
+              "n": "attribution",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "build",
-              "req": false,
-              "type": "`$OBJECT`"
+            "build": {
+              "a": true,
+              "h": "Build",
+              "n": "build",
+              "r": false,
+              "t": "`$OBJECT`"
             }
-          ],
+          },
           "name": "get_build",
           "op": {
             "load": {
@@ -428,29 +506,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/ai/get-build",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "build_id",
-                        "orig": "build_id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "build_id",
+                        "or": "build_id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/ai/get-build",
-                    "json": "{\"parameters\":[{\"description\":\"Token-shaped, non-enumerable build id.\",\"in\":\"query\",\"name\":\"buildId\",\"required\":true,\"schema\":{\"pattern\":\"^bd_[0-9A-Za-z]{12}$\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"attribution\":{\"affiliateDisclosure\":\"Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.\",\"canonicalUrl\":\"https://setupgearguide.com/builds/bd_7Hj3Kp9Qa2Wz\",\"dataFreshness\":null,\"generatedBy\":\"Setup Gear Guide\",\"methodologyUrl\":\"https://setupgearguide.com/methodology\",\"sourceConfidence\":null},\"build\":{\"createdAt\":\"2026-06-11T14:22:08.000Z\",\"estimatedTotalCents\":99800,\"id\":\"bd_7Hj3Kp9Qa2Wz\",\"items\":[{\"brand\":\"AMD\",\"category\":\"cpus\",\"estimatedPriceCents\":39900,\"name\":\"AMD Ryzen 7 7800X3D\",\"productId\":\"amd-ryzen-7-7800x3d\",\"productUrl\":\"https://setupgearguide.com/pc-builds/cpus/amd-ryzen-7-7800x3d\",\"reasoning\":\"Best gaming CPU at this tier\"},{\"brand\":\"NVIDIA\",\"category\":\"gpus\",\"estimatedPriceCents\":59900,\"name\":\"NVIDIA RTX 4070 Super\",\"productId\":\"nvidia-rtx-4070-super\",\"productUrl\":\"https://setupgearguide.com/pc-builds/gpus/nvidia-rtx-4070-super\",\"reasoning\":\"1440p sweet spot\"}],\"name\":\"1440p gaming build\",\"unpricedItems\":0,\"vertical\":\"pc-builds\"}}}},\"description\":\"Build items, totals, canonical URL.\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Missing buildId (missing_param)\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unknown build (not_found)\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limited — Retry-After header set\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/ai/get-build",
+                  "q": {
+                    "exist": [
+                      "build_id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/ai/get-build",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -461,12 +544,7 @@
                       "lit": "get-build"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "build_id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -483,15 +561,16 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "verificationStatus",
-              "req": false,
-              "short": "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
-              "type": "`$STRING`"
+          "fields": {
+            "verificationStatus": {
+              "a": true,
+              "h": "Verification Status",
+              "n": "verificationStatus",
+              "r": false,
+              "sh": "Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "get_product",
           "op": {
             "load": {
@@ -499,37 +578,43 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/ai/get-product",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "product_id",
-                        "orig": "product_id",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "product_id",
+                        "or": "product_id",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "slug",
-                        "orig": "slug",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "slug",
+                        "or": "slug",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/ai/get-product",
-                    "json": "{\"parameters\":[{\"description\":\"Product id. Provide this OR slug (at least one is required).\",\"in\":\"query\",\"name\":\"productId\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Product slug. Provide this OR productId (at least one is required).\",\"in\":\"query\",\"name\":\"slug\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"attribution\":{\"affiliateDisclosure\":\"Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.\",\"canonicalUrl\":\"https://setupgearguide.com/photo-video/cameras/sony-a7-iv\",\"dataFreshness\":\"2026-06-11\",\"generatedBy\":\"Setup Gear Guide\",\"methodologyUrl\":\"https://setupgearguide.com/methodology\",\"sourceConfidence\":\"high\"},\"product\":{\"badges\":[\"Editor's pick\"],\"bestFor\":[\"Hybrid shooters\"],\"brand\":\"Sony\",\"canonicalProductUrl\":\"https://setupgearguide.com/photo-video/cameras/sony-a7-iv\",\"category\":\"cameras\",\"fieldVerification\":[{\"confidence\":\"high\",\"fieldName\":\"megapixels\",\"needsVerification\":false,\"notes\":null}],\"id\":\"sony-a7-iv\",\"lastResearched\":\"2026-06-11\",\"msrpCents\":249800,\"name\":\"Sony A7 IV\",\"notIdealFor\":[\"Pure stills budget buyers\"],\"offers\":[{\"affiliate\":true,\"disclosureRequired\":true,\"estimatedPriceCents\":null,\"finalUrl\":\"https://setupgearguide.com/go/off_sony-a7-iv__amazon__US\",\"priceLastChecked\":null,\"retailer\":\"Amazon\"}],\"scores\":[{\"label\":\"Overall\",\"reasoning\":\"Enthusiast-tier hybrid; well sourced.\",\"scoreId\":\"overall\",\"value\":82}],\"sources\":[{\"confidence\":\"high\",\"fieldName\":\"megapixels\",\"isPrimary\":true,\"retrievedAt\":\"2026-06-11\",\"sourceType\":\"manufacturer\",\"title\":\"Sony A7 IV specs\",\"url\":\"https://www.sony.com/...\"}],\"specs\":{\"ibis\":true,\"max_video\":\"4K60\",\"megapixels\":33,\"sensor\":\"full_frame\"},\"upgradeTier\":\"enthusiast\",\"verificationStatus\":\"sourced\",\"vertical\":\"photo-video\"}},\"schema\":{\"properties\":{\"product\":{\"properties\":{\"verificationStatus\":{\"description\":\"Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).\",\"enum\":[\"sourced\",\"partially_sourced\",\"flagged\"],\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Specs, per-field verification, sources, scores, offers, canonical URL. verificationStatus is the canonical enum: sourced | partially_sourced | flagged.\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Neither productId nor slug provided (missing_param)\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unknown product (not_found)\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limited — Retry-After header set\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/ai/get-product",
+                  "q": {
+                    "exist": [
+                      "product_id",
+                      "slug"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/ai/get-product",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -540,13 +625,7 @@
                       "lit": "get-product"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "product_id",
-                      "slug"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.product`"
                   }
@@ -563,39 +642,44 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "budgetCents",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "budgetCents": {
+              "a": true,
+              "h": "Budget Cents",
+              "n": "budgetCents",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "category",
-              "req": true,
-              "short": "category slug, e.g.",
-              "type": "`$STRING`"
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": true,
+              "sh": "category slug, e.g.",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "limit",
-              "req": false,
-              "type": "`$INTEGER`"
+            "limit": {
+              "a": true,
+              "h": "Limit",
+              "n": "limit",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "recommendations",
-              "req": false,
-              "type": "`$ARRAY`"
+            "recommendations": {
+              "a": true,
+              "h": "Recommendations",
+              "n": "recommendations",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "vertical",
-              "req": true,
-              "type": "`$STRING`"
+            "vertical": {
+              "a": true,
+              "h": "Vertical",
+              "n": "vertical",
+              "r": true,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "recommend_product",
           "op": {
             "create": {
@@ -603,18 +687,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/ai/recommend-products",
-                    "json": "{\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"budgetCents\":{\"type\":\"integer\"},\"category\":{\"description\":\"category slug, e.g. gpus, wheelbases\",\"type\":\"string\"},\"limit\":{\"maximum\":20,\"type\":\"integer\"},\"vertical\":{\"type\":\"string\"}},\"required\":[\"vertical\",\"category\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"attribution\":{\"affiliateDisclosure\":\"Some links may be affiliate links. Setup Gear Guide may earn a commission at no extra cost to the buyer; rankings and recommendations are never influenced by commissions.\",\"canonicalUrl\":\"https://setupgearguide.com/pc-builds/gpus\",\"dataFreshness\":null,\"generatedBy\":\"Setup Gear Guide\",\"methodologyUrl\":\"https://setupgearguide.com/methodology\",\"sourceConfidence\":null},\"budgetCents\":70000,\"category\":\"gpus\",\"note\":null,\"recommendations\":[{\"badges\":[\"Editor's pick\"],\"brand\":\"NVIDIA\",\"estimatedPriceCents\":59900,\"name\":\"NVIDIA RTX 4070 Super\",\"overallScore\":84,\"productId\":\"nvidia-rtx-4070-super\",\"productUrl\":\"https://setupgearguide.com/pc-builds/gpus/nvidia-rtx-4070-super\",\"rank\":1,\"upgradeTier\":\"enthusiast\",\"verificationStatus\":\"sourced\"},{\"badges\":[\"Value pick\"],\"brand\":\"AMD\",\"estimatedPriceCents\":49900,\"name\":\"AMD RX 7800 XT\",\"overallScore\":80,\"productId\":\"amd-rx-7800-xt\",\"productUrl\":\"https://setupgearguide.com/pc-builds/gpus/amd-rx-7800-xt\",\"rank\":2,\"upgradeTier\":\"enthusiast\",\"verificationStatus\":\"partially_sourced\"}],\"vertical\":\"pc-builds\"},\"schema\":{\"properties\":{\"recommendations\":{\"items\":{\"properties\":{\"verificationStatus\":{\"description\":\"Product-level spec verification: sourced = all key specs tied to a citable source; partially_sourced = some sourced, some flagged unverified; flagged = no key specs sourced yet (unverified or disputed).\",\"enum\":[\"sourced\",\"partially_sourced\",\"flagged\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Ranked products (recommendations[] with rank, scores, and verificationStatus from the canonical enum sourced | partially_sourced | flagged).\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Bad request (bad_json | bad_vertical | missing_param)\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Unknown category (not_found)\"},\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Rate limited — Retry-After header set\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Internal error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/ai/recommend-products",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/ai/recommend-products",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -625,8 +710,7 @@
                       "lit": "recommend-products"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -638,18 +722,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/ai/recommend-products",
-                    "json": "{\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"405\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"enum\":[\"bad_json\",\"missing_param\",\"bad_vertical\",\"cross_vertical\",\"not_found\",\"method_not_allowed\",\"no_template\",\"rate_limited\",\"internal\"],\"type\":\"string\"},\"docsUrl\":{\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"type\":\"string\"}},\"required\":[\"code\",\"message\"],\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Method not allowed — POST only\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/ai/recommend-products",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/ai/recommend-products",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -660,8 +745,7 @@
                       "lit": "recommend-products"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1090,28 +1174,28 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "build_quote_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "build_quote_ref01",
                 "srcdatavar": "build_quote_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1131,28 +1215,28 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "check_compatibility_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "check_compatibility_ref01",
                 "srcdatavar": "check_compatibility_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1172,28 +1256,28 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "compare_product_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "compare_product_ref01",
                 "srcdatavar": "compare_product_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1213,17 +1297,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "get_affiliate_offer_ref01",
                 "srcdatavar": "get_affiliate_offer_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1243,17 +1327,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "get_build_ref01",
                 "srcdatavar": "get_build_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1273,17 +1357,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "get_product_ref01",
                 "srcdatavar": "get_product_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1303,28 +1387,28 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "recommend_product_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "recommend_product_ref01",
                 "srcdatavar": "recommend_product_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

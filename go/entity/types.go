@@ -1,7 +1,7 @@
 // Typed models for the SetupGearGuide SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,10 +14,6 @@ import (
 
 // BuildQuote is the typed data model for the build_quote entity.
 type BuildQuote struct {
-	BudgetCents *int `json:"budgetCents,omitempty"`
-	ExperienceLevel *string `json:"experienceLevel,omitempty"`
-	UseCase *string `json:"useCase,omitempty"`
-	Vertical string `json:"vertical"`
 }
 
 // BuildQuoteLoadMatch is the typed request payload for BuildQuote.LoadTyped.
@@ -38,8 +34,6 @@ type BuildQuoteCreateData struct {
 
 // CheckCompatibility is the typed data model for the check_compatibility entity.
 type CheckCompatibility struct {
-	ProductIds []any `json:"productIds"`
-	Verdict *string `json:"verdict,omitempty"`
 }
 
 // CheckCompatibilityLoadMatch is the typed request payload for CheckCompatibility.LoadTyped.
@@ -56,7 +50,6 @@ type CheckCompatibilityCreateData struct {
 
 // CompareProduct is the typed data model for the compare_product entity.
 type CompareProduct struct {
-	ProductIds []any `json:"productIds"`
 }
 
 // CompareProductLoadMatch is the typed request payload for CompareProduct.LoadTyped.
@@ -71,9 +64,6 @@ type CompareProductCreateData struct {
 
 // GetAffiliateOffer is the typed data model for the get_affiliate_offer entity.
 type GetAffiliateOffer struct {
-	Attribution *map[string]any `json:"attribution,omitempty"`
-	Offers *[]any `json:"offers,omitempty"`
-	ProductId *string `json:"productId,omitempty"`
 }
 
 // GetAffiliateOfferLoadMatch is the typed request payload for GetAffiliateOffer.LoadTyped.
@@ -83,8 +73,6 @@ type GetAffiliateOfferLoadMatch struct {
 
 // GetBuild is the typed data model for the get_build entity.
 type GetBuild struct {
-	Attribution *map[string]any `json:"attribution,omitempty"`
-	Build *map[string]any `json:"build,omitempty"`
 }
 
 // GetBuildLoadMatch is the typed request payload for GetBuild.LoadTyped.
@@ -94,7 +82,6 @@ type GetBuildLoadMatch struct {
 
 // GetProduct is the typed data model for the get_product entity.
 type GetProduct struct {
-	VerificationStatus *string `json:"verificationStatus,omitempty"`
 }
 
 // GetProductLoadMatch is the typed request payload for GetProduct.LoadTyped.
@@ -105,11 +92,6 @@ type GetProductLoadMatch struct {
 
 // RecommendProduct is the typed data model for the recommend_product entity.
 type RecommendProduct struct {
-	BudgetCents *int `json:"budgetCents,omitempty"`
-	Category string `json:"category"`
-	Limit *int `json:"limit,omitempty"`
-	Recommendations *[]any `json:"recommendations,omitempty"`
-	Vertical string `json:"vertical"`
 }
 
 // RecommendProductLoadMatch is the typed request payload for RecommendProduct.LoadTyped.

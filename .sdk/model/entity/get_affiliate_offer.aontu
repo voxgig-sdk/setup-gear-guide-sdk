@@ -1,0 +1,79 @@
+# Entity: get_affiliate_offer
+
+main: kit: entity: get_affiliate_offer: {
+
+  alias: field: {}
+
+  fields: {
+    attribution: {
+      h: "Attribution"
+      n: "attribution"
+      r: false
+      t: "`$OBJECT`"
+    }
+    offers: {
+      h: "Offers"
+      n: "offers"
+      r: false
+      t: "`$ARRAY`"
+    }
+    productId: {
+      h: "Product Id"
+      n: "productId"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "get_affiliate_offer"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/ai/get-affiliate-offers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "product_id"
+                or: "product_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/ai/get-affiliate-offers"
+          q: {
+            exist: [
+              "product_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "ai"
+            }
+            {
+              lit: "get-affiliate-offers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
